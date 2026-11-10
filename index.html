@@ -64,9 +64,9 @@ ul.dots li::before{content:"";position:absolute;left:0;top:.7em;width:4px;height
 .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
 .card{background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden;display:flex;flex-direction:column;transition:.25s}
 .card{position:relative}
-.card:has(a.link):hover{transform:translateY(-4px);box-shadow:0 14px 34px rgba(20,24,40,.08)}
-.card a.link{position:absolute;inset:0;font-size:0;border-radius:18px} /* 카드 전체를 링크로, 문구는 스크린리더용으로만 남김 */
-.card a.link:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.card:has(.link):hover{transform:translateY(-4px);box-shadow:0 14px 34px rgba(20,24,40,.08)}
+.card .link{position:absolute;inset:0;font-size:0;border:0;background:none;cursor:pointer;border-radius:18px} /* 카드 전체를 링크로, 문구는 스크린리더용으로만 남김 */
+.card .link:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
 .card img{width:100%;aspect-ratio:16/10;object-fit:cover;background:var(--soft)}
 .card .body{padding:22px;display:flex;flex-direction:column;gap:10px;flex:1}
 .card .meta{font-size:13px;color:var(--sub)}
@@ -74,8 +74,18 @@ ul.dots li::before{content:"";position:absolute;left:0;top:.7em;width:4px;height
 .tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto;padding-top:6px}
 .tags span{font-size:12px;padding:4px 10px;border-radius:999px;background:var(--soft);color:var(--sub)}
 .card .link{font-size:14px;font-weight:600;color:var(--accent)}
-.card .link.off{color:#9aa0aa;font-weight:500}
 .card[hidden]{display:none}
+dialog{border:0;border-radius:20px;padding:28px;width:min(480px,calc(100% - 32px));color:var(--text);box-shadow:0 24px 60px rgba(20,24,40,.25)}
+dialog::backdrop{background:rgba(16,18,24,.5)}
+dialog h3{margin-bottom:4px;padding-right:32px}
+dialog .hint{font-size:14px;color:var(--sub);margin-bottom:18px}
+dialog ul{list-style:none;display:flex;flex-direction:column;gap:8px}
+dialog li a{display:flex;justify-content:space-between;gap:12px;align-items:center;padding:14px 16px;border:1px solid var(--line);border-radius:12px;font-size:15px;font-weight:500;transition:.15s}
+dialog li a:hover{border-color:var(--accent);color:var(--accent)}
+dialog li small{flex:none;font-size:12px;color:var(--sub)}
+dialog img{width:100%;border-radius:12px}
+dialog.wide{width:min(760px,calc(100% - 32px))}
+dialog .close{position:absolute;top:18px;right:18px;width:32px;height:32px;border:0;border-radius:50%;background:var(--soft);font-size:18px;cursor:pointer;color:var(--sub)}
 
 /* skills */
 .skills{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
@@ -231,7 +241,8 @@ footer{padding:32px 0;text-align:center;font-size:13px;color:#9aa0aa;border-top:
           <h3>에프오씨씨 다이어리</h3>
           <p>스타트업 브이로그 시리즈. 기획·촬영부터 롱폼 편집, 알고리즘 대응 숏폼 재구성까지. 숏폼 1만 회 이상 조회.</p>
           <div class="tags"><span>Premiere Pro</span><span>After Effects</span><span>Illustrator</span><span>Photoshop</span></div>
-          <a class="link" href="https://www.youtube.com/@FOCCPEOPLE/shorts" target="_blank" rel="noopener">채널 보기 →</a>
+          <button class="link" type="button">목록 보기</button>
+          <ul class="links" hidden><li><a href="https://youtu.be/MTtt9P7hr3U" target="_blank" rel="noopener">니들은 스타트업 피지 마라<small>YouTube</small></a></li><li><a href="https://youtu.be/DeyBte2AbC0" target="_blank" rel="noopener">뭔가 보여드리겠습니다<small>YouTube</small></a></li><li><a href="https://youtu.be/eQX03wwC8zc" target="_blank" rel="noopener">2025 역마살, '역삼'부터 '인천'까지<small>YouTube</small></a></li><li><a href="https://youtube.com/shorts/uzFRhbeR7pU" target="_blank" rel="noopener">북유럽 여행 성수기 시즌<small>Shorts</small></a></li><li><a href="https://youtube.com/shorts/NwKKdQ79KxM" target="_blank" rel="noopener">니들은 스타트업 피지 마라 (숏폼, 1만 회+)<small>Shorts</small></a></li><li><a href="https://www.youtube.com/@FOCCPEOPLE/shorts" target="_blank" rel="noopener">FOCCPEOPLE 채널 숏폼 전체<small>YouTube</small></a></li></ul>
         </div>
       </article>
       <article class="card" data-c="video">
@@ -241,7 +252,8 @@ footer{padding:32px 0;text-align:center;font-size:13px;color:#9aa0aa;border-top:
           <h3>포크피플 : 브랜드그라피</h3>
           <p>사람의 이야기를 담은 인터뷰 콘텐츠. 컷편집·이야기 구성, 인터뷰이 자막과 Intro/Outro 모션그래픽, 썸네일.</p>
           <div class="tags"><span>Premiere Pro</span><span>After Effects</span><span>Photoshop</span><span>미리캔버스</span></div>
-          <a class="link" href="https://youtu.be/QRuIPxKPjG8" target="_blank" rel="noopener">영상 보기 →</a>
+          <button class="link" type="button">목록 보기</button>
+          <ul class="links" hidden><li><a href="https://youtu.be/oat8cLKUQ-g" target="_blank" rel="noopener">feat. 송강미술관 김명자 관장<small>YouTube</small></a></li><li><a href="https://youtu.be/QRuIPxKPjG8" target="_blank" rel="noopener">feat. 로드옥션 대표 김기환<small>YouTube</small></a></li><li><a href="https://youtu.be/Z7FULsfeKkg" target="_blank" rel="noopener">feat. ProTNS 최중락 대표<small>YouTube</small></a></li></ul>
         </div>
       </article>
       <article class="card" data-c="graphic">
@@ -259,8 +271,9 @@ footer{padding:32px 0;text-align:center;font-size:13px;color:#9aa0aa;border-top:
           <div class="meta">Graphic · Instagram</div>
           <h3>‘클래스’ 카드뉴스</h3>
           <p>FOCC 팝업스토어 원데이 클래스 홍보물과 트래블호스트프로그램 8기 모집 카드뉴스(6컷) 기획·디자인.</p>
-          <div class="tags"><span>Figma</span><span>Photoshop</span><span>Claude</span></div>
-          <a class="link" href="https://www.instagram.com/p/DWBtTPPE12Q/" target="_blank" rel="noopener">인스타그램 보기 →</a>
+          <div class="tags"><span>Figma</span><span>Photoshop</span><span>Claude</span><span>Gemini</span></div>
+          <button class="link" type="button">목록 보기</button>
+          <ul class="links" hidden><li><a href="https://www.instagram.com/p/DW6DZQpk4Yb/" target="_blank" rel="noopener">원데이 클래스 디퓨저 홍보물<small>Instagram</small></a></li><li><a href="https://www.instagram.com/p/DWBtTPPE12Q/" target="_blank" rel="noopener">트래블호스트프로그램 8기 모집 카드뉴스<small>Instagram</small></a></li></ul>
         </div>
       </article>
       <article class="card" data-c="graphic">
@@ -270,6 +283,7 @@ footer{padding:32px 0;text-align:center;font-size:13px;color:#9aa0aa;border-top:
           <h3>북커버 디자인</h3>
           <p>〈트래블 호스트 04〉 국외 여행 인솔자 양성 교재. 기수별로 확장 가능한 시리즈 디자인 시스템으로 제작.</p>
           <div class="tags"><span>Illustrator</span><span>Package</span></div>
+          <button class="link" type="button" data-img="img/g-book.jpg">이미지 크게 보기</button>
         </div>
       </article>
       <article class="card" data-c="video">
@@ -279,7 +293,8 @@ footer{padding:32px 0;text-align:center;font-size:13px;color:#9aa0aa;border-top:
           <h3>AD 영상</h3>
           <p>HITUP·포크피플 앱 홍보(메타 광고 1080×1080, 롱/숏 버전)와 부동산 수업 광고. 플랫폼 규격별 편집.</p>
           <div class="tags"><span>After Effects</span><span>Premiere Pro</span><span>Photoshop</span><span>Illustrator</span></div>
-          <a class="link" href="https://youtube.com/shorts/6roo1DHDDec" target="_blank" rel="noopener">영상 보기 →</a>
+          <button class="link" type="button">목록 보기</button>
+          <ul class="links" hidden><li><a href="https://drive.google.com/file/d/1HGjL-SXnKFmVmjI5LkcJyzmyHYHwXEZc/view" target="_blank" rel="noopener">HITUP 메타 광고 (1080×1080)<small>Google Drive</small></a></li><li><a href="https://drive.google.com/file/d/1yZQUF7SLCWrM1aagKEAxX6ZG9FIq8N-0/view" target="_blank" rel="noopener">FOCCPeople AD-01 (Long ver.)<small>Google Drive</small></a></li><li><a href="https://drive.google.com/file/d/1yZQUF7SLCWrM1aagKEAxX6ZG9FIq8N-0/view" target="_blank" rel="noopener">FOCCPeople AD-01 (Short ver.)<small>Google Drive</small></a></li><li><a href="https://youtube.com/shorts/L8tQeaQIkRk" target="_blank" rel="noopener">부동산 수업 광고 — #부동산 #경매 #강의<small>Shorts</small></a></li><li><a href="https://youtube.com/shorts/6roo1DHDDec" target="_blank" rel="noopener">부동산 수업 광고 — 멀쩡한 건물 사지 마세요<small>Shorts</small></a></li></ul>
         </div>
       </article>
       <article class="card" data-c="video">
@@ -299,7 +314,8 @@ footer{padding:32px 0;text-align:center;font-size:13px;color:#9aa0aa;border-top:
           <h3>아겁문TV — 아문</h3>
           <p>가십·뉴스 콘텐츠 시리즈 총 102편의 편집과 자막·타이틀 그래픽 디자인 담당.</p>
           <div class="tags"><span>Premiere Pro</span><span>After Effects</span><span>Photoshop</span></div>
-          <span class="link off">현재 채널 삭제</span>
+          <button class="link" type="button">목록 보기</button>
+          <ul class="links" hidden><li><a href="https://youtu.be/O8tJ9j68p9o" target="_blank" rel="noopener">드라마 논란<small>YouTube</small></a></li><li><a href="https://youtu.be/xctRHCA7IXY" target="_blank" rel="noopener">위드 코로나<small>YouTube</small></a></li></ul>
         </div>
       </article>
       <article class="card" data-c="video">
@@ -309,7 +325,8 @@ footer{padding:32px 0;text-align:center;font-size:13px;color:#9aa0aa;border-top:
           <h3>아겁문TV — 조폭실록</h3>
           <p>한국 조폭의 역사를 소개하는 시리즈. 컷편집·구성과 자막·타이틀 그래픽 디자인 담당.</p>
           <div class="tags"><span>Premiere Pro</span><span>After Effects</span><span>Illustrator</span></div>
-          <span class="link off">현재 채널 삭제</span>
+          <button class="link" type="button">목록 보기</button>
+          <ul class="links" hidden><li><a href="https://youtu.be/oYyLRSgTJEg" target="_blank" rel="noopener">예고편<small>YouTube</small></a></li><li><a href="https://youtu.be/7adYW6R3c18" target="_blank" rel="noopener">1편<small>YouTube</small></a></li><li><a href="https://youtu.be/B-5XP67_zCQ" target="_blank" rel="noopener">2편<small>YouTube</small></a></li></ul>
         </div>
       </article>
       <article class="card" data-c="video">
@@ -380,6 +397,14 @@ footer{padding:32px 0;text-align:center;font-size:13px;color:#9aa0aa;border-top:
   </div>
 </section>
 
+<dialog id="pick" aria-labelledby="pick-t">
+  <button class="close" type="button" aria-label="닫기">×</button>
+  <h3 id="pick-t"></h3>
+  <p class="hint">확인할 콘텐츠를 선택하세요</p>
+  <ul></ul>
+  <img alt="">
+</dialog>
+
 <footer>© 2026 Isol Seo. All rights reserved.</footer>
 
 <script>
@@ -387,6 +412,20 @@ document.querySelectorAll('.tabs button').forEach(b => b.onclick = () => {
   document.querySelectorAll('.tabs button').forEach(x => x.setAttribute('aria-pressed', x === b));
   document.querySelectorAll('.card').forEach(c => c.hidden = b.dataset.f !== 'all' && c.dataset.c !== b.dataset.f);
 });
+const dlg = document.getElementById('pick');
+document.querySelectorAll('button.link').forEach(b => b.onclick = () => {
+  const card = b.closest('.card');
+  dlg.querySelector('h3').textContent = card.querySelector('h3').textContent;
+  const img = b.dataset.img, list = card.querySelector('.links');
+  dlg.classList.toggle('wide', !!img);
+  dlg.querySelector('.hint').hidden = !!img;
+  dlg.querySelector('ul').innerHTML = list ? list.innerHTML : '';
+  dlg.querySelector('img').hidden = !img;
+  if (img) { dlg.querySelector('img').src = img; dlg.querySelector('img').alt = card.querySelector('h3').textContent; }
+  dlg.showModal();
+});
+dlg.querySelector('.close').onclick = () => dlg.close();
+dlg.onclick = e => { if (e.target === dlg) dlg.close(); }; // 바깥 클릭 시 닫기
 </script>
 </body>
 </html>
