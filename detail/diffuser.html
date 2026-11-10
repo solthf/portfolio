@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>나만의 프리미엄 디퓨저 — 오하니 조향사 · FOCC 팝업</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --black: #111111;
+    --gray-dark: #333333;
+    --gray-mid: #666666;
+    --gray-light: #999999;
+    --gray-line: #e5e5e5;
+    --gray-bg: #f7f7f7;
+    --accent: #084536;
+    --accent-light: #e8f5f0;
+    --white: #ffffff;
+    --brand: #6A1B9A;
+    --brand-light: #F3E5F5;
+  }
+  body {
+    font-family: 'Pretendard', -apple-system, 'Noto Sans KR', sans-serif;
+    color: var(--black);
+    background: var(--white);
+    line-height: 1.6;
+    font-size: 15px;
+  }
+
+  /* ── 공통 ── */
+  .container { max-width: 720px; margin: 0 auto; padding: 0 20px; }
+  .section { padding: 48px 0; border-bottom: 1px solid var(--gray-line); }
+  .section:last-of-type { border-bottom: none; }
+  .section-label {
+    font-size: 11px; font-weight: 700; letter-spacing: 0.12em;
+    color: var(--brand); text-transform: uppercase; margin-bottom: 10px;
+  }
+  .section-title {
+    font-size: 22px; font-weight: 700; line-height: 1.4;
+    margin-bottom: 24px; color: var(--black);
+  }
+
+  /* ── 상단 배너 ── */
+  .notice-banner {
+    background: var(--brand-light); border-bottom: 1px solid #ce93d8;
+    padding: 12px 20px; font-size: 13px; color: #4a148c; text-align: center;
+  }
+  .notice-banner strong { font-weight: 700; }
+
+  /* ── 히어로 ── */
+  .hero { padding: 40px 0 32px; border-bottom: 1px solid var(--gray-line); }
+  .hero-category {
+    display: inline-block; font-size: 12px; font-weight: 600;
+    color: var(--brand); background: var(--brand-light);
+    border-radius: 4px; padding: 3px 10px; margin-bottom: 14px;
+  }
+  .hero-title {
+    font-size: 26px; font-weight: 800; line-height: 1.35;
+    margin-bottom: 14px; letter-spacing: -0.5px;
+  }
+  .hero-hook {
+    font-size: 16px; color: var(--gray-dark); line-height: 1.7; margin-bottom: 24px;
+  }
+  .hero-image {
+    width: 100%; aspect-ratio: 4/3; background: var(--brand-light);
+    border-radius: 12px; margin-bottom: 24px; overflow: hidden;
+    position: relative;
+  }
+  .hero-slides { display: flex; height: 100%; transition: transform 0.4s ease; }
+  .hero-slides img { width: 100%; height: 100%; object-fit: cover; flex-shrink: 0; }
+  .hero-dots {
+    position: absolute; bottom: 12px; left: 50%; transform: translateX(-50%);
+    display: flex; gap: 6px;
+  }
+  .hero-dots button {
+    width: 7px; height: 7px; border-radius: 50%; border: none;
+    background: rgba(255,255,255,0.55); cursor: pointer; padding: 0; transition: background 0.2s;
+  }
+  .hero-dots button.active { background: #fff; }
+  .hero-arrows {
+    position: absolute; top: 50%; transform: translateY(-50%);
+    width: 100%; display: flex; justify-content: space-between; padding: 0 10px; pointer-events: none;
+  }
+  .hero-arrows button {
+    pointer-events: all; background: rgba(0,0,0,0.32); color: #fff; border: none;
+    width: 36px; height: 36px; border-radius: 50%; font-size: 16px; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .hero-meta {
+    display: flex; gap: 20px; flex-wrap: wrap;
+    font-size: 13px; color: var(--gray-mid); margin-bottom: 24px;
+  }
+  .hero-meta span { display: flex; align-items: center; gap: 5px; }
+  .hero-meta .star { color: #FFB800; }
+  .highlight-row {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 1px; background: var(--gray-line);
+    border: 1px solid var(--gray-line); border-radius: 12px; overflow: hidden;
+  }
+  .highlight-item { background: var(--white); padding: 20px 12px; text-align: center; }
+  .highlight-number {
+    font-size: 24px; font-weight: 800; color: var(--black);
+    display: block; line-height: 1.2;
+  }
+  .highlight-label { font-size: 12px; color: var(--gray-mid); margin-top: 4px; display: block; }
+
+  /* ── 일정 선택 ── */
+  .date-select { display: flex; flex-direction: column; gap: 10px; }
+  .date-option {
+    display: flex; align-items: center; gap: 14px;
+    padding: 16px 18px; border: 1.5px solid var(--gray-line);
+    border-radius: 12px; cursor: pointer; transition: border-color 0.15s, background 0.15s;
+  }
+  .date-option:hover { border-color: var(--brand); }
+  .date-option.selected { border-color: var(--brand); background: var(--brand-light); }
+  .date-option input[type="radio"] { accent-color: var(--brand); width: 18px; height: 18px; flex-shrink: 0; }
+  .date-option-info { flex: 1; }
+  .date-option-day { font-size: 16px; font-weight: 700; }
+  .date-option-time { font-size: 13px; color: var(--gray-mid); margin-top: 2px; }
+  .date-option-seats { font-size: 12px; font-weight: 700; color: var(--brand); flex-shrink: 0; }
+
+  /* ── 캘린더 ── */
+  .calendar-wrap {
+    border: 1px solid var(--gray-line); border-radius: 14px; overflow: hidden;
+  }
+  .calendar-header {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 14px 18px; background: var(--black); color: var(--white);
+  }
+  .cal-nav {
+    background: none; border: none; color: var(--white); font-size: 18px;
+    cursor: pointer; padding: 4px 8px; border-radius: 6px; line-height: 1;
+    transition: background 0.15s;
+  }
+  .cal-nav:hover { background: rgba(255,255,255,0.15); }
+  .cal-month { font-size: 15px; font-weight: 700; letter-spacing: -0.3px; }
+  .calendar-weekdays {
+    display: grid; grid-template-columns: repeat(7, 1fr);
+    background: var(--gray-bg); border-bottom: 1px solid var(--gray-line);
+  }
+  .calendar-weekdays span {
+    text-align: center; padding: 8px 0; font-size: 11px;
+    font-weight: 700; color: var(--gray-mid);
+  }
+  .calendar-weekdays span:first-child { color: var(--accent); }
+  .calendar-weekdays span:last-child { color: #4477ff; }
+  .calendar-days { display: grid; grid-template-columns: repeat(7, 1fr); background: var(--white); }
+  .cal-day {
+    display: flex; flex-direction: column; align-items: stretch;
+    border-bottom: 1px solid var(--gray-line); border-right: 1px solid var(--gray-line);
+    min-height: 60px; padding: 6px 5px; gap: 4px;
+  }
+  .cal-day:nth-child(7n) { border-right: none; }
+  .cal-day.past .cal-day-num { color: var(--gray-line); }
+  .cal-day.sunday .cal-day-num { color: #e03131; }
+  .cal-day.saturday .cal-day-num { color: #4477ff; }
+  .cal-day-num {
+    font-size: 13px; font-weight: 700; text-align: left;
+    margin-bottom: 3px; line-height: 1.4;
+    display: flex; align-items: center; gap: 4px;
+    height: 20px;
+  }
+  .cal-current-badge {
+    font-size: 9px; font-weight: 700; background: var(--brand);
+    color: var(--white); border-radius: 3px; padding: 1px 4px;
+  }
+  .cal-class-chip {
+    display: block; font-size: 10px; font-weight: 600; line-height: 1.45;
+    padding: 5px 6px; border-radius: 5px; word-break: keep-all;
+    text-decoration: none; transition: opacity 0.12s;
+    background: var(--brand-light); color: var(--brand);
+  }
+  .cal-class-chip:hover { opacity: 0.82; }
+  .cal-class-chip .chip-instructor { display: block; font-size: 10px; font-weight: 700; }
+  .cal-class-chip .chip-time { display: block; font-size: 9.5px; font-weight: 500; opacity: 0.85; }
+  .cal-class-chip .chip-duration { display: block; font-size: 9px; font-weight: 500; opacity: 0.7; }
+  .cal-class-chip.chip-full {
+    background: var(--gray-bg); color: var(--gray-light);
+    text-decoration: line-through; pointer-events: none;
+  }
+  .cal-legend {
+    display: flex; gap: 16px; margin-top: 14px;
+    font-size: 12px; color: var(--gray-mid); align-items: center;
+  }
+  .cal-legend span { display: flex; align-items: center; gap: 5px; }
+  .legend-dot { width: 7px; height: 7px; border-radius: 50%; display: inline-block; }
+
+  /* ── 30초 요약 ── */
+  .summary-list { display: flex; flex-direction: column; gap: 14px; }
+  .summary-item {
+    display: flex; align-items: flex-start; gap: 14px;
+    padding: 16px 18px; background: var(--gray-bg); border-radius: 10px;
+  }
+  .summary-icon { font-size: 22px; flex-shrink: 0; line-height: 1.3; }
+  .summary-text strong { display: block; font-size: 14px; font-weight: 700; margin-bottom: 3px; }
+  .summary-text span { font-size: 13px; color: var(--gray-mid); line-height: 1.6; }
+
+  /* ── Before/After ── */
+  .outcome-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .outcome-card { border-radius: 12px; padding: 20px 18px; }
+  .outcome-card.before { background: var(--gray-bg); border: 1px solid var(--gray-line); }
+  .outcome-card.after { background: var(--brand-light); border: 1px solid #ce93d8; }
+  .outcome-card-label { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; margin-bottom: 14px; display: block; }
+  .outcome-card.before .outcome-card-label { color: var(--gray-mid); }
+  .outcome-card.after .outcome-card-label { color: var(--brand); }
+  .outcome-list { list-style: none; display: flex; flex-direction: column; gap: 9px; }
+  .outcome-list li { font-size: 13px; line-height: 1.5; padding-left: 16px; position: relative; color: var(--gray-dark); }
+  .outcome-card.before .outcome-list li::before { content: "·"; position: absolute; left: 4px; color: var(--gray-light); }
+  .outcome-card.after .outcome-list li::before { content: "✓"; position: absolute; left: 0; color: var(--brand); font-size: 12px; font-weight: 700; }
+
+  /* ── 추천/비추천 ── */
+  .target-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .target-card { border-radius: 12px; padding: 20px 18px; }
+  .target-card.yes { background: var(--white); border: 1.5px solid var(--black); }
+  .target-card.no { background: var(--gray-bg); border: 1.5px solid var(--gray-line); }
+  .target-card-title { font-size: 13px; font-weight: 700; margin-bottom: 14px; display: flex; align-items: center; gap: 6px; }
+  .target-card.yes .target-card-title { color: var(--black); }
+  .target-card.no .target-card-title { color: var(--gray-mid); }
+  .target-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .target-list li { font-size: 13px; color: var(--gray-dark); line-height: 1.5; padding-left: 16px; position: relative; }
+  .target-card.yes .target-list li::before { content: "→"; position: absolute; left: 0; font-size: 12px; color: var(--black); }
+  .target-card.no .target-list li::before { content: "×"; position: absolute; left: 0; font-size: 12px; color: var(--gray-light); }
+
+  /* ── 클래스 특징 ── */
+  .feature-box {
+    background: var(--brand-light); color: var(--black);
+    border-radius: 14px; padding: 28px 24px; margin-bottom: 20px;
+  }
+  .feature-box-title { font-size: 18px; font-weight: 800; margin-bottom: 6px; line-height: 1.4; }
+  .feature-box-sub { font-size: 13px; color: var(--gray-mid); margin-bottom: 20px; line-height: 1.6; }
+  .feature-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .feature-list li {
+    font-size: 14px; padding-left: 20px; position: relative; line-height: 1.6;
+  }
+  .feature-list li::before { content: "•"; position: absolute; left: 5px; color: var(--brand); }
+  .feature-list li strong { color: var(--brand); }
+
+  /* ── 커리큘럼 ── */
+  .curriculum-list { display: flex; flex-direction: column; gap: 0; position: relative; }
+  .curriculum-list::before {
+    content: ''; position: absolute; left: 19px; top: 24px; bottom: 24px;
+    width: 1px; background: var(--gray-line); z-index: 0;
+  }
+  .curriculum-item { display: flex; gap: 16px; padding: 0 0 28px; position: relative; z-index: 1; }
+  .curriculum-item:last-child { padding-bottom: 0; }
+  .curriculum-time {
+    flex-shrink: 0; width: 40px; height: 40px; background: var(--brand);
+    color: var(--white); border-radius: 50%; display: flex;
+    align-items: center; justify-content: center; font-size: 12px; font-weight: 700;
+  }
+  .curriculum-content { padding-top: 8px; }
+  .curriculum-content strong { display: block; font-size: 15px; font-weight: 700; margin-bottom: 5px; }
+  .curriculum-content p { font-size: 13px; color: var(--gray-mid); line-height: 1.6; }
+  .curriculum-tag {
+    display: inline-block; font-size: 11px; font-weight: 600;
+    color: var(--brand); background: var(--brand-light);
+    border-radius: 4px; padding: 2px 8px; margin-top: 6px;
+  }
+
+  /* ── 강사 소개 ── */
+  .instructor-profile { display: flex; gap: 18px; align-items: flex-start; margin-bottom: 20px; }
+  .instructor-avatar {
+    width: 72px; height: 72px; border-radius: 50%; background: var(--gray-bg);
+    flex-shrink: 0; overflow: hidden; border: 2px solid var(--gray-line);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--gray-light); font-size: 11px;
+  }
+  .instructor-avatar img { width: 100%; height: 100%; object-fit: cover; object-position: center 20%; }
+  .instructor-name { font-size: 18px; font-weight: 800; margin-bottom: 4px; }
+  .instructor-tagline { font-size: 13px; color: var(--gray-mid); }
+  .instructor-bio { font-size: 14px; color: var(--gray-dark); line-height: 1.8; margin-bottom: 20px; }
+  .instructor-credentials { display: flex; flex-direction: column; gap: 8px; }
+  .credential-item { display: flex; gap: 10px; align-items: flex-start; font-size: 13px; color: var(--gray-dark); }
+  .credential-item::before { content: "—"; color: var(--gray-light); flex-shrink: 0; }
+
+  /* ── 리뷰 ── */
+  .review-summary {
+    display: flex; align-items: center; gap: 16px; padding: 20px;
+    background: var(--gray-bg); border-radius: 12px; margin-bottom: 24px;
+  }
+  .review-score { font-size: 40px; font-weight: 800; line-height: 1; letter-spacing: -1px; }
+  .review-stars { font-size: 18px; color: #FFB800; display: block; margin-bottom: 4px; }
+  .review-count { font-size: 13px; color: var(--gray-mid); }
+  .review-list { display: flex; flex-direction: column; gap: 20px; }
+  .review-item { padding: 20px; border: 1px solid var(--gray-line); border-radius: 12px; }
+  .review-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .reviewer-name { font-size: 13px; font-weight: 700; }
+  .reviewer-date { font-size: 12px; color: var(--gray-light); }
+  .review-stars-small { font-size: 13px; color: #FFB800; margin-bottom: 8px; }
+  .review-text { font-size: 14px; color: var(--gray-dark); line-height: 1.7; }
+  .review-tag {
+    display: inline-block; font-size: 11px; color: var(--gray-mid);
+    background: var(--gray-bg); border-radius: 4px; padding: 2px 8px; margin-top: 10px;
+  }
+
+  /* ── 참여 안내 ── */
+  .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .info-box { padding: 20px; border-radius: 10px; background: var(--gray-bg); }
+  .info-box-title { font-size: 13px; font-weight: 700; margin-bottom: 12px; display: flex; align-items: center; gap: 6px; }
+  .info-box ul { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+  .info-box ul li { font-size: 13px; color: var(--gray-dark); padding-left: 14px; position: relative; line-height: 1.5; }
+  .info-box ul li::before { content: "·"; position: absolute; left: 3px; color: var(--gray-light); }
+
+  /* ── FAQ ── */
+  .faq-list { display: flex; flex-direction: column; gap: 0; border-top: 1px solid var(--gray-line); }
+  .faq-item { border-bottom: 1px solid var(--gray-line); padding: 18px 0; }
+  .faq-q { font-size: 14px; font-weight: 700; margin-bottom: 8px; display: flex; gap: 10px; }
+  .faq-q::before { content: "Q."; color: var(--brand); flex-shrink: 0; }
+  .faq-a { font-size: 13px; color: var(--gray-mid); line-height: 1.7; padding-left: 22px; }
+
+  /* ── 고정 하단 CTA ── */
+  .sticky-cta {
+    position: fixed; bottom: 0; left: 0; right: 0; background: var(--white);
+    border-top: 1px solid var(--gray-line); padding: 14px 20px;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 16px; z-index: 100; box-shadow: 0 -4px 20px rgba(0,0,0,0.06);
+  }
+  .cta-price-block {}
+  .cta-label { font-size: 11px; color: var(--gray-mid); display: block; margin-bottom: 2px; }
+  .cta-price-row { display: flex; align-items: baseline; gap: 8px; }
+  .cta-price-original { font-size: 13px; color: var(--gray-light); text-decoration: line-through; }
+  .cta-price { font-size: 20px; font-weight: 800; color: var(--black); }
+  .cta-price span { font-size: 13px; font-weight: 500; color: var(--gray-mid); }
+  .cta-discount { font-size: 12px; font-weight: 700; color: var(--accent); }
+  .cta-btn {
+    flex-shrink: 0; background: var(--brand); color: var(--white); border: none;
+    border-radius: 10px; padding: 14px 28px; font-size: 15px; font-weight: 700;
+    cursor: pointer; letter-spacing: -0.2px; transition: background 0.15s;
+  }
+  .cta-btn:hover { background: #4a148c; }
+  .cta-btn:active { transform: scale(0.98); }
+  .cta-spacer { height: 80px; }
+
+  /* ── 반응형 ── */
+  @media (max-width: 480px) {
+    .hero-title { font-size: 22px; }
+    .outcome-grid, .target-grid, .info-grid { grid-template-columns: 1fr; }
+    .section-title { font-size: 19px; }
+    .highlight-number { font-size: 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- 상단 안내 배너 -->
+<div class="notice-banner">
+  <strong>신청 전 확인해주세요</strong> · 재료 일체 제공 · 향에 민감하신 분은 수강 전 강사에게 문의해주세요
+</div>
+
+<div class="container">
+
+  <!-- ① 히어로 -->
+  <section class="hero">
+    <span class="hero-category">조향 · 원데이 클래스</span>
+    <h1 class="hero-title">
+      나만의 프리미엄 디퓨저<br>
+      <span style="font-size:18px; font-weight:600; color:var(--gray-mid)">기억과 감정을 담은 향으로, 세상에 하나뿐인 디퓨저를</span>
+    </h1>
+    <p class="hero-hook">
+      좋아하는 향은 있는데 어디서부터 시작해야 할지 막막했던 분들을 위해,
+      조향사 오하니가 직접 90분 안에 완성까지 안내해드립니다.
+    </p>
+    <div class="hero-image" id="heroSlider">
+      <div class="hero-slides" id="heroSlides">
+        <img src="img/오하니_완성품.jpg" alt="나만의 프리미엄 디퓨저 완성품">
+        <img src="img/오하니_제작과정.jpg" alt="디퓨저 제작 과정">
+        <img src="img/오하니_현장_강의.jpg" alt="오하니 조향사 클래스 강의">
+        <img src="img/오하니_현장_테이블.jpg" alt="클래스 작업 테이블">
+      </div>
+      <div class="hero-arrows">
+        <button onclick="slideHero(-1)">&#8249;</button>
+        <button onclick="slideHero(1)">&#8250;</button>
+      </div>
+      <div class="hero-dots" id="heroDots"></div>
+    </div>
+    <div class="hero-meta">
+      <span><span class="star">★</span> <strong>5.0</strong></span>
+      <span>🧴 프리미엄 천연발효 베이스</span>
+      <span>✨ FOCC 팝업 한정</span>
+    </div>
+    <div class="highlight-row">
+      <div class="highlight-item">
+        <span class="highlight-number">90분</span>
+        <span class="highlight-label">수업 시간</span>
+      </div>
+      <div class="highlight-item">
+        <span class="highlight-number">15명</span>
+        <span class="highlight-label">소수 정예</span>
+      </div>
+      <div class="highlight-item">
+        <span class="highlight-number">1개</span>
+        <span class="highlight-label">디퓨저 완성</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ② 일정 선택 -->
+  <section class="section">
+    <p class="section-label">일정 선택</p>
+    <h2 class="section-title">원하는 날짜를 선택해주세요</h2>
+    <div class="date-select">
+      <label class="date-option selected" id="opt-1">
+        <input type="radio" name="date" value="1" checked onchange="selectDate(1)">
+        <div class="date-option-info">
+          <div class="date-option-day">4월 11일 (토)</div>
+          <div class="date-option-time">오후 2:00 – 3:30 · 90분</div>
+        </div>
+        <span class="date-option-seats">잔여석 확인 중</span>
+      </label>
+      <label class="date-option" id="opt-2">
+        <input type="radio" name="date" value="2" onchange="selectDate(2)">
+        <div class="date-option-info">
+          <div class="date-option-day">4월 23일 (목)</div>
+          <div class="date-option-time">오후 2:00 – 3:30 · 90분</div>
+        </div>
+        <span class="date-option-seats">잔여석 확인 중</span>
+      </label>
+    </div>
+  </section>
+
+  <!-- ③ FOCC 팝업 전체 일정 캘린더 -->
+  <section class="section">
+    <p class="section-label">클래스 일정</p>
+    <h2 class="section-title">FOCC 팝업 ─ 클래스 모아보기</h2>
+    <div class="calendar-wrap">
+      <div class="calendar-header">
+        <button class="cal-nav" onclick="changeMonth(-1)">&#8249;</button>
+        <span class="cal-month" id="cal-month-label"></span>
+        <button class="cal-nav" onclick="changeMonth(1)">&#8250;</button>
+      </div>
+      <div class="calendar-weekdays">
+        <span>일</span><span>월</span><span>화</span><span>수</span><span>목</span><span>금</span><span>토</span>
+      </div>
+      <div class="calendar-days" id="cal-days"></div>
+    </div>
+    <div class="cal-legend">
+      <span><span class="legend-dot" style="background:var(--brand)"></span> 이 클래스</span>
+      <span><span class="legend-dot" style="background:var(--accent)"></span> 다른 클래스</span>
+      <span><span class="legend-dot" style="background:var(--gray-line)"></span> 마감</span>
+    </div>
+  </section>
+
+  <!-- ④ 30초 요약 -->
+  <section class="section">
+    <p class="section-label">30초 요약</p>
+    <h2 class="section-title">이 클래스, 딱 세 가지만 기억하세요</h2>
+    <div class="summary-list">
+      <div class="summary-item">
+        <span class="summary-icon">🌿</span>
+        <div class="summary-text">
+          <strong>처음이어도 90분이면 디퓨저 하나를 완성합니다</strong>
+          <span>조향 지식이 전혀 없어도 괜찮습니다.<br>오하니 조향사가 탑·미들·베이스 노트 선택부터 블렌딩, 포장까지 모든 과정을 함께합니다.</span>
+        </div>
+      </div>
+      <div class="summary-item">
+        <span class="summary-icon">✨</span>
+        <div class="summary-text">
+          <strong>시중 제품과 다른 프리미엄 천연발효 베이스를 씁니다</strong>
+          <span>무프탈레이트·무솔벤트·무변성제.<br>곡물 원료 기반의 저자극 순수 베이스로, 시중 디퓨저보다 오일 함유율이 높아 향이 짙고 오래 지속됩니다.</span>
+        </div>
+      </div>
+      <div class="summary-item">
+        <span class="summary-icon">🎁</span>
+        <div class="summary-text">
+          <strong>그날 바로 들고 가는 완성품, 선물로도 딱입니다</strong>
+          <span>수업 당일 완성한 디퓨저를 포장까지 마쳐 바로 가져갑니다.<br>나를 위한 선물이든, 소중한 사람을 위한 선물이든 모두 어울립니다.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ⑤ Before / After -->
+  <section class="section">
+    <p class="section-label">Before / After</p>
+    <h2 class="section-title">수업이 끝나면 이렇게 달라집니다</h2>
+    <div class="outcome-grid">
+      <div class="outcome-card before">
+        <span class="outcome-card-label">BEFORE</span>
+        <ul class="outcome-list">
+          <li>향은 좋아하지만 직접 만들어볼 엄두가 안 났어요</li>
+          <li>마트 디퓨저는 향이 금방 날아가서 아쉬워요</li>
+          <li>나만의 향이 뭔지 잘 모르겠어요</li>
+        </ul>
+      </div>
+      <div class="outcome-card after">
+        <span class="outcome-card-label">AFTER</span>
+        <ul class="outcome-list">
+          <li>내가 직접 고른 향으로 만든 디퓨저 완성</li>
+          <li>고농도 천연발효 베이스로 향이 깊고 오래 지속</li>
+          <li>나를 표현하는 나만의 향을 찾았어요</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ⑥ 추천/비추천 -->
+  <section class="section">
+    <p class="section-label">이런 분께</p>
+    <h2 class="section-title">내가 듣기에 맞는 클래스인지 확인해보세요</h2>
+    <div class="target-grid">
+      <div class="target-card yes">
+        <div class="target-card-title">👍 이런 분께 딱이에요</div>
+        <ul class="target-list">
+          <li>샌달우드, 베티버 등 우디 향을 좋아하는 분</li>
+          <li>고품질 디퓨저를 직접 만들어보고 싶은 분</li>
+          <li>나 또는 소중한 사람을 위한 프리미엄 선물을 찾는 분</li>
+          <li>연인·친구·가족과 함께 특별한 추억을 남기고 싶은 분</li>
+          <li>조향 입문이 궁금한 분</li>
+        </ul>
+      </div>
+      <div class="target-card no">
+        <div class="target-card-title">👎 이런 분께는 비추예요</div>
+        <ul class="target-list">
+          <li>플로럴·프루티 등 가벼운 향만 선호하는 분</li>
+          <li>향에 심한 알러지가 있는 분</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ⑦ 클래스 특징 -->
+  <section class="section">
+    <p class="section-label">클래스 특징</p>
+    <h2 class="section-title">이래서 더욱 향기롭습니다</h2>
+    <div class="feature-box">
+      <div class="feature-box-title">프리미엄 천연발효 베이스를<br>직접 체험합니다</div>
+      <div class="feature-box-sub">오 드 퍼품보다 짙은 고농도 오일 함유율의 디퓨저를 만들어갑니다.</div>
+      <ul class="feature-list">
+        <li><strong>프리미엄 천연발효</strong> 디퓨저 베이스 사용</li>
+        <li><strong>무프탈레이트·무솔벤트·무변성제</strong> — 피부·공기에 안전한 원료</li>
+        <li><strong>곡물 원료 기반</strong> 저자극 순수 베이스</li>
+        <li>시중 디퓨저(오일 7~10%) 대비 <strong>고농도 오일 함유율</strong>, 향이 짙고 오래 지속</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ⑧ 커리큘럼 -->
+  <section class="section">
+    <p class="section-label">커리큘럼</p>
+    <h2 class="section-title">90분, 이렇게 진행됩니다</h2>
+    <div class="curriculum-list">
+      <div class="curriculum-item">
+        <div class="curriculum-time">1부</div>
+        <div class="curriculum-content">
+          <strong>향의 언어 이해하기 — 오늘의 재료 소개</strong>
+          <p>향수의 구조(탑·미들·베이스 노트)와 오늘 사용할 천연발효 베이스, 원료를 소개합니다. 내가 어떤 향을 좋아하는지 파악하는 시간입니다.</p>
+          <span class="curriculum-tag">약 15분</span>
+        </div>
+      </div>
+      <div class="curriculum-item">
+        <div class="curriculum-time">2부</div>
+        <div class="curriculum-content">
+          <strong>나만의 향 조합하기 — 블렌딩 실습</strong>
+          <p>조향사 오하니와 함께 원료를 하나씩 맡아보며 나에게 맞는 향을 선택합니다. 비율을 조절하며 나만의 레시피를 완성하는 핵심 과정입니다.</p>
+          <span class="curriculum-tag">약 50분</span>
+        </div>
+      </div>
+      <div class="curriculum-item">
+        <div class="curriculum-time">3부</div>
+        <div class="curriculum-content">
+          <strong>디퓨저 완성 & 포장</strong>
+          <p>완성한 향을 병에 담고 스틱을 세팅합니다. 포장까지 마무리해 그날 바로 들고 갑니다.</p>
+          <span class="curriculum-tag">약 25분</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ⑨ 강사 소개 -->
+  <section class="section">
+    <p class="section-label">강사 소개</p>
+    <h2 class="section-title">강사를 먼저 만나보세요</h2>
+    <div class="instructor-profile">
+      <div class="instructor-avatar">
+        <img src="img/ohani_profile.jpg" alt="오하니 조향사">
+      </div>
+      <div>
+        <div class="instructor-name">오하니 (Hani Oh)</div>
+        <div class="instructor-tagline">조향사 · 히어로즈 오브 코리아 창업자</div>
+      </div>
+    </div>
+    <p class="instructor-bio">
+      '내'가 '나'인 것은 내가 가진 나의 '기억'과 '감정' 때문이다.<br><br>
+      오하니 조향사는 기억과 감정에 긍정적인 영향을 주는 향수를 창작하고 이야기합니다.<br>
+      오늘을 사는 모두가 영웅이라는 마음으로 한국의 영웅을 향수로 만드는 '히어로즈 오브 코리아'의 창업자이자 조향사이며,
+      사람들이 자신에게 맞는 향을 찾는 과정에서 진정한 '나'를 발견할 수 있도록 돕고 있습니다.
+    </p>
+    <div class="instructor-credentials">
+      <div class="credential-item">미국 뉴욕 Fashion Institute of Technology (FIT) 졸업</div>
+      <div class="credential-item">The Fragrance Foundation 프래그런스 아카데미 수료</div>
+      <div class="credential-item">한국 니치 향수 브랜드 '히어로즈 오브 코리아' 창업자 & 조향사</div>
+      <div class="credential-item">향수책 『아이 러브 피품』 저자</div>
+      <div class="credential-item">유튜브 '향수읽어주는여자' 운영</div>
+      <div class="credential-item">국립중앙도서관 80주년 기념향수, 한국관광공사 향수 등 다수 조향</div>
+      <div class="credential-item">캘리포니아 관광청, 대한항공, 서울식물원, 이탈리아·프랑스 명품 브랜드 향수 행사 진행</div>
+    </div>
+  </section>
+
+  <!-- ⑩ 리뷰 -->
+  <section class="section">
+    <p class="section-label">수강생 리뷰</p>
+    <h2 class="section-title">먼저 다녀온 분들의 이야기</h2>
+    <div class="review-summary">
+      <div class="review-score">5.0</div>
+      <div>
+        <span class="review-stars">★★★★★</span>
+        <span class="review-count">수강생 리뷰</span>
+      </div>
+    </div>
+    <div class="review-list">
+      <div class="review-item">
+        <div class="review-header">
+          <span class="reviewer-name">수강생 A</span>
+          <span class="reviewer-date">2026.03</span>
+        </div>
+        <div class="review-stars-small">★★★★★</div>
+        <p class="review-text">수업 중에 히어로즈 오브 코리아 향수 9종을 직접 맡아볼 수 있었어요. 각 향마다 역사적 인물의 스토리가 담겨 있어서 듣는 재미가 있었고, 세종대왕 향으로 만든 디퓨저가 집에서도 정말 오래 지속됩니다.</p>
+        <span class="review-tag">디퓨저 클래스 수강</span>
+      </div>
+      <div class="review-item">
+        <div class="review-header">
+          <span class="reviewer-name">수강생 B</span>
+          <span class="reviewer-date">2026.03</span>
+        </div>
+        <div class="review-stars-small">★★★★★</div>
+        <p class="review-text">향수에 관심은 있었지만 잘 몰랐는데, 히어로즈 오브 코리아 향수 9종을 하나씩 맡으며 설명을 들으니 향을 보는 눈이 생긴 것 같았어요. 이순신 장군 향으로 만든 디퓨저는 시중 제품이랑 확실히 달리 오래 가고, 집에 두면 분위기가 달라집니다.</p>
+        <span class="review-tag">디퓨저 클래스 수강</span>
+      </div>
+      <div class="review-item">
+        <div class="review-header">
+          <span class="reviewer-name">수강생 C</span>
+          <span class="reviewer-date">2026.03</span>
+        </div>
+        <div class="review-stars-small">★★★★★</div>
+        <p class="review-text">향수에 관심이 생겼는데 어디서부터 시작해야 할지 몰랐는데, 이순신 장군 향 하나로 90분이 꽉 찼어요. 9종 시향부터 블렌딩까지 순서대로 차근차근 알려주시니 따라가기 어렵지 않았고, 포장까지 완성해서 들고 갔습니다. 선물로도 딱이에요.</p>
+        <span class="review-tag">디퓨저 클래스 수강</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ⑪ 참여 안내 -->
+  <section class="section">
+    <p class="section-label">참여 안내</p>
+    <h2 class="section-title">수업 전에 꼭 확인해주세요</h2>
+    <div class="info-grid">
+      <div class="info-box">
+        <div class="info-box-title">🧴 준비물</div>
+        <ul>
+          <li>재료 일체 제공 (별도 준비 없음)</li>
+          <li>편안한 복장 권장</li>
+          <li>향에 민감하신 분은 사전 문의</li>
+        </ul>
+      </div>
+      <div class="info-box">
+        <div class="info-box-title">📍 장소 & 일정</div>
+        <ul>
+          <li>현대아울렛 동대문점 3층 FOCC 팝업스토어</li>
+          <li>4월 11일 (토) 오후 2:00–3:30</li>
+          <li>4월 23일 (목) 오후 2:00–3:30</li>
+          <li>정원 15명 소수 정예</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ⑫ FAQ -->
+  <section class="section">
+    <p class="section-label">자주 묻는 질문</p>
+    <h2 class="section-title">궁금한 점이 있으신가요?</h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q">조향 경험이 전혀 없어도 따라갈 수 있나요?</div>
+        <p class="faq-a">네, 완전 처음이어도 괜찮습니다. 향의 기초부터 블렌딩, 완성까지 조향사 오하니가 모든 과정을 함께합니다. 별도로 공부하거나 준비할 내용이 없습니다.</p>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">재료는 직접 준비해야 하나요?</div>
+        <p class="faq-a">아니요, 디퓨저 베이스·원료·병·스틱·포장재 등 모든 재료가 수업료에 포함됩니다. 빈손으로 오셔도 됩니다.</p>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">2명이 같이 신청할 수 있나요?</div>
+        <p class="faq-a">네, 가능합니다. 커플·친구·가족 단위로 함께 신청하시면 각자 다른 향으로 만들어볼 수 있어 더욱 즐겁습니다.</p>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">환불 정책이 어떻게 되나요?</div>
+        <p class="faq-a">수업 3일 전까지 전액 환불됩니다. 이후에는 환불이 어려우며, 일정 변경은 사전 협의 후 가능합니다.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="cta-spacer"></div>
+</div>
+
+<!-- 고정 하단 CTA -->
+<div class="sticky-cta">
+  <div class="cta-price-block">
+    <span class="cta-label" id="cta-date-label">4월 11일 (금) 선택됨</span>
+    <div class="cta-price-row">
+      <span class="cta-price-original">85,000원</span>
+      <div class="cta-price">55,000 <span>원</span></div>
+      <span class="cta-discount">35%</span>
+    </div>
+  </div>
+  <button class="cta-btn">지금 신청하기</button>
+</div>
+
+<script>
+  // 히어로 슬라이더
+  let heroIdx = 0;
+  function initHeroSlider() {
+    const slides = document.querySelectorAll('#heroSlides img');
+    const dotsEl = document.getElementById('heroDots');
+    slides.forEach((_, i) => {
+      const b = document.createElement('button');
+      if (i === 0) b.classList.add('active');
+      b.onclick = () => goHero(i);
+      dotsEl.appendChild(b);
+    });
+  }
+  function goHero(idx) {
+    const slides = document.querySelectorAll('#heroSlides img');
+    heroIdx = (idx + slides.length) % slides.length;
+    document.getElementById('heroSlides').style.transform = `translateX(-${heroIdx * 100}%)`;
+    document.querySelectorAll('#heroDots button').forEach((b, i) => b.classList.toggle('active', i === heroIdx));
+  }
+  function slideHero(dir) { goHero(heroIdx + dir); }
+  window.addEventListener('DOMContentLoaded', initHeroSlider);
+
+  // 날짜 선택
+  function selectDate(n) {
+    document.getElementById('opt-1').classList.toggle('selected', n === 1);
+    document.getElementById('opt-2').classList.toggle('selected', n === 2);
+    document.getElementById('cta-date-label').textContent =
+      n === 1 ? '4월 11일 (토) 선택됨' : '4월 23일 (목) 선택됨';
+  }
+
+  // ── 캘린더 ──
+  const CLASS_COLORS = {
+    '나만의 프리미엄 디퓨저': { bg: '#F3E5F5', fg: '#6A1B9A' },
+    '트래블호스트':            { bg: '#E3F2FD', fg: '#1565C0' },
+    '한글 서예':               { bg: '#EFEBE9', fg: '#4E342E' },
+    '인생의 시작':             { bg: '#E8F5E9', fg: '#2E7D32' },
+    '식탁 위에서':             { bg: '#FFF3E0', fg: '#E65100' },
+    '기록하는 여행자':         { bg: '#FCE4EC', fg: '#880E4F' },
+  };
+  function getColor(name) {
+    for (const k of Object.keys(CLASS_COLORS)) {
+      if (name.includes(k)) return CLASS_COLORS[k];
+    }
+    return { bg: '#F5F5F5', fg: '#555' };
+  }
+
+  const allSchedules = {
+    '2026-04-03': [{ name: '🎉 팝업 시작', instructor: '', time: '', seats: 1, link: '#', isCurrent: false }],
+    '2026-04-04': [{ name: '트래블호스트 8기', shortName: '트래블호스트 8기', instructor: '', time: '11:00~18:00', seats: 1, link: '[링크]', isCurrent: false }],
+    '2026-04-05': [{ name: '트래블호스트 8기', shortName: '트래블호스트 8기', instructor: '', time: '11:00~18:00', seats: 1, link: '[링크]', isCurrent: false }],
+    '2026-04-11': [{ name: '나만의 프리미엄 디퓨저', instructor: '오하니 조향사', time: '14:00~15:30', seats: 1, link: '#', isCurrent: true }],
+    '2026-04-12': [{ name: '한글 서예 프리미엄 오브제', instructor: '이광호 서예가', time: '14:00~15:30', seats: 1, link: '[링크]', isCurrent: false }],
+    '2026-04-19': [{ name: '한글 서예 프리미엄 오브제', instructor: '이광호 서예가', time: '14:00~15:30', seats: 1, link: '[링크]', isCurrent: false }],
+    '2026-04-23': [{ name: '나만의 프리미엄 디퓨저', instructor: '오하니 조향사', time: '14:00~15:30', seats: 1, link: '#', isCurrent: true }],
+    '2026-04-25': [{ name: '인생의 시작', instructor: '묘덕 선생', time: '14:00~15:20', seats: 1, link: '[링크]', isCurrent: false }],
+    '2026-04-26': [
+      { name: '식탁 위에서 떠나는 세계여행', instructor: '정원희 작가', time: '11:00~12:30', seats: 1, link: '[링크]', isCurrent: false },
+      { name: '기록하는 여행자, 김홍도', instructor: '정원희 작가', time: '13:30~15:30', seats: 1, link: '[링크]', isCurrent: false },
+    ],
+  };
+
+  const months = ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'];
+  let currentYear = 2026, currentMonth = 3;
+
+  function changeMonth(dir) {
+    currentMonth += dir;
+    if (currentMonth > 11) { currentMonth = 0; currentYear++; }
+    if (currentMonth < 0)  { currentMonth = 11; currentYear--; }
+    renderCalendar();
+  }
+
+  function renderCalendar() {
+    document.getElementById('cal-month-label').textContent = `${currentYear}년 ${months[currentMonth]}`;
+    const container = document.getElementById('cal-days');
+    container.innerHTML = '';
+    const firstDay = new Date(currentYear, currentMonth, 1).getDay();
+    const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
+    const today = new Date(); today.setHours(0,0,0,0);
+
+    for (let i = 0; i < firstDay; i++) {
+      const el = document.createElement('div');
+      el.className = 'cal-day';
+      el.innerHTML = '<span class="cal-day-num"></span>';
+      container.appendChild(el);
+    }
+
+    for (let d = 1; d <= daysInMonth; d++) {
+      const dateObj = new Date(currentYear, currentMonth, d);
+      const dateStr = `${currentYear}-${String(currentMonth+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+      const dow = dateObj.getDay();
+      const isPast = dateObj < today;
+      const classes = allSchedules[dateStr];
+
+      const el = document.createElement('div');
+      let cls = 'cal-day';
+      if (isPast) cls += ' past';
+      else if (dow === 0) cls += ' sunday';
+      else if (dow === 6) cls += ' saturday';
+      el.className = cls;
+
+      const num = document.createElement('span');
+      num.className = 'cal-day-num';
+      num.textContent = d;
+      if (classes && classes.some(c => c.isCurrent)) {
+        const badge = document.createElement('span');
+        badge.className = 'cal-current-badge';
+        badge.textContent = '이 클래스';
+        num.appendChild(badge);
+      }
+      el.appendChild(num);
+
+      if (classes) {
+        classes.forEach(c => {
+          const isFull = c.seats === 0;
+          let duration = '';
+          if (c.time && c.time.includes('~')) {
+            const [s, e] = c.time.split('~').map(t => { const [h,m] = t.trim().split(':').map(Number); return h*60+m; });
+            const mins = e - s;
+            duration = mins >= 60 ? (mins%60===0 ? `${mins/60}시간` : `${Math.floor(mins/60)}시간 ${mins%60}분`) : `${mins}분`;
+          }
+          const chip = document.createElement('a');
+          chip.href = (!isFull && !isPast) ? c.link : '#';
+          chip.className = 'cal-class-chip' + (isFull || isPast ? ' chip-full' : '');
+          const label = c.instructor || c.shortName || c.name;
+          chip.innerHTML =
+            `<span class="chip-instructor">${label}</span>` +
+            (c.time ? `<span class="chip-time">${c.time}</span>` : '') +
+            (duration ? `<span class="chip-duration">(${duration})</span>` : '');
+          if (!(isFull || isPast)) {
+            const col = c.isCurrent ? { bg: '#F3E5F5', fg: '#6A1B9A' } : getColor(c.name);
+            chip.style.background = col.bg;
+            chip.style.color = col.fg;
+          }
+          if (isFull || isPast) chip.onclick = e => e.preventDefault();
+          el.appendChild(chip);
+        });
+      }
+      container.appendChild(el);
+    }
+  }
+
+  renderCalendar();
+</script>
+</body>
+</html>
