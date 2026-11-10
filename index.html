@@ -7,7 +7,7 @@
 <meta name="description" content="기획·촬영·편집·디자인, End-to-End. 영상 콘텐츠 크리에이터 서이솔 포트폴리오">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
 <style>
-:root{--bg:#fff;--soft:#f6f7f9;--line:#e6e8ec;--text:#16181d;--sub:#5b6270;--accent:#370b75;--max:1120px}
+:root{--bg:#fff;--soft:#f6f7f9;--line:#e6e8ec;--text:#16181d;--sub:#5b6270;--accent:#6233a3;--max:1120px}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:Pretendard,-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;background:var(--bg);color:var(--text);line-height:1.6;word-break:keep-all}
@@ -65,7 +65,7 @@ ul.dots li::before{content:"";position:absolute;left:0;top:.7em;width:4px;height
 .card{background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden;display:flex;flex-direction:column;transition:.25s}
 .card{position:relative}
 .card:has(.link):hover{transform:translateY(-4px);box-shadow:0 14px 34px rgba(20,24,40,.08)}
-.card .link{position:absolute;inset:0;font-size:0;border:0;background:none;cursor:pointer;border-radius:18px} /* 카드 전체를 링크로, 문구는 스크린리더용으로만 남김 */
+.card .link{position:absolute;inset:0;border:0;background:none;cursor:pointer;border-radius:18px} /* 카드 전체를 링크로 */
 .card .link:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
 .card img{width:100%;aspect-ratio:16/10;object-fit:cover;background:var(--soft)}
 .card .body{padding:22px;display:flex;flex-direction:column;gap:10px;flex:1}
@@ -73,9 +73,8 @@ ul.dots li::before{content:"";position:absolute;left:0;top:.7em;width:4px;height
 .card p{font-size:14.5px;color:var(--sub)}
 .tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto;padding-top:6px}
 .tags span{font-size:12px;padding:4px 10px;border-radius:999px;background:var(--soft);color:var(--sub)}
-.card .link{font-size:14px;font-weight:600;color:var(--accent)}
 .card[hidden]{display:none}
-dialog{border:0;border-radius:20px;padding:28px;width:min(480px,calc(100% - 32px));color:var(--text);box-shadow:0 24px 60px rgba(20,24,40,.25)}
+dialog{margin:auto;border:0;border-radius:20px;padding:28px;width:min(480px,calc(100% - 32px));color:var(--text);box-shadow:0 24px 60px rgba(20,24,40,.25)}
 dialog::backdrop{background:rgba(16,18,24,.5)}
 dialog h3{margin-bottom:4px;padding-right:32px}
 dialog .hint{font-size:14px;color:var(--sub);margin-bottom:18px}
@@ -112,6 +111,7 @@ footer{padding:32px 0;text-align:center;font-size:13px;color:#9aa0aa;border-top:
   nav ul{display:none}
   .hero{padding:56px 0 72px}
   .hero .wrap{grid-template-columns:1fr;gap:36px}
+  .hero p br{display:none}
   .hero img{order:-1;max-width:220px;border-radius:20px}
   .grid,.skills{grid-template-columns:1fr}
   .panel{padding:24px}
@@ -221,7 +221,7 @@ footer{padding:32px 0;text-align:center;font-size:13px;color:#9aa0aa;border-top:
           <h3>Hitup Studio</h3>
           <p>낚시 입문 예능 유튜브 채널의 롱폼·숏폼 기획·촬영·편집 총괄. 구독자 약 9,850명, 누적 조회수 약 126만 회 성장에 기여.</p>
           <div class="tags"><span>Premiere Pro</span><span>After Effects</span><span>Photoshop</span><span>Illustrator</span></div>
-          <a class="link" href="https://www.youtube.com/@HITUP_Studio" target="_blank" rel="noopener">채널 보기 →</a>
+          <a class="link" href="https://www.youtube.com/@HITUP_Studio" target="_blank" rel="noopener" aria-label="채널 보기"></a>
         </div>
       </article>
       <article class="card" data-c="graphic">
@@ -231,7 +231,7 @@ footer{padding:32px 0;text-align:center;font-size:13px;color:#9aa0aa;border-top:
           <h3>‘Hitup Studio’ 채널 디자인</h3>
           <p>로고·채널 아트, 썸네일 약 170편, Intro/Outro·자막 스타일 등 채널 비주얼 아이덴티티 총괄.</p>
           <div class="tags"><span>Photoshop</span><span>Illustrator</span><span>Figma</span></div>
-          <a class="link" href="https://www.youtube.com/@HITUP_Studio" target="_blank" rel="noopener">채널 보기 →</a>
+          <a class="link" href="https://www.youtube.com/@HITUP_Studio" target="_blank" rel="noopener" aria-label="채널 보기"></a>
         </div>
       </article>
       <article class="card" data-c="video">
@@ -241,7 +241,7 @@ footer{padding:32px 0;text-align:center;font-size:13px;color:#9aa0aa;border-top:
           <h3>에프오씨씨 다이어리</h3>
           <p>스타트업 브이로그 시리즈. 기획·촬영부터 롱폼 편집, 알고리즘 대응 숏폼 재구성까지. 숏폼 1만 회 이상 조회.</p>
           <div class="tags"><span>Premiere Pro</span><span>After Effects</span><span>Illustrator</span><span>Photoshop</span></div>
-          <button class="link" type="button">목록 보기</button>
+          <button class="link" type="button" aria-label="목록 보기"></button>
           <ul class="links" hidden><li><a href="https://youtu.be/MTtt9P7hr3U" target="_blank" rel="noopener">니들은 스타트업 피지 마라<small>YouTube</small></a></li><li><a href="https://youtu.be/DeyBte2AbC0" target="_blank" rel="noopener">뭔가 보여드리겠습니다<small>YouTube</small></a></li><li><a href="https://youtu.be/eQX03wwC8zc" target="_blank" rel="noopener">2025 역마살, '역삼'부터 '인천'까지<small>YouTube</small></a></li><li><a href="https://youtube.com/shorts/uzFRhbeR7pU" target="_blank" rel="noopener">북유럽 여행 성수기 시즌<small>Shorts</small></a></li><li><a href="https://youtube.com/shorts/NwKKdQ79KxM" target="_blank" rel="noopener">니들은 스타트업 피지 마라 (숏폼, 1만 회+)<small>Shorts</small></a></li><li><a href="https://www.youtube.com/@FOCCPEOPLE/shorts" target="_blank" rel="noopener">FOCCPEOPLE 채널 숏폼 전체<small>YouTube</small></a></li></ul>
         </div>
       </article>
@@ -252,7 +252,7 @@ footer{padding:32px 0;text-align:center;font-size:13px;color:#9aa0aa;border-top:
           <h3>포크피플 : 브랜드그라피</h3>
           <p>사람의 이야기를 담은 인터뷰 콘텐츠. 컷편집·이야기 구성, 인터뷰이 자막과 Intro/Outro 모션그래픽, 썸네일.</p>
           <div class="tags"><span>Premiere Pro</span><span>After Effects</span><span>Photoshop</span><span>미리캔버스</span></div>
-          <button class="link" type="button">목록 보기</button>
+          <button class="link" type="button" aria-label="목록 보기"></button>
           <ul class="links" hidden><li><a href="https://youtu.be/oat8cLKUQ-g" target="_blank" rel="noopener">feat. 송강미술관 김명자 관장<small>YouTube</small></a></li><li><a href="https://youtu.be/QRuIPxKPjG8" target="_blank" rel="noopener">feat. 로드옥션 대표 김기환<small>YouTube</small></a></li><li><a href="https://youtu.be/Z7FULsfeKkg" target="_blank" rel="noopener">feat. ProTNS 최중락 대표<small>YouTube</small></a></li></ul>
         </div>
       </article>
@@ -263,7 +263,7 @@ footer{padding:32px 0;text-align:center;font-size:13px;color:#9aa0aa;border-top:
           <h3>클래스 상세페이지 디자인</h3>
           <p>팝업스토어 원데이 클래스 상세페이지를 AI로 HTML 템플릿화. 소재별 디자인·카피 변경과 업로드·관리까지 단독 제작.</p>
           <div class="tags"><span>Claude</span><span>Gemini</span><span>Website</span></div>
-          <button class="link" type="button">목록 보기</button>
+          <button class="link" type="button" aria-label="목록 보기"></button>
           <ul class="links" hidden><li><a href="detail/template.html" target="_blank" rel="noopener">원데이 클래스 상세페이지 템플릿<small>HTML</small></a></li><li><a href="detail/calligraphy.html" target="_blank" rel="noopener">이광호 서예가 — 한글 서예 프리미엄 오브제<small>HTML</small></a></li><li><a href="detail/diffuser.html" target="_blank" rel="noopener">오하니 조향사 — 나만의 프리미엄 디퓨저<small>HTML</small></a></li><li><a href="detail/myodeok.html" target="_blank" rel="noopener">묘덕선생 — 인생의 시작: 나를 마주하고, 나를 찾는 시간<small>HTML</small></a></li></ul>
         </div>
       </article>
@@ -274,7 +274,7 @@ footer{padding:32px 0;text-align:center;font-size:13px;color:#9aa0aa;border-top:
           <h3>‘클래스’ 카드뉴스</h3>
           <p>FOCC 팝업스토어 원데이 클래스 홍보물과 트래블호스트프로그램 8기 모집 카드뉴스(6컷) 기획·디자인.</p>
           <div class="tags"><span>Figma</span><span>Photoshop</span><span>Claude</span><span>Gemini</span></div>
-          <button class="link" type="button">목록 보기</button>
+          <button class="link" type="button" aria-label="목록 보기"></button>
           <ul class="links" hidden><li><a href="https://www.instagram.com/p/DW6DZQpk4Yb/" target="_blank" rel="noopener">원데이 클래스 디퓨저 홍보물<small>Instagram</small></a></li><li><a href="https://www.instagram.com/p/DWBtTPPE12Q/" target="_blank" rel="noopener">트래블호스트프로그램 8기 모집 카드뉴스<small>Instagram</small></a></li></ul>
         </div>
       </article>
@@ -285,7 +285,7 @@ footer{padding:32px 0;text-align:center;font-size:13px;color:#9aa0aa;border-top:
           <h3>북커버 디자인</h3>
           <p>〈트래블 호스트 04〉 국외 여행 인솔자 양성 교재. 기수별로 확장 가능한 시리즈 디자인 시스템으로 제작.</p>
           <div class="tags"><span>Illustrator</span><span>Package</span></div>
-          <button class="link" type="button" data-img="img/g-book.jpg">이미지 크게 보기</button>
+          <button class="link" type="button" data-img="img/g-book.jpg" aria-label="이미지 크게 보기"></button>
         </div>
       </article>
       <article class="card" data-c="video">
@@ -295,7 +295,7 @@ footer{padding:32px 0;text-align:center;font-size:13px;color:#9aa0aa;border-top:
           <h3>AD 영상</h3>
           <p>HITUP·포크피플 앱 홍보(메타 광고 1080×1080, 롱/숏 버전)와 부동산 수업 광고. 플랫폼 규격별 편집.</p>
           <div class="tags"><span>After Effects</span><span>Premiere Pro</span><span>Photoshop</span><span>Illustrator</span></div>
-          <button class="link" type="button">목록 보기</button>
+          <button class="link" type="button" aria-label="목록 보기"></button>
           <ul class="links" hidden><li><a href="https://drive.google.com/file/d/1HGjL-SXnKFmVmjI5LkcJyzmyHYHwXEZc/view" target="_blank" rel="noopener">HITUP 메타 광고 (1080×1080)<small>Google Drive</small></a></li><li><a href="https://drive.google.com/file/d/1yZQUF7SLCWrM1aagKEAxX6ZG9FIq8N-0/view" target="_blank" rel="noopener">FOCCPeople AD-01 (Long ver.)<small>Google Drive</small></a></li><li><a href="https://drive.google.com/file/d/1yZQUF7SLCWrM1aagKEAxX6ZG9FIq8N-0/view" target="_blank" rel="noopener">FOCCPeople AD-01 (Short ver.)<small>Google Drive</small></a></li><li><a href="https://youtube.com/shorts/L8tQeaQIkRk" target="_blank" rel="noopener">부동산 수업 광고 — #부동산 #경매 #강의<small>Shorts</small></a></li><li><a href="https://youtube.com/shorts/6roo1DHDDec" target="_blank" rel="noopener">부동산 수업 광고 — 멀쩡한 건물 사지 마세요<small>Shorts</small></a></li></ul>
         </div>
       </article>
@@ -306,7 +306,7 @@ footer{padding:32px 0;text-align:center;font-size:13px;color:#9aa0aa;border-top:
           <h3>하니날다</h3>
           <p>한국도서관문화진흥원 ‘책의 숲’에 소개된 향수 영상. Gemini로 향의 무드를 표현하는 AI 비주얼 제작.</p>
           <div class="tags"><span>Premiere Pro</span><span>After Effects</span><span>Photoshop</span></div>
-          <a class="link" href="https://www.youtube.com/watch?v=KlQTcE-bbWY" target="_blank" rel="noopener">영상 보기 →</a>
+          <a class="link" href="https://www.youtube.com/watch?v=KlQTcE-bbWY" target="_blank" rel="noopener" aria-label="영상 보기"></a>
         </div>
       </article>
       <article class="card" data-c="video">
@@ -316,7 +316,7 @@ footer{padding:32px 0;text-align:center;font-size:13px;color:#9aa0aa;border-top:
           <h3>아겁문TV — 아문</h3>
           <p>가십·뉴스 콘텐츠 시리즈 총 102편의 편집과 자막·타이틀 그래픽 디자인 담당.</p>
           <div class="tags"><span>Premiere Pro</span><span>After Effects</span><span>Photoshop</span></div>
-          <button class="link" type="button">목록 보기</button>
+          <button class="link" type="button" aria-label="목록 보기"></button>
           <ul class="links" hidden><li><a href="https://youtu.be/O8tJ9j68p9o" target="_blank" rel="noopener">드라마 논란<small>YouTube</small></a></li><li><a href="https://youtu.be/xctRHCA7IXY" target="_blank" rel="noopener">위드 코로나<small>YouTube</small></a></li></ul>
         </div>
       </article>
@@ -327,7 +327,7 @@ footer{padding:32px 0;text-align:center;font-size:13px;color:#9aa0aa;border-top:
           <h3>아겁문TV — 조폭실록</h3>
           <p>한국 조폭의 역사를 소개하는 시리즈. 컷편집·구성과 자막·타이틀 그래픽 디자인 담당.</p>
           <div class="tags"><span>Premiere Pro</span><span>After Effects</span><span>Illustrator</span></div>
-          <button class="link" type="button">목록 보기</button>
+          <button class="link" type="button" aria-label="목록 보기"></button>
           <ul class="links" hidden><li><a href="https://youtu.be/oYyLRSgTJEg" target="_blank" rel="noopener">예고편<small>YouTube</small></a></li><li><a href="https://youtu.be/7adYW6R3c18" target="_blank" rel="noopener">1편<small>YouTube</small></a></li><li><a href="https://youtu.be/B-5XP67_zCQ" target="_blank" rel="noopener">2편<small>YouTube</small></a></li></ul>
         </div>
       </article>
@@ -338,7 +338,7 @@ footer{padding:32px 0;text-align:center;font-size:13px;color:#9aa0aa;border-top:
           <h3>결혼식 식전 영상</h3>
           <p>두 사람의 연애 스토리를 엮은 감성 영상. 사진 큐레이션부터 자막·모션그래픽·편집까지 단독 제작.</p>
           <div class="tags"><span>Premiere Pro</span><span>After Effects</span><span>Photoshop</span></div>
-          <a class="link" href="https://youtu.be/IalDOjsE_FU" target="_blank" rel="noopener">영상 보기 →</a>
+          <a class="link" href="https://youtu.be/IalDOjsE_FU" target="_blank" rel="noopener" aria-label="영상 보기"></a>
         </div>
       </article>
       <article class="card" data-c="video">
@@ -348,7 +348,7 @@ footer{padding:32px 0;text-align:center;font-size:13px;color:#9aa0aa;border-top:
           <h3>HB MY SISTER</h3>
           <p>가족들의 생일 축하 메시지를 카카오톡 채팅창 UI 스타일로 풀어낸 대화형 그래픽 영상.</p>
           <div class="tags"><span>After Effects</span><span>Premiere Pro</span><span>Illustrator</span></div>
-          <a class="link" href="https://youtu.be/MU6p3IjGhXI" target="_blank" rel="noopener">영상 보기 →</a>
+          <a class="link" href="https://youtu.be/MU6p3IjGhXI" target="_blank" rel="noopener" aria-label="영상 보기"></a>
         </div>
       </article>
       <article class="card" data-c="video">
@@ -358,7 +358,7 @@ footer{padding:32px 0;text-align:center;font-size:13px;color:#9aa0aa;border-top:
           <h3>모든 순간이 너였다 Book Trailer</h3>
           <p>소설을 모티브로 한 북트레일러 기획·연출. 도서 이미지와 타이포그래피 모션그래픽.</p>
           <div class="tags"><span>After Effects</span><span>Illustrator</span><span>Premiere Pro</span></div>
-          <a class="link" href="https://youtu.be/Bdr_LnLQFcg" target="_blank" rel="noopener">영상 보기 →</a>
+          <a class="link" href="https://youtu.be/Bdr_LnLQFcg" target="_blank" rel="noopener" aria-label="영상 보기"></a>
         </div>
       </article>
     </div>
