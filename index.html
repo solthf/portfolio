@@ -1,0 +1,387 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>서이솔 포트폴리오</title>
+<meta name="description" content="기획·촬영·편집·디자인, End-to-End. 영상 콘텐츠 크리에이터 서이솔 포트폴리오">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<style>
+:root{--bg:#fff;--soft:#f6f7f9;--line:#e6e8ec;--text:#16181d;--sub:#5b6270;--accent:#2f5bea;--max:1120px}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Pretendard,-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;background:var(--bg);color:var(--text);line-height:1.6;word-break:keep-all}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+section{padding:96px 0;scroll-margin-top:64px}
+section:nth-of-type(even){background:var(--soft)}
+.eyebrow{font-size:13px;font-weight:600;letter-spacing:.12em;color:var(--accent);text-transform:uppercase;margin-bottom:12px}
+h2{font-size:clamp(26px,3.4vw,34px);font-weight:700;letter-spacing:-.02em;margin-bottom:40px}
+h3{font-size:18px;font-weight:700;letter-spacing:-.01em}
+
+/* nav */
+nav{position:sticky;top:0;z-index:10;background:rgba(255,255,255,.88);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:60px}
+nav .logo{font-weight:800;letter-spacing:-.02em}
+nav ul{display:flex;gap:28px;list-style:none;font-size:14px;color:var(--sub)}
+nav ul a:hover{color:var(--text)}
+
+/* hero */
+.hero{padding:120px 0 104px}
+.hero .wrap{display:grid;grid-template-columns:1.3fr 1fr;gap:64px;align-items:center}
+.hero h1{font-size:clamp(36px,6vw,64px);line-height:1.15;font-weight:800;letter-spacing:-.035em}
+.hero h1 span{color:var(--accent)}
+.hero p{margin-top:24px;font-size:18px;color:var(--sub)}
+.hero .cta{margin-top:36px;display:flex;gap:12px;flex-wrap:wrap}
+.btn{display:inline-block;padding:13px 24px;border-radius:999px;font-size:15px;font-weight:600;border:1px solid var(--text);transition:.2s}
+.btn.primary{background:var(--text);color:#fff}
+.btn:hover{transform:translateY(-2px)}
+.hero img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:24px;background:var(--soft)}
+
+/* about */
+.about{display:grid;grid-template-columns:1fr 1fr;gap:32px}
+.panel{background:#fff;border:1px solid var(--line);border-radius:18px;padding:32px}
+.panel h3{margin-bottom:20px;display:flex;justify-content:space-between;align-items:baseline}
+.panel h3 small{font-size:13px;font-weight:600;color:var(--accent)}
+.job{padding:18px 0;border-top:1px solid var(--line)}
+.job:first-of-type{border-top:0;padding-top:0}
+.job .head{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-weight:600}
+.job .head span{font-weight:400;font-size:14px;color:var(--sub)}
+.job .role{font-size:14px;color:var(--accent);font-weight:600;margin:2px 0 8px}
+ul.dots{list-style:none;font-size:15px;color:var(--sub)}
+ul.dots li{position:relative;padding-left:14px;margin:4px 0}
+ul.dots li::before{content:"";position:absolute;left:0;top:.7em;width:4px;height:4px;border-radius:50%;background:#aab0bb}
+.resume dt{font-size:13px;font-weight:700;color:var(--accent);margin:22px 0 6px}
+.resume dt:first-child{margin-top:0}
+.resume dd{font-size:15px;color:var(--sub);margin:4px 0}
+.resume dd b{color:var(--text);font-weight:500;margin-right:6px}
+
+/* projects */
+.tabs{display:flex;gap:8px;margin:-16px 0 32px;flex-wrap:wrap}
+.tabs button{font:inherit;font-size:14px;font-weight:600;padding:9px 18px;border-radius:999px;border:1px solid var(--line);background:#fff;color:var(--sub);cursor:pointer}
+.tabs button[aria-pressed=true]{background:var(--text);border-color:var(--text);color:#fff}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.card{background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden;display:flex;flex-direction:column;transition:.25s}
+.card:hover{transform:translateY(-4px);box-shadow:0 14px 34px rgba(20,24,40,.08)}
+.card img{width:100%;aspect-ratio:16/10;object-fit:cover;background:var(--soft)}
+.card .body{padding:22px;display:flex;flex-direction:column;gap:10px;flex:1}
+.card .meta{font-size:13px;color:var(--sub)}
+.card p{font-size:14.5px;color:var(--sub)}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto;padding-top:6px}
+.tags span{font-size:12px;padding:4px 10px;border-radius:999px;background:var(--soft);color:var(--sub)}
+.card .link{font-size:14px;font-weight:600;color:var(--accent)}
+.card .link.off{color:#9aa0aa;font-weight:500}
+.card[hidden]{display:none}
+
+/* skills */
+.skills{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.skill{background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px}
+.skill h3{font-size:16px;margin-bottom:6px}
+.skill p{font-size:14px;color:var(--sub)}
+
+/* contact */
+.contact{text-align:center}
+.contact h2{margin-bottom:16px}
+.contact p{color:var(--sub);margin-bottom:36px}
+.contact .cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+footer{padding:32px 0;text-align:center;font-size:13px;color:#9aa0aa;border-top:1px solid var(--line)}
+
+@media (max-width:960px){
+  .grid{grid-template-columns:repeat(2,1fr)}
+  .skills{grid-template-columns:repeat(2,1fr)}
+  .about{grid-template-columns:1fr}
+}
+@media (max-width:640px){
+  section{padding:72px 0}
+  .wrap{padding:0 16px}
+  nav ul{display:none}
+  .hero{padding:56px 0 72px}
+  .hero .wrap{grid-template-columns:1fr;gap:36px}
+  .hero img{order:-1;max-width:220px;border-radius:20px}
+  .grid,.skills{grid-template-columns:1fr}
+  .panel{padding:24px}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="logo" href="#top">ISOL SEO</a>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <div>
+      <div class="eyebrow">Video Content Creator</div>
+      <h1>기획·촬영·편집·디자인,<br><span>End-to-End.</span></h1>
+      <p>시작부터 끝까지. 방송 현장과 브랜드 채널에서 쌓은<br>3년 8개월의 경험으로 콘텐츠의 전 과정을 책임집니다.</p>
+      <div class="cta">
+        <a class="btn primary" href="#projects">프로젝트 보기</a>
+        <a class="btn" href="#contact">연락하기</a>
+      </div>
+    </div>
+    <img src="img/profile.jpg" alt="서이솔 프로필 사진">
+  </div>
+</header>
+
+<section id="about">
+  <div class="wrap">
+    <div class="eyebrow">About Me</div>
+    <h2>서이솔 · Isol Seo</h2>
+    <div class="about">
+      <div class="panel">
+        <h3>Professional Experience <small>총 경력 3년 8개월</small></h3>
+        <div class="job">
+          <div class="head">(주)에프오씨씨 <span>2024.04 ~ 2026.04</span></div>
+          <div class="role">콘텐츠팀 파트장</div>
+          <ul class="dots">
+            <li>콘텐츠 기획·제작 — 채널 업로드용 롱폼/숏폼</li>
+            <li>디자인 — 채널 아트 브랜딩, 모션그래픽·자막, 카드뉴스·상세페이지 등 홍보물</li>
+            <li>채널 운영 관리 — 브랜드 채널 전반 운영·일정 관리</li>
+          </ul>
+        </div>
+        <div class="job">
+          <div class="head">SBS 시사교양국 <span>2022.09 ~ 2023.01</span></div>
+          <div class="role">AD (조연출)</div>
+          <ul class="dots"><li>&lt;국가수사본부&gt; 촬영 보조, 촬영 데이터 관리 등 조연출 업무</li></ul>
+        </div>
+        <div class="job">
+          <div class="head">YouTube 아겁문TV <span>2020.11 ~ 2021.12</span></div>
+          <div class="role">영상 편집</div>
+          <ul class="dots">
+            <li>&lt;아문&gt; 가십·뉴스 콘텐츠 편집</li>
+            <li>&lt;조폭실록&gt; 한국 조폭의 역사를 소개하는 콘텐츠 편집 (현재 채널 삭제)</li>
+          </ul>
+        </div>
+        <div class="job">
+          <div class="head">MBC 예능 1부 <span>2019.03 ~ 2020.03</span></div>
+          <div class="role">FD</div>
+          <ul class="dots">
+            <li>&lt;구해줘! 홈즈&gt; 1~4화, &lt;놀면 뭐하니?&gt; 1~33화</li>
+            <li>촬영본 인제스트, 편집용 자료 찾기, 송출 과정 진행 관리</li>
+          </ul>
+        </div>
+      </div>
+      <div class="panel">
+        <h3>Resume</h3>
+        <dl class="resume">
+          <dt>학력</dt>
+          <dd><b>2015.03 ~ 2019.02</b>경인여자대학교 영상방송학과 졸업</dd>
+          <dd><b>2012.03 ~ 2015.02</b>계산여자고등학교 졸업</dd>
+          <dt>자격증</dt>
+          <dd><b>2016.12</b>영상편집전문인 2급</dd>
+          <dd><b>2016.06</b>디지털영상편집 1급</dd>
+          <dt>수상</dt>
+          <dd><b>2018</b>경인여대 영상방송학과 졸업작품전시회 우수상</dd>
+          <dd><b>2018</b>학사학위과정 캡스톤디자인 공모전 우수상</dd>
+          <dd><b>2017</b>경인여대 영상방송과 졸업작품전시회 인기상</dd>
+        </dl>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <div class="eyebrow">Representative Projects</div>
+    <h2>대표 프로젝트</h2>
+    <div class="tabs" role="group" aria-label="프로젝트 분류">
+      <button aria-pressed="true" data-f="all">전체</button>
+      <button aria-pressed="false" data-f="video">Video</button>
+      <button aria-pressed="false" data-f="graphic">Graphic</button>
+    </div>
+    <div class="grid">
+      <article class="card" data-c="video">
+        <img src="img/v-hitup.jpg" alt="Hitup Studio 채널 배너" loading="lazy">
+        <div class="body">
+          <div class="meta">Video · 2025.05 ~ 2026.02</div>
+          <h3>Hitup Studio</h3>
+          <p>낚시 입문 예능 유튜브 채널의 롱폼·숏폼 기획·촬영·편집 총괄. 구독자 약 9,850명, 누적 조회수 약 126만 회 성장에 기여.</p>
+          <div class="tags"><span>Premiere Pro</span><span>After Effects</span><span>Photoshop</span><span>Illustrator</span></div>
+          <a class="link" href="https://www.youtube.com/@HITUP_Studio" target="_blank" rel="noopener">채널 보기 →</a>
+        </div>
+      </article>
+      <article class="card" data-c="graphic">
+        <img src="img/g-hitup.jpg" alt="Hitup Studio 채널 디자인" loading="lazy">
+        <div class="body">
+          <div class="meta">Graphic · 2025.05 ~ 2026.02</div>
+          <h3>‘Hitup Studio’ 채널 디자인</h3>
+          <p>로고·채널 아트, 썸네일 약 170편, Intro/Outro·자막 스타일 등 채널 비주얼 아이덴티티 총괄.</p>
+          <div class="tags"><span>Photoshop</span><span>Illustrator</span><span>Figma</span></div>
+          <a class="link" href="https://www.youtube.com/@HITUP_Studio" target="_blank" rel="noopener">채널 보기 →</a>
+        </div>
+      </article>
+      <article class="card" data-c="video">
+        <img src="img/v-focc.jpg" alt="에프오씨씨 다이어리 썸네일" loading="lazy">
+        <div class="body">
+          <div class="meta">Video · 2025.01 ~ 2025.03</div>
+          <h3>에프오씨씨 다이어리</h3>
+          <p>스타트업 브이로그 시리즈. 기획·촬영부터 롱폼 편집, 알고리즘 대응 숏폼 재구성까지. 숏폼 1만 회 이상 조회.</p>
+          <div class="tags"><span>Premiere Pro</span><span>After Effects</span><span>Illustrator</span><span>Photoshop</span></div>
+          <a class="link" href="https://www.youtube.com/@FOCCPEOPLE/shorts" target="_blank" rel="noopener">채널 보기 →</a>
+        </div>
+      </article>
+      <article class="card" data-c="video">
+        <img src="img/v-brand.jpg" alt="포크피플 브랜드그라피 썸네일" loading="lazy">
+        <div class="body">
+          <div class="meta">Video · 2024.10</div>
+          <h3>포크피플 : 브랜드그라피</h3>
+          <p>사람의 이야기를 담은 인터뷰 콘텐츠. 컷편집·이야기 구성, 인터뷰이 자막과 Intro/Outro 모션그래픽, 썸네일.</p>
+          <div class="tags"><span>Premiere Pro</span><span>After Effects</span><span>Photoshop</span><span>미리캔버스</span></div>
+          <a class="link" href="https://youtu.be/QRuIPxKPjG8" target="_blank" rel="noopener">영상 보기 →</a>
+        </div>
+      </article>
+      <article class="card" data-c="graphic">
+        <img src="img/g-detail.jpg" alt="원데이 클래스 상세페이지" loading="lazy">
+        <div class="body">
+          <div class="meta">Graphic · 2026.03</div>
+          <h3>클래스 상세페이지 디자인</h3>
+          <p>팝업스토어 원데이 클래스 상세페이지를 AI로 HTML 템플릿화. 소재별 디자인·카피 변경과 업로드·관리까지 단독 제작.</p>
+          <div class="tags"><span>Claude</span><span>Gemini</span><span>Website</span></div>
+        </div>
+      </article>
+      <article class="card" data-c="graphic">
+        <img src="img/g-card.jpg" alt="트래블호스트프로그램 카드뉴스" loading="lazy">
+        <div class="body">
+          <div class="meta">Graphic · Instagram</div>
+          <h3>‘클래스’ 카드뉴스</h3>
+          <p>FOCC 팝업스토어 원데이 클래스 홍보물과 트래블호스트프로그램 8기 모집 카드뉴스(6컷) 기획·디자인.</p>
+          <div class="tags"><span>Figma</span><span>Photoshop</span><span>Claude</span></div>
+          <a class="link" href="https://www.instagram.com/p/DWBtTPPE12Q/" target="_blank" rel="noopener">인스타그램 보기 →</a>
+        </div>
+      </article>
+      <article class="card" data-c="graphic">
+        <img src="img/g-book.jpg" alt="트래블 호스트 04 북커버" loading="lazy">
+        <div class="body">
+          <div class="meta">Graphic · 2025.07</div>
+          <h3>북커버 디자인</h3>
+          <p>〈트래블 호스트 04〉 국외 여행 인솔자 양성 교재. 기수별로 확장 가능한 시리즈 디자인 시스템으로 제작.</p>
+          <div class="tags"><span>Illustrator</span><span>Package</span></div>
+        </div>
+      </article>
+      <article class="card" data-c="video">
+        <img src="img/v-ad.jpg" alt="광고 영상" loading="lazy">
+        <div class="body">
+          <div class="meta">Video · Digital Advertising</div>
+          <h3>AD 영상</h3>
+          <p>HITUP·포크피플 앱 홍보(메타 광고 1080×1080, 롱/숏 버전)와 부동산 수업 광고. 플랫폼 규격별 편집.</p>
+          <div class="tags"><span>After Effects</span><span>Premiere Pro</span><span>Photoshop</span><span>Illustrator</span></div>
+          <a class="link" href="https://youtube.com/shorts/6roo1DHDDec" target="_blank" rel="noopener">영상 보기 →</a>
+        </div>
+      </article>
+      <article class="card" data-c="video">
+        <img src="img/v-hani.jpg" alt="하니날다 영상" loading="lazy">
+        <div class="body">
+          <div class="meta">Video · 2026.01</div>
+          <h3>하니날다</h3>
+          <p>한국도서관문화진흥원 ‘책의 숲’에 소개된 향수 영상. Gemini로 향의 무드를 표현하는 AI 비주얼 제작.</p>
+          <div class="tags"><span>Premiere Pro</span><span>After Effects</span><span>Photoshop</span></div>
+          <a class="link" href="https://www.youtube.com/watch?v=KlQTcE-bbWY" target="_blank" rel="noopener">영상 보기 →</a>
+        </div>
+      </article>
+      <article class="card" data-c="video">
+        <img src="img/v-amun.jpg" alt="아겁문TV 아문" loading="lazy">
+        <div class="body">
+          <div class="meta">Video · 2020.11 ~ 2021.12</div>
+          <h3>아겁문TV — 아문</h3>
+          <p>가십·뉴스 콘텐츠 시리즈 총 102편의 편집과 자막·타이틀 그래픽 디자인 담당.</p>
+          <div class="tags"><span>Premiere Pro</span><span>After Effects</span><span>Photoshop</span></div>
+          <span class="link off">현재 채널 삭제</span>
+        </div>
+      </article>
+      <article class="card" data-c="video">
+        <img src="img/v-jopok.jpg" alt="아겁문TV 조폭실록" loading="lazy">
+        <div class="body">
+          <div class="meta">Video · 2020.11 ~ 2021.12</div>
+          <h3>아겁문TV — 조폭실록</h3>
+          <p>한국 조폭의 역사를 소개하는 시리즈. 컷편집·구성과 자막·타이틀 그래픽 디자인 담당.</p>
+          <div class="tags"><span>Premiere Pro</span><span>After Effects</span><span>Illustrator</span></div>
+          <span class="link off">현재 채널 삭제</span>
+        </div>
+      </article>
+      <article class="card" data-c="video">
+        <img src="img/v-wedding.jpg" alt="결혼식 식전 영상" loading="lazy">
+        <div class="body">
+          <div class="meta">Video · 2023.09</div>
+          <h3>결혼식 식전 영상</h3>
+          <p>두 사람의 연애 스토리를 엮은 감성 영상. 사진 큐레이션부터 자막·모션그래픽·편집까지 단독 제작.</p>
+          <div class="tags"><span>Premiere Pro</span><span>After Effects</span><span>Photoshop</span></div>
+          <a class="link" href="https://youtu.be/IalDOjsE_FU" target="_blank" rel="noopener">영상 보기 →</a>
+        </div>
+      </article>
+      <article class="card" data-c="video">
+        <img src="img/v-hb.jpg" alt="HB MY SISTER 영상" loading="lazy">
+        <div class="body">
+          <div class="meta">Video · 2023.05</div>
+          <h3>HB MY SISTER</h3>
+          <p>가족들의 생일 축하 메시지를 카카오톡 채팅창 UI 스타일로 풀어낸 대화형 그래픽 영상.</p>
+          <div class="tags"><span>After Effects</span><span>Premiere Pro</span><span>Illustrator</span></div>
+          <a class="link" href="https://youtu.be/MU6p3IjGhXI" target="_blank" rel="noopener">영상 보기 →</a>
+        </div>
+      </article>
+      <article class="card" data-c="video">
+        <img src="img/v-book.jpg" alt="모든 순간이 너였다 북트레일러" loading="lazy">
+        <div class="body">
+          <div class="meta">Video · 2018.04 · 졸업작품</div>
+          <h3>모든 순간이 너였다 Book Trailer</h3>
+          <p>소설을 모티브로 한 북트레일러 기획·연출. 도서 이미지와 타이포그래피 모션그래픽.</p>
+          <div class="tags"><span>After Effects</span><span>Illustrator</span><span>Premiere Pro</span></div>
+          <a class="link" href="https://youtu.be/Bdr_LnLQFcg" target="_blank" rel="noopener">영상 보기 →</a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <div class="eyebrow">Skills</div>
+    <h2>다루는 도구</h2>
+    <div class="skills">
+      <div class="skill"><h3>Premiere Pro</h3><p>컷편집, Lumetri Color 색보정, 자막, 사운드 싱크/믹싱</p></div>
+      <div class="skill"><h3>After Effects</h3><p>모션그래픽, 자막 애니메이션, Premiere Pro 편집본 연동 마무리</p></div>
+      <div class="skill"><h3>Photoshop</h3><p>사진 편집, 리터칭, 디지털 아트워크, 목업 디자인</p></div>
+      <div class="skill"><h3>Illustrator</h3><p>로고·아이콘, 벡터 그래픽, 브랜드 요소 제작</p></div>
+      <div class="skill"><h3>Figma</h3><p>UI/UX 디자인, 프로토타입, 웹사이트 디자인, 협업</p></div>
+      <div class="skill"><h3>Canva</h3><p>소셜 미디어·마케팅 자료, 프레젠테이션 제작</p></div>
+      <div class="skill"><h3>Gemini</h3><p>컨셉 아트, 브랜드 비주얼 아이데이션</p></div>
+      <div class="skill"><h3>Claude</h3><p>아이디어 발상, 콘텐츠 제작, 크리에이티브 작업 보조</p></div>
+      <div class="skill"><h3>Notion</h3><p>프로젝트 관리, 문서화, 협업 워크스페이스 구축</p></div>
+      <div class="skill"><h3>PowerPoint</h3><p>프레젠테이션 디자인, 비즈니스 문서, 시각적 커뮤니케이션</p></div>
+      <div class="skill"><h3>Excel</h3><p>데이터 필터링·정렬, 분석·시각화, VBA 기초</p></div>
+      <div class="skill"><h3>카페24</h3><p>상품·상세페이지 업로드, 배너/레이아웃 편집, 재고·주문 관리</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <div class="wrap">
+    <div class="eyebrow">Contact</div>
+    <h2>함께 만들 콘텐츠가 있다면</h2>
+    <p>기획부터 완성까지, 편하게 연락 주세요.</p>
+    <div class="cta">
+      <a class="btn primary" href="mailto:solthfsol@naver.com">solthfsol@naver.com</a>
+      <a class="btn" href="tel:01079125645">010-7912-5645</a>
+    </div>
+  </div>
+</section>
+
+<footer>© 2026 Isol Seo. All rights reserved.</footer>
+
+<script>
+document.querySelectorAll('.tabs button').forEach(b => b.onclick = () => {
+  document.querySelectorAll('.tabs button').forEach(x => x.setAttribute('aria-pressed', x === b));
+  document.querySelectorAll('.card').forEach(c => c.hidden = b.dataset.f !== 'all' && c.dataset.c !== b.dataset.f);
+});
+</script>
+</body>
+</html>
