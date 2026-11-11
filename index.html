@@ -217,8 +217,7 @@ footer{padding:32px 0;text-align:center;font-size:13px;color:#9aa0aa;border-top:
     <div class="eyebrow">Representative Projects</div>
     <h2>대표 프로젝트</h2>
     <div class="tabs" role="group" aria-label="프로젝트 분류">
-      <button aria-pressed="true" data-f="all">전체</button>
-      <button aria-pressed="false" data-f="video">Video</button>
+      <button aria-pressed="true" data-f="video">Video</button>
       <button aria-pressed="false" data-f="graphic">Graphic</button>
     </div>
     <div class="grid">
@@ -237,7 +236,7 @@ footer{padding:32px 0;text-align:center;font-size:13px;color:#9aa0aa;border-top:
         <img src="img/g-detail.jpg" alt="원데이 클래스 상세페이지" loading="lazy">
         <div class="body">
           <div class="meta">Graphic · 2026.03</div>
-          <h3>클래스 상세페이지 디자인</h3>
+          <h3>상세페이지 디자인</h3>
           <p>팝업스토어 원데이 클래스 상세페이지를 AI로 HTML 템플릿화. 소재별 디자인·카피 변경과 업로드·관리까지 단독 제작.</p>
           <div class="tags"><span>Claude</span><span>Gemini</span><span>Website</span></div>
           <button class="link" type="button" aria-label="목록 보기"></button>
@@ -248,7 +247,7 @@ footer{padding:32px 0;text-align:center;font-size:13px;color:#9aa0aa;border-top:
         <img src="img/g-card.jpg" alt="트래블호스트프로그램 카드뉴스" loading="lazy">
         <div class="body">
           <div class="meta">Graphic · 2026 · Instagram</div>
-          <h3>‘클래스’ 카드뉴스</h3>
+          <h3>카드뉴스</h3>
           <p>FOCC 팝업스토어 원데이 클래스 홍보물과 트래블호스트프로그램 8기 모집 카드뉴스(6컷) 기획·디자인.</p>
           <div class="tags"><span>Figma</span><span>Photoshop</span><span>Claude</span><span>Gemini</span></div>
           <button class="link" type="button" aria-label="목록 보기"></button>
@@ -434,6 +433,7 @@ document.querySelectorAll('.tabs button').forEach(b => b.onclick = () => {
   document.querySelectorAll('.tabs button').forEach(x => x.setAttribute('aria-pressed', x === b));
   document.querySelectorAll('.card').forEach(c => c.hidden = b.dataset.f !== 'all' && c.dataset.c !== b.dataset.f);
 });
+document.querySelector('.tabs button').click(); // 첫 탭(Video)으로 시작
 const dlg = document.getElementById('pick');
 document.querySelectorAll('button.link').forEach(b => b.onclick = () => {
   const card = b.closest('.card');
