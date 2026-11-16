@@ -1,0 +1,216 @@
+{
+  "site": {
+    "title": "서이솔 포트폴리오",
+    "description": "기획·촬영·편집·디자인, End-to-End. 영상 콘텐츠 크리에이터 서이솔 포트폴리오",
+    "wordmark": "Isol Seo",
+    "name": "서이솔",
+    "nameEn": "Isol Seo",
+    "role": "Video Content Creator",
+    "headline": ["기획·촬영·편집·디자인,", "End-to-End."],
+    "lead": "방송 현장과 브랜드 채널에서 쌓은 4년의 경험으로 콘텐츠의 전 과정을 책임집니다.",
+    "closing": "시작부터 끝까지.",
+    "heroStills": ["hitup", "detail", "booktrailer"],
+    "profile": "img/profile.jpg",
+    "contact": {
+      "title": ["기획부터 완성까지,", "함께 콘텐츠를 만들어 갑니다."],
+      "email": "solthfsol@gmail.com",
+      "phone": "010-7912-5645",
+      "tel": "01079125645"
+    },
+    "copyright": "© 2026 Isol Seo"
+  },
+
+  "experience": {
+    "total": "총 경력 4년",
+    "jobs": [
+      { "org": "스타트업 (재직 중)", "period": "2026.08 ~ 현재", "role": "콘텐츠 제작, 브랜드 디자인",
+        "points": ["주식 유튜브 채널 런칭 준비: 콘텐츠 기획·제작", "회사 캐릭터 디자인, 브랜드 디자인"] },
+      { "org": "(주)에프오씨씨", "period": "2024.04 ~ 2026.05", "role": "콘텐츠팀 파트장",
+        "points": ["콘텐츠 기획·제작: 채널 업로드용 롱폼/숏폼", "디자인: 채널 아트 브랜딩, 모션그래픽·자막, 카드뉴스·상세페이지 등 홍보물", "채널 운영 관리: 브랜드 채널 전반 운영·일정 관리"] },
+      { "org": "SBS 시사교양국", "period": "2022.09 ~ 2023.01", "role": "AD (조연출)",
+        "points": ["〈국가수사본부〉 촬영 보조, 촬영 데이터 관리 등 조연출 업무"] },
+      { "org": "YouTube 아겁문TV", "period": "2020.11 ~ 2021.12", "role": "프리랜서 영상 편집",
+        "points": ["〈아문〉 가십·뉴스 콘텐츠 편집", "〈조폭실록〉 한국 조폭의 역사를 소개하는 콘텐츠 편집 (현재 채널 삭제)"] },
+      { "org": "MBC 예능 1부", "period": "2019.03 ~ 2020.03", "role": "FD",
+        "points": ["〈구해줘! 홈즈〉 1~4화, 〈놀면 뭐하니?〉 1~33화", "촬영본 인제스트, 편집용 자료 찾기, 송출 과정 진행 관리"] }
+    ]
+  },
+
+  "resume": [
+    { "label": "학력", "items": [
+      { "date": "2015.03 ~ 2019.02", "text": "경인여자대학교 영상방송학과 졸업" },
+      { "date": "2012.03 ~ 2015.02", "text": "계산여자고등학교 졸업" } ] },
+    { "label": "자격증", "items": [
+      { "date": "2016.12", "text": "영상편집전문인 2급" },
+      { "date": "2016.06", "text": "디지털영상편집 1급" } ] },
+    { "label": "수상", "items": [
+      { "date": "2018", "text": "경인여대 영상방송학과 졸업작품전시회 우수상" },
+      { "date": "2018", "text": "학사학위과정 캡스톤디자인 공모전 우수상" },
+      { "date": "2017", "text": "경인여대 영상방송과 졸업작품전시회 인기상" } ] }
+  ],
+
+  "projects": [
+    { "id": "hitup", "kind": "video", "date": "2025.05 ~ 2026.02", "featured": 1,
+      "title": "Hitup Studio", "image": "img/v-hitup-logo.jpg", "fit": "contain",
+      "alt": "Hitup Studio 로고",
+      "desc": "낚시 입문 예능 유튜브 채널의 롱폼·숏폼 기획·촬영·편집 총괄.",
+      "figures": [ { "value": "9,850", "label": "구독자 (약, 명)" }, { "value": "126만", "label": "누적 조회수 (약, 회)" } ],
+      "tools": ["Premiere Pro", "After Effects", "Photoshop", "Illustrator"],
+      "links": [
+        { "label": "히트업스토리", "via": "YouTube 재생목록", "href": "https://www.youtube.com/playlist?list=PLzEeFHCNibELnV1r7tlI2d7EExVBf07VP" },
+        { "label": "춤추는 낚시꾼", "via": "YouTube 재생목록", "href": "https://www.youtube.com/playlist?list=PLzEeFHCNibEK4zZeDSqyE4LyzZ8I2kIuM" },
+        { "label": "프리 낚시꾼", "via": "YouTube 재생목록", "href": "https://www.youtube.com/playlist?list=PLzEeFHCNibEIkdyUW2WVNOHmvH1Tcg3ag" },
+        { "label": "낚린 탈출기", "via": "YouTube 재생목록", "href": "https://www.youtube.com/playlist?list=PLzEeFHCNibEJW7Up-7TCuzXn-aS6Xl8AU" } ] },
+
+    { "id": "focc", "kind": "video", "date": "2025.01 ~ 2025.03", "featured": 2,
+      "title": "에프오씨씨 다이어리", "image": "img/v-focc.jpg", "alt": "에프오씨씨 다이어리 썸네일",
+      "desc": "스타트업 브이로그 시리즈. 기획·촬영부터 롱폼 편집, 알고리즘 대응 숏폼 재구성까지. 숏폼 1만 회 이상 조회.",
+      "tools": ["Premiere Pro", "After Effects", "Illustrator", "Photoshop"],
+      "links": [
+        { "label": "니들은 스타트업 피지 마라", "via": "YouTube", "href": "https://youtu.be/MTtt9P7hr3U" },
+        { "label": "뭔가 보여드리겠습니다", "via": "YouTube", "href": "https://youtu.be/DeyBte2AbC0" },
+        { "label": "2025 역마살, '역삼'부터 '인천'까지", "via": "YouTube", "href": "https://youtu.be/eQX03wwC8zc" },
+        { "label": "북유럽 여행 성수기 시즌", "via": "Shorts", "href": "https://youtube.com/shorts/uzFRhbeR7pU" },
+        { "label": "니들은 스타트업 피지 마라 (숏폼, 1만 회+)", "via": "Shorts", "href": "https://youtube.com/shorts/NwKKdQ79KxM" },
+        { "label": "FOCCPEOPLE 채널 숏폼 전체", "via": "YouTube", "href": "https://www.youtube.com/@FOCCPEOPLE/shorts" } ] },
+
+    { "id": "bookcover", "kind": "graphic", "date": "2025.07",
+      "title": "북커버 디자인", "image": "img/g-book.jpg", "alt": "트래블 호스트 04 북커버",
+      "desc": "〈트래블 호스트 04〉 국외 여행 인솔자 양성 교재. 기수별로 확장 가능한 시리즈 디자인 시스템으로 제작.",
+      "tools": ["Illustrator"],
+      "zoom": "img/g-book.jpg", "portrait": true },
+
+    { "id": "ad", "kind": "video", "date": "2026.03", "note": "Digital Advertising",
+      "title": "AD 영상", "image": "img/v-ad.jpg", "alt": "광고 영상",
+      "desc": "HITUP·포크피플 앱 홍보(메타 광고 1080×1080, 롱/숏 버전)와 부동산 수업 광고. 플랫폼 규격별 편집.",
+      "tools": ["After Effects", "Premiere Pro", "Photoshop", "Illustrator"],
+      "links": [
+        { "label": "HITUP 메타 광고 (1080×1080)", "via": "Google Drive", "href": "https://drive.google.com/file/d/1HGjL-SXnKFmVmjI5LkcJyzmyHYHwXEZc/view" },
+        { "label": "FOCCPeople AD-01 (Long ver.)", "via": "Google Drive", "href": "https://drive.google.com/file/d/1yZQUF7SLCWrM1aagKEAxX6ZG9FIq8N-0/view" },
+        { "label": "FOCCPeople AD-01 (Short ver.)", "via": "Google Drive", "href": "https://drive.google.com/file/d/1yZQUF7SLCWrM1aagKEAxX6ZG9FIq8N-0/view" },
+        { "label": "부동산 수업 광고: #부동산 #경매 #강의", "via": "Shorts", "href": "https://youtube.com/shorts/L8tQeaQIkRk" },
+        { "label": "부동산 수업 광고: 멀쩡한 건물 사지 마세요", "via": "Shorts", "href": "https://youtube.com/shorts/6roo1DHDDec" } ] },
+
+    { "id": "detail", "kind": "graphic", "date": "2026.03", "featured": 3,
+      "title": "상세페이지 디자인", "image": "img/g-detail.jpg", "alt": "원데이 클래스 상세페이지",
+      "desc": "팝업스토어 원데이 클래스 상세페이지를 AI로 HTML 템플릿화. 소재별 디자인·카피 변경과 업로드·관리까지 단독 제작.",
+      "tools": ["Claude", "Gemini"],
+      "links": [
+        { "label": "원데이 클래스 상세페이지 템플릿", "via": "HTML", "href": "detail/template.html" },
+        { "label": "이광호 서예가: 한글 서예 프리미엄 오브제", "via": "HTML", "href": "detail/calligraphy.html" },
+        { "label": "오하니 조향사: 나만의 프리미엄 디퓨저", "via": "HTML", "href": "detail/diffuser.html" },
+        { "label": "묘덕선생 〈인생의 시작: 나를 마주하고, 나를 찾는 시간〉", "via": "HTML", "href": "detail/myodeok.html" } ] },
+
+    { "id": "card", "kind": "graphic", "date": "2026.03",
+      "title": "트래블호스트프로그램 카드뉴스", "image": "img/g-card.jpg", "alt": "트래블호스트프로그램 8기 모집 카드뉴스",
+      "desc": "FOCC 트래블호스트프로그램 8기 모집 인스타그램 카드뉴스(7컷) 기획·디자인. 추천 대상, 수강 전후 변화, 과정, 강사, 모집 요강, 문의까지 한 흐름으로 구성.",
+      "tools": ["Figma", "Photoshop", "Claude"],
+      "slides": ["img/card-thp/01.jpg", "img/card-thp/02.jpg", "img/card-thp/03.jpg", "img/card-thp/04.jpg", "img/card-thp/05.jpg", "img/card-thp/06.jpg", "img/card-thp/07.jpg"] },
+
+    { "id": "card-oneday", "kind": "graphic", "date": "2026.04",
+      "title": "원데이 클래스 카드뉴스", "image": "img/card-oneday/01.jpg", "position": "center 12%", "alt": "FOCC 팝업스토어 원데이 클래스: 서예 카드뉴스 표지",
+      "desc": "현대아울렛 동대문 FOCC 팝업스토어 원데이 클래스 3종(서예, 김홍도, 식도락) 홍보 카드뉴스. 클래스마다 표지와 일정·참가비·준비물 안내 카드로 구성.",
+      "tools": ["Figma", "Photoshop", "Claude"],
+      "slides": ["img/card-oneday/01.jpg", "img/card-oneday/02.jpg", "img/card-oneday/03.jpg", "img/card-oneday/04.jpg", "img/card-oneday/05.jpg", "img/card-oneday/06.jpg"] },
+
+    { "id": "card-saju", "kind": "graphic", "date": "2026.04",
+      "title": "주말 사주풀이 카드뉴스", "image": "img/card-saju/01.jpg", "position": "center 25%", "alt": "FOCC 팝업스토어 주말한정 사주풀이 카드뉴스 표지",
+      "desc": "FOCC 팝업스토어 주말 사주풀이 이벤트 카드뉴스(5컷). 표지, 도입, 코스·가격, 회차별 운영 시간, 사전 예약 QR 순서로 구성.",
+      "tools": ["Figma", "Photoshop", "Claude"],
+      "slides": ["img/card-saju/01.jpg", "img/card-saju/02.jpg", "img/card-saju/03.jpg", "img/card-saju/04.jpg", "img/card-saju/05.jpg"] },
+
+    { "id": "hitup-design", "kind": "graphic", "date": "2025.05 ~ 2026.02",
+      "title": "‘Hitup Studio’ 채널 디자인", "image": "img/g-hitup.jpg", "alt": "Hitup Studio 채널 디자인",
+      "desc": "로고·채널 아트, 썸네일 약 170편, Intro/Outro·자막 스타일 등 채널 비주얼 아이덴티티 총괄.",
+      "tools": ["Illustrator", "Photoshop"],
+      "href": "https://www.youtube.com/@HITUP_Studio", "hrefLabel": "채널 보기" },
+
+    { "id": "hani", "kind": "video", "date": "2026.01",
+      "title": "하니날다", "image": "img/v-hani.jpg", "alt": "하니날다 영상",
+      "desc": "한국도서관문화진흥원 ‘책의 숲’에 소개된 향수 영상. Gemini로 향의 무드를 표현하는 AI 비주얼 제작.",
+      "tools": ["Premiere Pro", "After Effects", "Photoshop"],
+      "href": "https://www.youtube.com/watch?v=KlQTcE-bbWY", "hrefLabel": "영상 보기" },
+
+    { "id": "officenex", "kind": "video", "date": "2025.03", "note": "Shorts",
+      "title": "오피스넥스 숏폼", "image": "img/v-officenex.jpg", "position": "center 6%", "alt": "오피스넥스 숏폼",
+      "desc": "FOCC 재직 중 담당한 사무용품 브랜드 채널. 초기 콘텐츠 기획과 포맷 설계, 7회차까지 촬영·편집 직접 진행.",
+      "tools": ["Premiere Pro"],
+      "links": [
+        { "label": "일할 때 쓰기 좋은 형광펜", "via": "Shorts", "href": "https://www.youtube.com/shorts/55YeqOpRHfI" },
+        { "label": "오피스넥스 채널 숏폼 전체", "via": "YouTube", "href": "https://www.youtube.com/@officenex_official/shorts" } ] },
+
+    { "id": "boogaty", "kind": "video", "date": "2024.09 ~ 2024.12",
+      "title": "부가티 킴", "image": "img/v-boogaty.jpg", "alt": "부가티 킴 EP.01 썸네일",
+      "desc": "부동산 경매 유튜브 채널 런칭. 채널 디자인, 영상 디자인, 초기 썸네일 디자인을 잡고 EP.01~15 촬영·편집까지 진행.",
+      "tools": ["Premiere Pro", "After Effects", "Photoshop"],
+      "links": [
+        { "label": "EP.01 전세 사기 안 당하고 싶다면", "via": "YouTube", "href": "https://youtu.be/L3u_YRDEORk" },
+        { "label": "EP.04 부동산 경매로 집주인 되기", "via": "YouTube", "href": "https://youtu.be/dtoHuJtUQtM" },
+        { "label": "EP.15 형사 고소하세요.", "via": "YouTube", "href": "https://youtu.be/jk0FU2gfHjw" },
+        { "label": "부가티 킴 채널", "via": "YouTube", "href": "https://www.youtube.com/@Boogaty_Kim/videos" } ] },
+
+    { "id": "brand", "kind": "video", "date": "2024.10",
+      "title": "포크피플 : 브랜드그라피", "image": "img/v-brand.jpg", "alt": "포크피플 브랜드그라피 썸네일",
+      "desc": "사람의 이야기를 담은 인터뷰 콘텐츠. 컷편집·이야기 구성, 인터뷰이 자막과 Intro/Outro 모션그래픽, 썸네일.",
+      "tools": ["Premiere Pro", "After Effects", "Photoshop", "미리캔버스"],
+      "links": [
+        { "label": "feat. 송강미술관 김명자 관장", "via": "YouTube", "href": "https://youtu.be/oat8cLKUQ-g" },
+        { "label": "feat. 로드옥션 대표 김기환", "via": "YouTube", "href": "https://youtu.be/QRuIPxKPjG8" },
+        { "label": "feat. ProTNS 최중락 대표", "via": "YouTube", "href": "https://youtu.be/Z7FULsfeKkg" } ] },
+
+    { "id": "wedding", "kind": "video", "date": "2023.09",
+      "title": "결혼식 식전 영상", "image": "img/v-wedding.jpg", "alt": "결혼식 식전 영상",
+      "desc": "두 사람의 연애 스토리를 엮은 감성 영상. 사진 큐레이션부터 자막·모션그래픽·편집까지 단독 제작.",
+      "tools": ["Premiere Pro", "After Effects", "Photoshop"],
+      "href": "https://youtu.be/IalDOjsE_FU", "hrefLabel": "영상 보기" },
+
+    { "id": "hb", "kind": "video", "date": "2023.05",
+      "title": "HB MY SISTER", "image": "img/v-hb.jpg", "alt": "HB MY SISTER 영상",
+      "desc": "가족들의 생일 축하 메시지를 카카오톡 채팅창 UI 스타일로 풀어낸 대화형 그래픽 영상.",
+      "tools": ["After Effects", "Premiere Pro", "Illustrator"],
+      "href": "https://youtu.be/MU6p3IjGhXI", "hrefLabel": "영상 보기" },
+
+    { "id": "amun", "kind": "video", "date": "2020.11 ~ 2021.12",
+      "title": "아겁문TV 〈아문〉", "image": "img/v-amun.jpg", "alt": "아겁문TV 아문",
+      "desc": "가십·뉴스 콘텐츠 시리즈 총 102편의 편집과 자막·타이틀 그래픽 디자인 담당.",
+      "tools": ["Premiere Pro", "After Effects", "Photoshop"],
+      "links": [
+        { "label": "드라마 논란", "via": "YouTube", "href": "https://youtu.be/O8tJ9j68p9o" },
+        { "label": "위드 코로나", "via": "YouTube", "href": "https://youtu.be/xctRHCA7IXY" } ] },
+
+    { "id": "jopok", "kind": "video", "date": "2020.11 ~ 2021.12",
+      "title": "아겁문TV 〈조폭실록〉", "image": "img/v-jopok.jpg", "alt": "아겁문TV 조폭실록",
+      "desc": "한국 조폭의 역사를 소개하는 시리즈. 컷편집·구성과 자막·타이틀 그래픽 디자인 담당.",
+      "tools": ["Premiere Pro", "After Effects", "Illustrator"],
+      "links": [
+        { "label": "예고편", "via": "YouTube", "href": "https://youtu.be/oYyLRSgTJEg" },
+        { "label": "1편", "via": "YouTube", "href": "https://youtu.be/7adYW6R3c18" },
+        { "label": "2편", "via": "YouTube", "href": "https://youtu.be/B-5XP67_zCQ" } ] },
+
+    { "id": "booktrailer", "kind": "video", "date": "2018.04", "note": "졸업작품",
+      "title": "모든 순간이 너였다 Book Trailer", "image": "img/v-book.jpg", "alt": "모든 순간이 너였다 북트레일러",
+      "desc": "소설을 모티브로 한 북트레일러 기획·연출. 도서 이미지와 타이포그래피 모션그래픽.",
+      "tools": ["After Effects", "Illustrator", "Premiere Pro"],
+      "href": "https://youtu.be/Bdr_LnLQFcg", "hrefLabel": "영상 보기" }
+  ],
+
+  "skills": [
+    { "group": "편집·모션", "items": [
+      { "name": "Premiere Pro", "icon": "img/skills/pr.png", "desc": "컷편집, Lumetri Color 색보정, 자막, 사운드 싱크/믹싱" },
+      { "name": "After Effects", "icon": "img/skills/ae.png", "desc": "모션그래픽, 자막 애니메이션, Premiere Pro 편집본 연동 마무리" } ] },
+    { "group": "디자인", "items": [
+      { "name": "Photoshop", "icon": "img/skills/ps.png", "desc": "사진 편집, 리터칭, 디지털 아트워크, 목업 디자인" },
+      { "name": "Illustrator", "icon": "img/skills/ai.png", "desc": "로고·아이콘, 벡터 그래픽, 브랜드 요소 제작" },
+      { "name": "Figma", "icon": "img/skills/figma.png", "desc": "UI/UX 디자인, 프로토타입, 웹사이트 디자인, 협업" },
+      { "name": "Canva", "icon": "img/skills/canva.png", "desc": "소셜 미디어·마케팅 자료, 프레젠테이션 제작" } ] },
+    { "group": "AI", "items": [
+      { "name": "Gemini", "icon": "img/skills/gemini.svg", "desc": "컨셉 아트, 브랜드 비주얼 아이데이션" },
+      { "name": "Claude", "icon": "img/skills/claude.png", "desc": "아이디어 발상, 콘텐츠 제작, 크리에이티브 작업 보조" },
+      { "name": "ChatGPT", "icon": "img/skills/chatgpt.svg", "desc": "아이디어 발상, 카피·스크립트 초안 작성, 자료 조사·정리" } ] },
+    { "group": "기획·운영", "items": [
+      { "name": "Notion", "icon": "img/skills/notion.png", "desc": "프로젝트 관리, 문서화, 협업 워크스페이스 구축" },
+      { "name": "PowerPoint", "icon": "img/skills/ppt.png", "desc": "프레젠테이션 디자인, 비즈니스 문서, 시각적 커뮤니케이션" },
+      { "name": "Excel", "icon": "img/skills/excel.png", "desc": "데이터 필터링·정렬, 분석·시각화, VBA 기초" },
+      { "name": "카페24", "icon": "img/skills/cafe24.jpg", "desc": "상품·상세페이지 업로드, 배너/레이아웃 편집, 재고·주문 관리" } ] }
+  ]
+}

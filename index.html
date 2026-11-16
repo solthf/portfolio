@@ -2,452 +2,479 @@
 <html lang="ko">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#f3f1f7">
 <title>서이솔 포트폴리오</title>
 <meta name="description" content="기획·촬영·편집·디자인, End-to-End. 영상 콘텐츠 크리에이터 서이솔 포트폴리오">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
-<style>
-:root{--bg:#fff;--soft:#f6f7f9;--line:#e6e8ec;--text:#16181d;--sub:#5b6270;--accent:#6233a3;--max:1120px}
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{font-family:Pretendard,-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;background:var(--bg);color:var(--text);line-height:1.6;word-break:keep-all}
-a{color:inherit;text-decoration:none}
-img{display:block;max-width:100%}
-.wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
-section{padding:96px 0;scroll-margin-top:64px}
-section:nth-of-type(even){background:var(--soft)}
-.eyebrow{font-size:13px;font-weight:600;letter-spacing:.12em;color:var(--accent);text-transform:uppercase;margin-bottom:12px}
-h2{font-size:clamp(26px,3.4vw,34px);font-weight:700;letter-spacing:-.02em;margin-bottom:40px}
-h3{font-size:18px;font-weight:700;letter-spacing:-.01em}
-
-/* nav */
-nav{position:sticky;top:0;z-index:10;background:rgba(255,255,255,.88);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
-nav .wrap{display:flex;align-items:center;justify-content:space-between;height:60px}
-nav .logo{font-weight:800;letter-spacing:-.02em}
-nav ul{display:flex;gap:28px;list-style:none;font-size:14px;color:var(--sub)}
-nav ul a:hover{color:var(--text)}
-
-/* hero */
-.hero{padding:120px 0 104px}
-.hero .wrap{display:grid;grid-template-columns:1.3fr 1fr;gap:64px;align-items:center}
-.hero h1{font-size:clamp(36px,6vw,64px);line-height:1.15;font-weight:800;letter-spacing:-.035em}
-.hero h1 span{color:var(--accent)}
-.hero p{margin-top:24px;font-size:18px;color:var(--sub)}
-.hero .cta{margin-top:36px;display:flex;gap:12px;flex-wrap:wrap}
-.btn{display:inline-block;padding:13px 24px;border-radius:999px;font-size:15px;font-weight:600;border:1px solid var(--text);transition:.2s}
-.btn.primary{background:var(--text);color:#fff}
-.btn:hover{transform:translateY(-2px)}
-.hero img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:24px;background:var(--soft)}
-
-/* about */
-.about{display:grid;grid-template-columns:1fr 1fr;gap:32px}
-.panel{background:#fff;border:1px solid var(--line);border-radius:18px;padding:32px}
-.panel h3{margin-bottom:20px;display:flex;justify-content:space-between;align-items:baseline}
-.panel h3 small{font-size:13px;font-weight:600;color:var(--accent)}
-.job{padding:18px 0;border-top:1px solid var(--line)}
-.job:first-of-type{border-top:0;padding-top:0}
-.job .head{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-weight:600}
-.job .head span{font-weight:400;font-size:14px;color:var(--sub)}
-.job .role{font-size:14px;color:var(--accent);font-weight:600;margin:2px 0 8px}
-ul.dots{list-style:none;font-size:15px;color:var(--sub)}
-ul.dots li{position:relative;padding-left:14px;margin:4px 0}
-ul.dots li::before{content:"";position:absolute;left:0;top:.7em;width:4px;height:4px;border-radius:50%;background:#aab0bb}
-.resume dt{font-size:13px;font-weight:700;color:var(--accent);margin:22px 0 6px}
-.resume dt:first-child{margin-top:0}
-.resume dd{font-size:15px;color:var(--sub);margin:4px 0}
-.resume dd b{color:var(--text);font-weight:500;margin-right:6px}
-
-/* projects */
-.tabs{display:flex;gap:8px;margin:-16px 0 32px;flex-wrap:wrap}
-.tabs button{font:inherit;font-size:14px;font-weight:600;padding:9px 18px;border-radius:999px;border:1px solid var(--line);background:#fff;color:var(--sub);cursor:pointer}
-.tabs button[aria-pressed=true]{background:var(--text);border-color:var(--text);color:#fff}
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
-.card{background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden;display:flex;flex-direction:column;transition:.25s}
-.card{position:relative}
-.card:has(.link):hover{transform:translateY(-4px);box-shadow:0 14px 34px rgba(20,24,40,.08)}
-.card .link{position:absolute;inset:0;border:0;background:none;cursor:pointer;border-radius:18px} /* 카드 전체를 링크로 */
-.card .link:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
-.card img{width:100%;aspect-ratio:16/10;object-fit:cover;background:var(--soft)}
-.card .body{padding:22px;display:flex;flex-direction:column;gap:10px;flex:1}
-.card .meta{font-size:13px;color:var(--sub)}
-.card p{font-size:14.5px;color:var(--sub)}
-.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto;padding-top:6px}
-.tags span{font-size:12px;padding:4px 10px;border-radius:999px;background:var(--soft);color:var(--sub)}
-.card[hidden]{display:none}
-dialog{margin:auto;border:0;border-radius:20px;padding:28px;width:min(480px,calc(100% - 32px));color:var(--text);box-shadow:0 24px 60px rgba(20,24,40,.25)}
-dialog::backdrop{background:rgba(16,18,24,.5)}
-dialog h3{margin-bottom:4px;padding-right:32px}
-dialog .hint{font-size:14px;color:var(--sub);margin-bottom:18px}
-dialog ul{list-style:none;display:flex;flex-direction:column;gap:8px}
-dialog li a{display:flex;justify-content:space-between;gap:12px;align-items:center;padding:14px 16px;border:1px solid var(--line);border-radius:12px;font-size:15px;font-weight:500;transition:.15s}
-dialog li a:hover{border-color:var(--accent);color:var(--accent)}
-dialog li small{flex:none;font-size:12px;color:var(--sub)}
-dialog img{width:100%;border-radius:12px}
-dialog.wide{width:min(760px,calc(100% - 32px))}
-dialog .close{position:absolute;top:18px;right:18px;width:32px;height:32px;border:0;border-radius:50%;background:var(--soft);font-size:18px;cursor:pointer;color:var(--sub)}
-
-/* skills */
-.skills{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
-.skill{background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px}
-.skill img{width:40px;height:40px;object-fit:contain;border-radius:10px;margin-bottom:14px}
-.skill h3{font-size:16px;margin-bottom:6px}
-.skill p{font-size:14px;color:var(--sub)}
-
-/* contact */
-.contact{text-align:center}
-.contact h2{margin-bottom:16px}
-.contact p{color:var(--sub);margin-bottom:36px}
-.contact .cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
-footer{padding:32px 0;text-align:center;font-size:13px;color:#9aa0aa;border-top:1px solid var(--line)}
-
-@media (max-width:960px){
-  .grid{grid-template-columns:repeat(2,1fr)}
-  .skills{grid-template-columns:repeat(2,1fr)}
-  .about{grid-template-columns:1fr}
-}
-@media (max-width:640px){
-  section{padding:72px 0}
-  .wrap{padding:0 16px}
-  nav ul{display:none}
-  .hero{padding:56px 0 72px}
-  .hero .wrap{grid-template-columns:1fr;gap:36px}
-  .hero p br{display:none}
-  .hero img{order:-1;max-width:220px;border-radius:20px}
-  .grid,.skills{grid-template-columns:1fr}
-  .panel{padding:24px}
-}
-</style>
+<link rel="preload" href="fonts/Pretendard-Bold.woff" as="font" type="font/woff" crossorigin>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
+<!-- 이 파일은 build.mjs가 data.json으로 생성함. 직접 수정하지 말 것. -->
+<div class="wall" aria-hidden="true"></div>
 
-<nav>
-  <div class="wrap">
-    <a class="logo" href="#top">ISOL SEO</a>
-    <ul>
-      <li><a href="#about">About</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
+
+<main class="desk">
+  <header class="home" id="top">
+    <nav class="icons" aria-label="바로가기">
+        <a class="icon" href="#projects"><span class="tile tile--accent" aria-hidden="true"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.9l-5.2 2.7 1-5.8-4.3-4.1 5.9-.9z"/></svg></span><span class="icon__label">대표 프로젝트</span></a>
+        <a class="icon" href="#works" data-f="video"><span class="folder" aria-hidden="true"><span class="folder__back"></span><img src="img/v-focc.jpg" alt="" loading="lazy"><img src="img/v-ad.jpg" alt="" loading="lazy"><img src="img/v-hani.jpg" alt="" loading="lazy"><span class="folder__front"></span></span><span class="icon__label">Video</span></a>
+        <a class="icon" href="#works" data-f="graphic"><span class="folder" aria-hidden="true"><span class="folder__back"></span><img src="img/g-book.jpg" alt="" loading="lazy"><img src="img/g-detail.jpg" alt="" loading="lazy"><img src="img/g-card.jpg" alt="" loading="lazy"><span class="folder__front"></span></span><span class="icon__label">Graphic</span></a>
+        <a class="icon" href="#about"><span class="tile" aria-hidden="true"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4.5 20.5c.6-3.9 3.7-6 7.5-6s6.9 2.1 7.5 6"/></svg></span><span class="icon__label">이력</span></a>
+        <a class="icon" href="#skills"><span class="tile tile--soft" aria-hidden="true"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="6.5" height="6.5" rx="2"/><rect x="13.5" y="4" width="6.5" height="6.5" rx="2"/><rect x="4" y="13.5" width="6.5" height="6.5" rx="2"/><rect x="13.5" y="13.5" width="6.5" height="6.5" rx="2"/></svg></span><span class="icon__label">스킬</span></a>
+        <a class="icon" href="#contact"><span class="tile tile--dark" aria-hidden="true"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M4 7.5l8 5.5 8-5.5"/></svg></span><span class="icon__label">연락처</span></a>
+    </nav>
+
+    <article class="widget hello">
+      <div class="hello__who">
+        <button class="face" type="button" data-img="img/profile.jpg" aria-label="프로필 사진 크게 보기"><img src="img/profile.jpg" alt="서이솔 프로필 사진"></button>
+        <p><strong>서이솔</strong><span>Isol Seo, Video Content Creator</span></p>
+      </div>
+      <h1><span>기획·촬영·편집·디자인,</span><span>End-to-End.</span></h1>
+      <p class="lead">방송 현장과 브랜드 채널에서 쌓은 4년의 경험으로 콘텐츠의 전 과정을 책임집니다.</p>
+      <div class="actions">
+        <a class="btn btn--primary" href="#projects">프로젝트 보기</a>
+        <a class="btn" href="#contact">연락하기</a>
+      </div>
+    </article>
+
+    <article class="widget gallery" aria-label="작업 스틸">
+      <p class="widget__name"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2.5"/><circle cx="9" cy="9.5" r="1.8"/><path d="M20.5 16l-5-5L5 20"/></svg>갤러리</p>
+      <div class="gallery__grid">
+          <a class="still" href="#p-hitup"><img src="img/v-hitup-logo.jpg" alt="Hitup Studio 로고" style="object-fit:contain"><span>Hitup Studio</span></a>
+          <a class="still" href="#p-detail"><img src="img/g-detail.jpg" alt="원데이 클래스 상세페이지"><span>상세페이지 디자인</span></a>
+          <a class="still" href="#w-booktrailer" data-f="video"><img src="img/v-book.jpg" alt="모든 순간이 너였다 북트레일러"><span>모든 순간이 너였다 Book Trailer</span></a>
+      </div>
+    </article>
+
+    <nav class="dock" aria-label="빠른 연락">
+      <a href="tel:01079125645" aria-label="전화 걸기"><span class="tile tile--accent" aria-hidden="true"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 3.5h3l1.8 4.6-2.2 1.4a11 11 0 0 0 5.4 5.4l1.4-2.2 4.6 1.8v3a2 2 0 0 1-2.1 2A16 16 0 0 1 4.5 5.6a2 2 0 0 1 2-2.1z"/></svg></span></a>
+      <a href="sms:01079125645" aria-label="문자 보내기"><span class="tile tile--soft" aria-hidden="true"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6.5A2.5 2.5 0 0 1 6.5 4h11A2.5 2.5 0 0 1 20 6.5v7a2.5 2.5 0 0 1-2.5 2.5H10l-5 4v-4.3A2.5 2.5 0 0 1 4 13.5z"/></svg></span></a>
+      <a href="mailto:solthfsol@gmail.com" aria-label="메일 보내기"><span class="tile tile--dark" aria-hidden="true"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M4 7.5l8 5.5 8-5.5"/></svg></span></a>
+      <a href="#works" data-f="video" aria-label="작업 갤러리"><span class="tile" aria-hidden="true"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2.5"/><circle cx="9" cy="9.5" r="1.8"/><path d="M20.5 16l-5-5L5 20"/></svg></span></a>
+    </nav>
+  </header>
+
+  <section id="projects" class="win">
+    <div class="win__bar" aria-hidden="true"><span class="win__app"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.9l-5.2 2.7 1-5.8-4.3-4.1 5.9-.9z"/></svg>대표 프로젝트</span><span class="win__caps"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 12h10"/></svg><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="7" width="10" height="10" rx="1.5"/></svg><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7l10 10M17 7L7 17"/></svg></span></div>
+    <div class="app__top"><a class="app__back" href="#top" aria-label="홈 화면으로"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></a><span>대표 프로젝트</span></div>
+    <div class="win__body">
+      <h2>PROJECTS</h2>
+      <div class="features">
+        <article class="card feature feature--lead" id="p-hitup" data-c="video">
+          <div class="feature__text">
+            <p class="meta"><span class="meta__kind">Video</span><span>2025.05 ~ 2026.02</span></p>
+            <h3>Hitup Studio</h3>
+            <p class="feature__desc">낚시 입문 예능 유튜브 채널의 롱폼·숏폼 기획·촬영·편집 총괄.</p>
+            <p class="tools">Premiere Pro, After Effects, Photoshop, Illustrator</p>
+            <div class="feature__act"><button class="link btn" type="button">작업 4개 보기</button><ul class="links" hidden><li><a href="https://www.youtube.com/playlist?list=PLzEeFHCNibELnV1r7tlI2d7EExVBf07VP" target="_blank" rel="noopener">히트업스토리<small>YouTube 재생목록</small></a></li><li><a href="https://www.youtube.com/playlist?list=PLzEeFHCNibEK4zZeDSqyE4LyzZ8I2kIuM" target="_blank" rel="noopener">춤추는 낚시꾼<small>YouTube 재생목록</small></a></li><li><a href="https://www.youtube.com/playlist?list=PLzEeFHCNibEIkdyUW2WVNOHmvH1Tcg3ag" target="_blank" rel="noopener">프리 낚시꾼<small>YouTube 재생목록</small></a></li><li><a href="https://www.youtube.com/playlist?list=PLzEeFHCNibEJW7Up-7TCuzXn-aS6Xl8AU" target="_blank" rel="noopener">낚린 탈출기<small>YouTube 재생목록</small></a></li></ul></div>
+          </div>
+          <dl class="feature__proof figures"><div><dt>구독자 (약, 명)</dt><dd class="figure num">9,850</dd></div><div><dt>누적 조회수 (약, 회)</dt><dd class="figure num">126만</dd></div></dl>
+        </article>
+        <article class="card feature" id="p-focc" data-c="video">
+          <div class="feature__text">
+            <p class="meta"><span class="meta__kind">Video</span><span>2025.01 ~ 2025.03</span></p>
+            <h3>에프오씨씨 다이어리</h3>
+            <p class="feature__desc">스타트업 브이로그 시리즈. 기획·촬영부터 롱폼 편집, 알고리즘 대응 숏폼 재구성까지. 숏폼 1만 회 이상 조회.</p>
+            <p class="tools">Premiere Pro, After Effects, Illustrator, Photoshop</p>
+            <div class="feature__act"><button class="link btn" type="button">작업 6개 보기</button><ul class="links" hidden><li><a href="https://youtu.be/MTtt9P7hr3U" target="_blank" rel="noopener">니들은 스타트업 피지 마라<small>YouTube</small></a></li><li><a href="https://youtu.be/DeyBte2AbC0" target="_blank" rel="noopener">뭔가 보여드리겠습니다<small>YouTube</small></a></li><li><a href="https://youtu.be/eQX03wwC8zc" target="_blank" rel="noopener">2025 역마살, '역삼'부터 '인천'까지<small>YouTube</small></a></li><li><a href="https://youtube.com/shorts/uzFRhbeR7pU" target="_blank" rel="noopener">북유럽 여행 성수기 시즌<small>Shorts</small></a></li><li><a href="https://youtube.com/shorts/NwKKdQ79KxM" target="_blank" rel="noopener">니들은 스타트업 피지 마라 (숏폼, 1만 회+)<small>Shorts</small></a></li><li><a href="https://www.youtube.com/@FOCCPEOPLE/shorts" target="_blank" rel="noopener">FOCCPEOPLE 채널 숏폼 전체<small>YouTube</small></a></li></ul></div>
+          </div>
+          <figure class="feature__proof"><img src="img/v-focc.jpg" alt="에프오씨씨 다이어리 썸네일" loading="lazy"></figure>
+        </article>
+        <article class="card feature" id="p-detail" data-c="graphic">
+          <div class="feature__text">
+            <p class="meta"><span class="meta__kind">Graphic</span><span>2026.03</span></p>
+            <h3>상세페이지 디자인</h3>
+            <p class="feature__desc">팝업스토어 원데이 클래스 상세페이지를 AI로 HTML 템플릿화. 소재별 디자인·카피 변경과 업로드·관리까지 단독 제작.</p>
+            <p class="tools">Claude, Gemini</p>
+            <div class="feature__act"><button class="link btn" type="button">작업 4개 보기</button><ul class="links" hidden><li><a href="detail/template.html" target="_blank" rel="noopener">원데이 클래스 상세페이지 템플릿<small>HTML</small></a></li><li><a href="detail/calligraphy.html" target="_blank" rel="noopener">이광호 서예가: 한글 서예 프리미엄 오브제<small>HTML</small></a></li><li><a href="detail/diffuser.html" target="_blank" rel="noopener">오하니 조향사: 나만의 프리미엄 디퓨저<small>HTML</small></a></li><li><a href="detail/myodeok.html" target="_blank" rel="noopener">묘덕선생 〈인생의 시작: 나를 마주하고, 나를 찾는 시간〉<small>HTML</small></a></li></ul></div>
+          </div>
+          <figure class="feature__proof"><img src="img/g-detail.jpg" alt="원데이 클래스 상세페이지" loading="lazy"></figure>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="works" class="win explorer">
+    <div class="win__bar" aria-hidden="true"><span class="win__app"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>작업 폴더</span><span class="win__caps"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 12h10"/></svg><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="7" width="10" height="10" rx="1.5"/></svg><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7l10 10M17 7L7 17"/></svg></span></div>
+    <div class="app__top"><a class="app__back" href="#top" aria-label="홈 화면으로"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></a><span>작업 폴더</span></div>
+    <div class="win__body">
+      <h2>WORKS</h2>
+      <div class="ex">
+        <div class="tabs" role="group" aria-label="프로젝트 분류">
+          <button type="button" aria-pressed="true" data-f="video"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>Video<span class="num">12</span></button>
+          <button type="button" aria-pressed="false" data-f="graphic"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>Graphic<span class="num">6</span></button>
+        </div>
+        <div class="ex__main">
+          <p class="ex__path">내 작업<svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg><span data-crumb>전체</span></p>
+          <div class="index">
+          <article class="card file" id="w-card-oneday" data-c="graphic">
+            <div class="file__thumb"><img src="img/card-oneday/01.jpg" alt="FOCC 팝업스토어 원데이 클래스: 서예 카드뉴스 표지" style="object-position:center 12%" loading="lazy"><p class="meta"><span>2026.04</span></p></div>
+            <div class="file__main">
+              <h3>원데이 클래스 카드뉴스</h3>
+              <p class="file__desc">현대아울렛 동대문 FOCC 팝업스토어 원데이 클래스 3종(서예, 김홍도, 식도락) 홍보 카드뉴스. 클래스마다 표지와 일정·참가비·준비물 안내 카드로 구성.</p>
+              <p class="tools">Figma, Photoshop, Claude</p>
+            </div>
+            <button class="link" type="button" data-slides="img/card-oneday/01.jpg img/card-oneday/02.jpg img/card-oneday/03.jpg img/card-oneday/04.jpg img/card-oneday/05.jpg img/card-oneday/06.jpg" aria-label="원데이 클래스 카드뉴스 6장 넘겨 보기"></button>
+          </article>
+          <article class="card file" id="w-card-saju" data-c="graphic">
+            <div class="file__thumb"><img src="img/card-saju/01.jpg" alt="FOCC 팝업스토어 주말한정 사주풀이 카드뉴스 표지" style="object-position:center 25%" loading="lazy"><p class="meta"><span>2026.04</span></p></div>
+            <div class="file__main">
+              <h3>주말 사주풀이 카드뉴스</h3>
+              <p class="file__desc">FOCC 팝업스토어 주말 사주풀이 이벤트 카드뉴스(5컷). 표지, 도입, 코스·가격, 회차별 운영 시간, 사전 예약 QR 순서로 구성.</p>
+              <p class="tools">Figma, Photoshop, Claude</p>
+            </div>
+            <button class="link" type="button" data-slides="img/card-saju/01.jpg img/card-saju/02.jpg img/card-saju/03.jpg img/card-saju/04.jpg img/card-saju/05.jpg" aria-label="주말 사주풀이 카드뉴스 5장 넘겨 보기"></button>
+          </article>
+          <article class="card file" id="w-ad" data-c="video">
+            <div class="file__thumb"><img src="img/v-ad.jpg" alt="광고 영상" loading="lazy"><p class="meta"><span>2026.03</span><span>Digital Advertising</span></p></div>
+            <div class="file__main">
+              <h3>AD 영상</h3>
+              <p class="file__desc">HITUP·포크피플 앱 홍보(메타 광고 1080×1080, 롱/숏 버전)와 부동산 수업 광고. 플랫폼 규격별 편집.</p>
+              <p class="tools">After Effects, Premiere Pro, Photoshop, Illustrator</p>
+            </div>
+            <button class="link" type="button" aria-label="AD 영상 목록 보기"></button><ul class="links" hidden><li><a href="https://drive.google.com/file/d/1HGjL-SXnKFmVmjI5LkcJyzmyHYHwXEZc/view" target="_blank" rel="noopener">HITUP 메타 광고 (1080×1080)<small>Google Drive</small></a></li><li><a href="https://drive.google.com/file/d/1yZQUF7SLCWrM1aagKEAxX6ZG9FIq8N-0/view" target="_blank" rel="noopener">FOCCPeople AD-01 (Long ver.)<small>Google Drive</small></a></li><li><a href="https://drive.google.com/file/d/1yZQUF7SLCWrM1aagKEAxX6ZG9FIq8N-0/view" target="_blank" rel="noopener">FOCCPeople AD-01 (Short ver.)<small>Google Drive</small></a></li><li><a href="https://youtube.com/shorts/L8tQeaQIkRk" target="_blank" rel="noopener">부동산 수업 광고: #부동산 #경매 #강의<small>Shorts</small></a></li><li><a href="https://youtube.com/shorts/6roo1DHDDec" target="_blank" rel="noopener">부동산 수업 광고: 멀쩡한 건물 사지 마세요<small>Shorts</small></a></li></ul>
+          </article>
+          <article class="card file" id="w-detail" data-c="graphic">
+            <div class="file__thumb"><img src="img/g-detail.jpg" alt="원데이 클래스 상세페이지" loading="lazy"><p class="meta"><span>2026.03</span></p></div>
+            <div class="file__main">
+              <h3>상세페이지 디자인</h3>
+              <p class="file__desc">팝업스토어 원데이 클래스 상세페이지를 AI로 HTML 템플릿화. 소재별 디자인·카피 변경과 업로드·관리까지 단독 제작.</p>
+              <p class="tools">Claude, Gemini</p>
+            </div>
+            <button class="link" type="button" aria-label="상세페이지 디자인 목록 보기"></button><ul class="links" hidden><li><a href="detail/template.html" target="_blank" rel="noopener">원데이 클래스 상세페이지 템플릿<small>HTML</small></a></li><li><a href="detail/calligraphy.html" target="_blank" rel="noopener">이광호 서예가: 한글 서예 프리미엄 오브제<small>HTML</small></a></li><li><a href="detail/diffuser.html" target="_blank" rel="noopener">오하니 조향사: 나만의 프리미엄 디퓨저<small>HTML</small></a></li><li><a href="detail/myodeok.html" target="_blank" rel="noopener">묘덕선생 〈인생의 시작: 나를 마주하고, 나를 찾는 시간〉<small>HTML</small></a></li></ul>
+          </article>
+          <article class="card file" id="w-card" data-c="graphic">
+            <div class="file__thumb"><img src="img/g-card.jpg" alt="트래블호스트프로그램 8기 모집 카드뉴스" loading="lazy"><p class="meta"><span>2026.03</span></p></div>
+            <div class="file__main">
+              <h3>트래블호스트프로그램 카드뉴스</h3>
+              <p class="file__desc">FOCC 트래블호스트프로그램 8기 모집 인스타그램 카드뉴스(7컷) 기획·디자인. 추천 대상, 수강 전후 변화, 과정, 강사, 모집 요강, 문의까지 한 흐름으로 구성.</p>
+              <p class="tools">Figma, Photoshop, Claude</p>
+            </div>
+            <button class="link" type="button" data-slides="img/card-thp/01.jpg img/card-thp/02.jpg img/card-thp/03.jpg img/card-thp/04.jpg img/card-thp/05.jpg img/card-thp/06.jpg img/card-thp/07.jpg" aria-label="트래블호스트프로그램 카드뉴스 7장 넘겨 보기"></button>
+          </article>
+          <article class="card file" id="w-hitup" data-c="video">
+            <div class="file__thumb"><img src="img/v-hitup-logo.jpg" alt="Hitup Studio 로고" style="object-fit:contain" loading="lazy"><p class="meta"><span>2025.05 ~ 2026.02</span></p></div>
+            <div class="file__main">
+              <h3>Hitup Studio</h3>
+              <p class="file__desc">낚시 입문 예능 유튜브 채널의 롱폼·숏폼 기획·촬영·편집 총괄.</p>
+              <p class="tools">Premiere Pro, After Effects, Photoshop, Illustrator</p>
+            </div>
+            <button class="link" type="button" aria-label="Hitup Studio 목록 보기"></button><ul class="links" hidden><li><a href="https://www.youtube.com/playlist?list=PLzEeFHCNibELnV1r7tlI2d7EExVBf07VP" target="_blank" rel="noopener">히트업스토리<small>YouTube 재생목록</small></a></li><li><a href="https://www.youtube.com/playlist?list=PLzEeFHCNibEK4zZeDSqyE4LyzZ8I2kIuM" target="_blank" rel="noopener">춤추는 낚시꾼<small>YouTube 재생목록</small></a></li><li><a href="https://www.youtube.com/playlist?list=PLzEeFHCNibEIkdyUW2WVNOHmvH1Tcg3ag" target="_blank" rel="noopener">프리 낚시꾼<small>YouTube 재생목록</small></a></li><li><a href="https://www.youtube.com/playlist?list=PLzEeFHCNibEJW7Up-7TCuzXn-aS6Xl8AU" target="_blank" rel="noopener">낚린 탈출기<small>YouTube 재생목록</small></a></li></ul>
+          </article>
+          <article class="card file" id="w-hitup-design" data-c="graphic">
+            <div class="file__thumb"><img src="img/g-hitup.jpg" alt="Hitup Studio 채널 디자인" loading="lazy"><p class="meta"><span>2025.05 ~ 2026.02</span></p></div>
+            <div class="file__main">
+              <h3>‘Hitup Studio’ 채널 디자인</h3>
+              <p class="file__desc">로고·채널 아트, 썸네일 약 170편, Intro/Outro·자막 스타일 등 채널 비주얼 아이덴티티 총괄.</p>
+              <p class="tools">Illustrator, Photoshop</p>
+            </div>
+            <a class="link" href="https://www.youtube.com/@HITUP_Studio" target="_blank" rel="noopener" aria-label="‘Hitup Studio’ 채널 디자인 채널 보기"></a>
+          </article>
+          <article class="card file" id="w-hani" data-c="video">
+            <div class="file__thumb"><img src="img/v-hani.jpg" alt="하니날다 영상" loading="lazy"><p class="meta"><span>2026.01</span></p></div>
+            <div class="file__main">
+              <h3>하니날다</h3>
+              <p class="file__desc">한국도서관문화진흥원 ‘책의 숲’에 소개된 향수 영상. Gemini로 향의 무드를 표현하는 AI 비주얼 제작.</p>
+              <p class="tools">Premiere Pro, After Effects, Photoshop</p>
+            </div>
+            <a class="link" href="https://www.youtube.com/watch?v=KlQTcE-bbWY" target="_blank" rel="noopener" aria-label="하니날다 영상 보기"></a>
+          </article>
+          <article class="card file" id="w-bookcover" data-c="graphic">
+            <div class="file__thumb"><img src="img/g-book.jpg" alt="트래블 호스트 04 북커버" loading="lazy"><p class="meta"><span>2025.07</span></p></div>
+            <div class="file__main">
+              <h3>북커버 디자인</h3>
+              <p class="file__desc">〈트래블 호스트 04〉 국외 여행 인솔자 양성 교재. 기수별로 확장 가능한 시리즈 디자인 시스템으로 제작.</p>
+              <p class="tools">Illustrator</p>
+            </div>
+            <button class="link" type="button" data-img="img/g-book.jpg" aria-label="북커버 디자인 이미지 크게 보기"></button>
+          </article>
+          <article class="card file" id="w-officenex" data-c="video">
+            <div class="file__thumb"><img src="img/v-officenex.jpg" alt="오피스넥스 숏폼" style="object-position:center 6%" loading="lazy"><p class="meta"><span>2025.03</span><span>Shorts</span></p></div>
+            <div class="file__main">
+              <h3>오피스넥스 숏폼</h3>
+              <p class="file__desc">FOCC 재직 중 담당한 사무용품 브랜드 채널. 초기 콘텐츠 기획과 포맷 설계, 7회차까지 촬영·편집 직접 진행.</p>
+              <p class="tools">Premiere Pro</p>
+            </div>
+            <button class="link" type="button" aria-label="오피스넥스 숏폼 목록 보기"></button><ul class="links" hidden><li><a href="https://www.youtube.com/shorts/55YeqOpRHfI" target="_blank" rel="noopener">일할 때 쓰기 좋은 형광펜<small>Shorts</small></a></li><li><a href="https://www.youtube.com/@officenex_official/shorts" target="_blank" rel="noopener">오피스넥스 채널 숏폼 전체<small>YouTube</small></a></li></ul>
+          </article>
+          <article class="card file" id="w-focc" data-c="video">
+            <div class="file__thumb"><img src="img/v-focc.jpg" alt="에프오씨씨 다이어리 썸네일" loading="lazy"><p class="meta"><span>2025.01 ~ 2025.03</span></p></div>
+            <div class="file__main">
+              <h3>에프오씨씨 다이어리</h3>
+              <p class="file__desc">스타트업 브이로그 시리즈. 기획·촬영부터 롱폼 편집, 알고리즘 대응 숏폼 재구성까지. 숏폼 1만 회 이상 조회.</p>
+              <p class="tools">Premiere Pro, After Effects, Illustrator, Photoshop</p>
+            </div>
+            <button class="link" type="button" aria-label="에프오씨씨 다이어리 목록 보기"></button><ul class="links" hidden><li><a href="https://youtu.be/MTtt9P7hr3U" target="_blank" rel="noopener">니들은 스타트업 피지 마라<small>YouTube</small></a></li><li><a href="https://youtu.be/DeyBte2AbC0" target="_blank" rel="noopener">뭔가 보여드리겠습니다<small>YouTube</small></a></li><li><a href="https://youtu.be/eQX03wwC8zc" target="_blank" rel="noopener">2025 역마살, '역삼'부터 '인천'까지<small>YouTube</small></a></li><li><a href="https://youtube.com/shorts/uzFRhbeR7pU" target="_blank" rel="noopener">북유럽 여행 성수기 시즌<small>Shorts</small></a></li><li><a href="https://youtube.com/shorts/NwKKdQ79KxM" target="_blank" rel="noopener">니들은 스타트업 피지 마라 (숏폼, 1만 회+)<small>Shorts</small></a></li><li><a href="https://www.youtube.com/@FOCCPEOPLE/shorts" target="_blank" rel="noopener">FOCCPEOPLE 채널 숏폼 전체<small>YouTube</small></a></li></ul>
+          </article>
+          <article class="card file" id="w-boogaty" data-c="video">
+            <div class="file__thumb"><img src="img/v-boogaty.jpg" alt="부가티 킴 EP.01 썸네일" loading="lazy"><p class="meta"><span>2024.09 ~ 2024.12</span></p></div>
+            <div class="file__main">
+              <h3>부가티 킴</h3>
+              <p class="file__desc">부동산 경매 유튜브 채널 런칭. 채널 디자인, 영상 디자인, 초기 썸네일 디자인을 잡고 EP.01~15 촬영·편집까지 진행.</p>
+              <p class="tools">Premiere Pro, After Effects, Photoshop</p>
+            </div>
+            <button class="link" type="button" aria-label="부가티 킴 목록 보기"></button><ul class="links" hidden><li><a href="https://youtu.be/L3u_YRDEORk" target="_blank" rel="noopener">EP.01 전세 사기 안 당하고 싶다면<small>YouTube</small></a></li><li><a href="https://youtu.be/dtoHuJtUQtM" target="_blank" rel="noopener">EP.04 부동산 경매로 집주인 되기<small>YouTube</small></a></li><li><a href="https://youtu.be/jk0FU2gfHjw" target="_blank" rel="noopener">EP.15 형사 고소하세요.<small>YouTube</small></a></li><li><a href="https://www.youtube.com/@Boogaty_Kim/videos" target="_blank" rel="noopener">부가티 킴 채널<small>YouTube</small></a></li></ul>
+          </article>
+          <article class="card file" id="w-brand" data-c="video">
+            <div class="file__thumb"><img src="img/v-brand.jpg" alt="포크피플 브랜드그라피 썸네일" loading="lazy"><p class="meta"><span>2024.10</span></p></div>
+            <div class="file__main">
+              <h3>포크피플 : 브랜드그라피</h3>
+              <p class="file__desc">사람의 이야기를 담은 인터뷰 콘텐츠. 컷편집·이야기 구성, 인터뷰이 자막과 Intro/Outro 모션그래픽, 썸네일.</p>
+              <p class="tools">Premiere Pro, After Effects, Photoshop, 미리캔버스</p>
+            </div>
+            <button class="link" type="button" aria-label="포크피플 : 브랜드그라피 목록 보기"></button><ul class="links" hidden><li><a href="https://youtu.be/oat8cLKUQ-g" target="_blank" rel="noopener">feat. 송강미술관 김명자 관장<small>YouTube</small></a></li><li><a href="https://youtu.be/QRuIPxKPjG8" target="_blank" rel="noopener">feat. 로드옥션 대표 김기환<small>YouTube</small></a></li><li><a href="https://youtu.be/Z7FULsfeKkg" target="_blank" rel="noopener">feat. ProTNS 최중락 대표<small>YouTube</small></a></li></ul>
+          </article>
+          <article class="card file" id="w-wedding" data-c="video">
+            <div class="file__thumb"><img src="img/v-wedding.jpg" alt="결혼식 식전 영상" loading="lazy"><p class="meta"><span>2023.09</span></p></div>
+            <div class="file__main">
+              <h3>결혼식 식전 영상</h3>
+              <p class="file__desc">두 사람의 연애 스토리를 엮은 감성 영상. 사진 큐레이션부터 자막·모션그래픽·편집까지 단독 제작.</p>
+              <p class="tools">Premiere Pro, After Effects, Photoshop</p>
+            </div>
+            <a class="link" href="https://youtu.be/IalDOjsE_FU" target="_blank" rel="noopener" aria-label="결혼식 식전 영상 영상 보기"></a>
+          </article>
+          <article class="card file" id="w-hb" data-c="video">
+            <div class="file__thumb"><img src="img/v-hb.jpg" alt="HB MY SISTER 영상" loading="lazy"><p class="meta"><span>2023.05</span></p></div>
+            <div class="file__main">
+              <h3>HB MY SISTER</h3>
+              <p class="file__desc">가족들의 생일 축하 메시지를 카카오톡 채팅창 UI 스타일로 풀어낸 대화형 그래픽 영상.</p>
+              <p class="tools">After Effects, Premiere Pro, Illustrator</p>
+            </div>
+            <a class="link" href="https://youtu.be/MU6p3IjGhXI" target="_blank" rel="noopener" aria-label="HB MY SISTER 영상 보기"></a>
+          </article>
+          <article class="card file" id="w-amun" data-c="video">
+            <div class="file__thumb"><img src="img/v-amun.jpg" alt="아겁문TV 아문" loading="lazy"><p class="meta"><span>2020.11 ~ 2021.12</span></p></div>
+            <div class="file__main">
+              <h3>아겁문TV 〈아문〉</h3>
+              <p class="file__desc">가십·뉴스 콘텐츠 시리즈 총 102편의 편집과 자막·타이틀 그래픽 디자인 담당.</p>
+              <p class="tools">Premiere Pro, After Effects, Photoshop</p>
+            </div>
+            <button class="link" type="button" aria-label="아겁문TV 〈아문〉 목록 보기"></button><ul class="links" hidden><li><a href="https://youtu.be/O8tJ9j68p9o" target="_blank" rel="noopener">드라마 논란<small>YouTube</small></a></li><li><a href="https://youtu.be/xctRHCA7IXY" target="_blank" rel="noopener">위드 코로나<small>YouTube</small></a></li></ul>
+          </article>
+          <article class="card file" id="w-jopok" data-c="video">
+            <div class="file__thumb"><img src="img/v-jopok.jpg" alt="아겁문TV 조폭실록" loading="lazy"><p class="meta"><span>2020.11 ~ 2021.12</span></p></div>
+            <div class="file__main">
+              <h3>아겁문TV 〈조폭실록〉</h3>
+              <p class="file__desc">한국 조폭의 역사를 소개하는 시리즈. 컷편집·구성과 자막·타이틀 그래픽 디자인 담당.</p>
+              <p class="tools">Premiere Pro, After Effects, Illustrator</p>
+            </div>
+            <button class="link" type="button" aria-label="아겁문TV 〈조폭실록〉 목록 보기"></button><ul class="links" hidden><li><a href="https://youtu.be/oYyLRSgTJEg" target="_blank" rel="noopener">예고편<small>YouTube</small></a></li><li><a href="https://youtu.be/7adYW6R3c18" target="_blank" rel="noopener">1편<small>YouTube</small></a></li><li><a href="https://youtu.be/B-5XP67_zCQ" target="_blank" rel="noopener">2편<small>YouTube</small></a></li></ul>
+          </article>
+          <article class="card file" id="w-booktrailer" data-c="video">
+            <div class="file__thumb"><img src="img/v-book.jpg" alt="모든 순간이 너였다 북트레일러" loading="lazy"><p class="meta"><span>2018.04</span><span>졸업작품</span></p></div>
+            <div class="file__main">
+              <h3>모든 순간이 너였다 Book Trailer</h3>
+              <p class="file__desc">소설을 모티브로 한 북트레일러 기획·연출. 도서 이미지와 타이포그래피 모션그래픽.</p>
+              <p class="tools">After Effects, Illustrator, Premiere Pro</p>
+            </div>
+            <a class="link" href="https://youtu.be/Bdr_LnLQFcg" target="_blank" rel="noopener" aria-label="모든 순간이 너였다 Book Trailer 영상 보기"></a>
+          </article>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="win">
+    <div class="win__bar" aria-hidden="true"><span class="win__app"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4.5 20.5c.6-3.9 3.7-6 7.5-6s6.9 2.1 7.5 6"/></svg>이력</span><span class="win__caps"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 12h10"/></svg><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="7" width="10" height="10" rx="1.5"/></svg><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7l10 10M17 7L7 17"/></svg></span></div>
+    <div class="app__top"><a class="app__back" href="#top" aria-label="홈 화면으로"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></a><span>이력</span></div>
+    <div class="win__body">
+      <h2>EXPERIENCE</h2>
+      <div class="panel me">
+        <button class="face" type="button" data-img="img/profile.jpg" aria-label="프로필 사진 크게 보기"><img src="img/profile.jpg" alt="" loading="lazy"></button>
+        <p><strong>서이솔</strong><span>Video Content Creator</span></p>
+        <p class="me__total">총 경력 4년</p>
+      </div>
+      <ol class="panel jobs">
+        <li class="job">
+          <div class="job__who"><h3>스타트업 (재직 중)</h3><p>콘텐츠 제작, 브랜드 디자인</p></div>
+          <p class="job__period num">2026.08 ~ 현재</p>
+          <ul class="job__points"><li>주식 유튜브 채널 런칭 준비: 콘텐츠 기획·제작</li><li>회사 캐릭터 디자인, 브랜드 디자인</li></ul>
+        </li>
+        <li class="job">
+          <div class="job__who"><h3>(주)에프오씨씨</h3><p>콘텐츠팀 파트장</p></div>
+          <p class="job__period num">2024.04 ~ 2026.05</p>
+          <ul class="job__points"><li>콘텐츠 기획·제작: 채널 업로드용 롱폼/숏폼</li><li>디자인: 채널 아트 브랜딩, 모션그래픽·자막, 카드뉴스·상세페이지 등 홍보물</li><li>채널 운영 관리: 브랜드 채널 전반 운영·일정 관리</li></ul>
+        </li>
+        <li class="job">
+          <div class="job__who"><h3>SBS 시사교양국</h3><p>AD (조연출)</p></div>
+          <p class="job__period num">2022.09 ~ 2023.01</p>
+          <ul class="job__points"><li>〈국가수사본부〉 촬영 보조, 촬영 데이터 관리 등 조연출 업무</li></ul>
+        </li>
+        <li class="job">
+          <div class="job__who"><h3>YouTube 아겁문TV</h3><p>프리랜서 영상 편집</p></div>
+          <p class="job__period num">2020.11 ~ 2021.12</p>
+          <ul class="job__points"><li>〈아문〉 가십·뉴스 콘텐츠 편집</li><li>〈조폭실록〉 한국 조폭의 역사를 소개하는 콘텐츠 편집 (현재 채널 삭제)</li></ul>
+        </li>
+        <li class="job">
+          <div class="job__who"><h3>MBC 예능 1부</h3><p>FD</p></div>
+          <p class="job__period num">2019.03 ~ 2020.03</p>
+          <ul class="job__points"><li>〈구해줘! 홈즈〉 1~4화, 〈놀면 뭐하니?〉 1~33화</li><li>촬영본 인제스트, 편집용 자료 찾기, 송출 과정 진행 관리</li></ul>
+        </li>
+      </ol>
+      <div class="resume">
+        <div class="panel">
+          <h3>학력</h3>
+          <dl><div><dt class="num">2015.03 ~ 2019.02</dt><dd>경인여자대학교 영상방송학과 졸업</dd></div><div><dt class="num">2012.03 ~ 2015.02</dt><dd>계산여자고등학교 졸업</dd></div></dl>
+        </div>
+        <div class="panel">
+          <h3>자격증</h3>
+          <dl><div><dt class="num">2016.12</dt><dd>영상편집전문인 2급</dd></div><div><dt class="num">2016.06</dt><dd>디지털영상편집 1급</dd></div></dl>
+        </div>
+        <div class="panel">
+          <h3>수상</h3>
+          <dl><div><dt class="num">2018</dt><dd>경인여대 영상방송학과 졸업작품전시회 우수상</dd></div><div><dt class="num">2018</dt><dd>학사학위과정 캡스톤디자인 공모전 우수상</dd></div><div><dt class="num">2017</dt><dd>경인여대 영상방송과 졸업작품전시회 인기상</dd></div></dl>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills" class="win">
+    <div class="win__bar" aria-hidden="true"><span class="win__app"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="6.5" height="6.5" rx="2"/><rect x="13.5" y="4" width="6.5" height="6.5" rx="2"/><rect x="4" y="13.5" width="6.5" height="6.5" rx="2"/><rect x="13.5" y="13.5" width="6.5" height="6.5" rx="2"/></svg>설치된 앱</span><span class="win__caps"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 12h10"/></svg><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="7" width="10" height="10" rx="1.5"/></svg><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7l10 10M17 7L7 17"/></svg></span></div>
+    <div class="app__top"><a class="app__back" href="#top" aria-label="홈 화면으로"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></a><span>설치된 앱</span></div>
+    <div class="win__body">
+      <h2>SKILLS</h2>
+      <div class="panel skills">
+        <h3>편집·모션</h3>
+        <ul><li><img src="img/skills/pr.png" alt="" width="36" height="36" loading="lazy"><span class="skills__name">Premiere Pro</span><span class="skills__desc">컷편집, Lumetri Color 색보정, 자막, 사운드 싱크/믹싱</span></li><li><img src="img/skills/ae.png" alt="" width="36" height="36" loading="lazy"><span class="skills__name">After Effects</span><span class="skills__desc">모션그래픽, 자막 애니메이션, Premiere Pro 편집본 연동 마무리</span></li></ul>
+      </div>
+      <div class="panel skills">
+        <h3>디자인</h3>
+        <ul><li><img src="img/skills/ps.png" alt="" width="36" height="36" loading="lazy"><span class="skills__name">Photoshop</span><span class="skills__desc">사진 편집, 리터칭, 디지털 아트워크, 목업 디자인</span></li><li><img src="img/skills/ai.png" alt="" width="36" height="36" loading="lazy"><span class="skills__name">Illustrator</span><span class="skills__desc">로고·아이콘, 벡터 그래픽, 브랜드 요소 제작</span></li><li><img src="img/skills/figma.png" alt="" width="36" height="36" loading="lazy"><span class="skills__name">Figma</span><span class="skills__desc">UI/UX 디자인, 프로토타입, 웹사이트 디자인, 협업</span></li><li><img src="img/skills/canva.png" alt="" width="36" height="36" loading="lazy"><span class="skills__name">Canva</span><span class="skills__desc">소셜 미디어·마케팅 자료, 프레젠테이션 제작</span></li></ul>
+      </div>
+      <div class="panel skills">
+        <h3>AI</h3>
+        <ul><li><img src="img/skills/gemini.svg" alt="" width="36" height="36" loading="lazy"><span class="skills__name">Gemini</span><span class="skills__desc">컨셉 아트, 브랜드 비주얼 아이데이션</span></li><li><img src="img/skills/claude.png" alt="" width="36" height="36" loading="lazy"><span class="skills__name">Claude</span><span class="skills__desc">아이디어 발상, 콘텐츠 제작, 크리에이티브 작업 보조</span></li><li><img src="img/skills/chatgpt.svg" alt="" width="36" height="36" loading="lazy"><span class="skills__name">ChatGPT</span><span class="skills__desc">아이디어 발상, 카피·스크립트 초안 작성, 자료 조사·정리</span></li></ul>
+      </div>
+      <div class="panel skills">
+        <h3>기획·운영</h3>
+        <ul><li><img src="img/skills/notion.png" alt="" width="36" height="36" loading="lazy"><span class="skills__name">Notion</span><span class="skills__desc">프로젝트 관리, 문서화, 협업 워크스페이스 구축</span></li><li><img src="img/skills/ppt.png" alt="" width="36" height="36" loading="lazy"><span class="skills__name">PowerPoint</span><span class="skills__desc">프레젠테이션 디자인, 비즈니스 문서, 시각적 커뮤니케이션</span></li><li><img src="img/skills/excel.png" alt="" width="36" height="36" loading="lazy"><span class="skills__name">Excel</span><span class="skills__desc">데이터 필터링·정렬, 분석·시각화, VBA 기초</span></li><li><img src="img/skills/cafe24.jpg" alt="" width="36" height="36" loading="lazy"><span class="skills__name">카페24</span><span class="skills__desc">상품·상세페이지 업로드, 배너/레이아웃 편집, 재고·주문 관리</span></li></ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="win mail">
+    <div class="win__bar" aria-hidden="true"><span class="win__app"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M4 7.5l8 5.5 8-5.5"/></svg>받은 메일</span><span class="win__caps"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 12h10"/></svg><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="7" width="10" height="10" rx="1.5"/></svg><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7l10 10M17 7L7 17"/></svg></span></div>
+    <div class="app__top"><a class="app__back" href="#top" aria-label="홈 화면으로"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></a><span>받은 메일</span></div>
+    <div class="win__body">
+      <h2 class="visually-hidden">CONTACT</h2>
+      <dl class="mail__head">
+        <div><dt>보낸 사람</dt><dd><span class="chip"><button class="face" type="button" data-img="img/profile.jpg" aria-label="프로필 사진 크게 보기"><img src="img/profile.jpg" alt="" loading="lazy"></button>서이솔<span>Video Content Creator</span></span></dd></div>
+        <div><dt>이메일</dt><dd><a href="mailto:solthfsol@gmail.com">solthfsol@gmail.com</a></dd></div>
+        <div><dt>전화</dt><dd><a href="tel:01079125645">010-7912-5645</a></dd></div>
+      </dl>
+      <div class="mail__body">
+        <p>기획부터 완성까지,<br>함께 콘텐츠를 만들어 갑니다.</p>
+      </div>
+      <div class="actions">
+        <a class="btn btn--primary" href="mailto:solthfsol@gmail.com">답장하기</a>
+        <a class="btn" href="tel:01079125645">전화 걸기</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="foot">
+    <p>시작부터 끝까지.</p>
+    <p>© 2026 Isol Seo</p>
+  </footer>
+</main>
+
+<nav class="taskbar" aria-label="작업 표시줄">
+  <div class="tb__apps">
+    <a class="tb__start" href="#top" data-tip="홈" aria-label="홈"><span class="tb__is">IS</span><span class="tb__label" aria-hidden="true">홈</span></a>
+    <a href="#projects" data-tip="대표 프로젝트" aria-label="대표 프로젝트"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.9l-5.2 2.7 1-5.8-4.3-4.1 5.9-.9z"/></svg><span class="tb__label" aria-hidden="true">프로젝트</span></a>
+    <a href="#works" data-tip="작업 폴더" aria-label="작업 폴더"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg><span class="tb__label" aria-hidden="true">작업</span></a>
+    <a href="#about" data-tip="이력" aria-label="이력"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4.5 20.5c.6-3.9 3.7-6 7.5-6s6.9 2.1 7.5 6"/></svg><span class="tb__label" aria-hidden="true">이력</span></a>
+    <a href="#skills" data-tip="설치된 앱" aria-label="설치된 앱"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="6.5" height="6.5" rx="2"/><rect x="13.5" y="4" width="6.5" height="6.5" rx="2"/><rect x="4" y="13.5" width="6.5" height="6.5" rx="2"/><rect x="13.5" y="13.5" width="6.5" height="6.5" rx="2"/></svg><span class="tb__label" aria-hidden="true">스킬</span></a>
+    <a href="#contact" data-tip="받은 메일" aria-label="받은 메일"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M4 7.5l8 5.5 8-5.5"/></svg><span class="tb__label" aria-hidden="true">연락</span></a>
+  </div>
+  <div class="tb__tray" aria-hidden="true">
+    <span>한</span><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M2.5 9a14 14 0 0 1 19 0M5.5 12.5a9.5 9.5 0 0 1 13 0M8.8 16a5 5 0 0 1 6.4 0"/><circle cx="12" cy="19" r=".8"/></svg>
+    <span class="tb__clock"><span data-clock>오전 9:41</span><span data-date></span></span>
   </div>
 </nav>
 
-<header class="hero" id="top">
-  <div class="wrap">
-    <div>
-      <div class="eyebrow">Video Content Creator</div>
-      <h1>기획·촬영·편집·디자인,<br><span>End-to-End.</span></h1>
-      <p>시작부터 끝까지. 방송 현장과 브랜드 채널에서 쌓은 <br>4년의 경험으로 콘텐츠의 전 과정을 책임집니다.</p>
-      <div class="cta">
-        <a class="btn primary" href="#projects">프로젝트 보기</a>
-        <a class="btn" href="#contact">연락하기</a>
-      </div>
-    </div>
-    <img src="img/profile.jpg" alt="서이솔 프로필 사진">
-  </div>
-</header>
-
-<section id="about">
-  <div class="wrap">
-    <div class="eyebrow">About Me</div>
-    <h2>서이솔 · Isol Seo</h2>
-    <div class="about">
-      <div class="panel">
-        <h3>Professional Experience <small>총 경력 4년</small></h3>
-        <div class="job">
-          <div class="head">스타트업 (재직 중) <span>2026.08 ~ 현재</span></div>
-          <div class="role">콘텐츠 제작 · 브랜드 디자인</div>
-          <ul class="dots">
-            <li>주식 유튜브 채널 런칭 준비 — 콘텐츠 기획·제작</li>
-            <li>회사 캐릭터 디자인 · 브랜드 디자인</li>
-          </ul>
-        </div>
-        <div class="job">
-          <div class="head">(주)에프오씨씨 <span>2024.04 ~ 2026.05</span></div>
-          <div class="role">콘텐츠팀 파트장</div>
-          <ul class="dots">
-            <li>콘텐츠 기획·제작 — 채널 업로드용 롱폼/숏폼</li>
-            <li>디자인 — 채널 아트 브랜딩, 모션그래픽·자막, 카드뉴스·상세페이지 등 홍보물</li>
-            <li>채널 운영 관리 — 브랜드 채널 전반 운영·일정 관리</li>
-          </ul>
-        </div>
-        <div class="job">
-          <div class="head">SBS 시사교양국 <span>2022.09 ~ 2023.01</span></div>
-          <div class="role">AD (조연출)</div>
-          <ul class="dots"><li>&lt;국가수사본부&gt; 촬영 보조, 촬영 데이터 관리 등 조연출 업무</li></ul>
-        </div>
-        <div class="job">
-          <div class="head">YouTube 아겁문TV <span>2020.11 ~ 2021.12</span></div>
-          <div class="role">프리랜서 영상 편집</div>
-          <ul class="dots">
-            <li>&lt;아문&gt; 가십·뉴스 콘텐츠 편집</li>
-            <li>&lt;조폭실록&gt; 한국 조폭의 역사를 소개하는 콘텐츠 편집 (현재 채널 삭제)</li>
-          </ul>
-        </div>
-        <div class="job">
-          <div class="head">MBC 예능 1부 <span>2019.03 ~ 2020.03</span></div>
-          <div class="role">FD</div>
-          <ul class="dots">
-            <li>&lt;구해줘! 홈즈&gt; 1~4화, &lt;놀면 뭐하니?&gt; 1~33화</li>
-            <li>촬영본 인제스트, 편집용 자료 찾기, 송출 과정 진행 관리</li>
-          </ul>
-        </div>
-      </div>
-      <div class="panel">
-        <h3>Resume</h3>
-        <dl class="resume">
-          <dt>학력</dt>
-          <dd><b>2015.03 ~ 2019.02</b>경인여자대학교 영상방송학과 졸업</dd>
-          <dd><b>2012.03 ~ 2015.02</b>계산여자고등학교 졸업</dd>
-          <dt>자격증</dt>
-          <dd><b>2016.12</b>영상편집전문인 2급</dd>
-          <dd><b>2016.06</b>디지털영상편집 1급</dd>
-          <dt>수상</dt>
-          <dd><b>2018</b>경인여대 영상방송학과 졸업작품전시회 우수상</dd>
-          <dd><b>2018</b>학사학위과정 캡스톤디자인 공모전 우수상</dd>
-          <dd><b>2017</b>경인여대 영상방송과 졸업작품전시회 인기상</dd>
-        </dl>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="projects">
-  <div class="wrap">
-    <div class="eyebrow">Representative Projects</div>
-    <h2>대표 프로젝트</h2>
-    <div class="tabs" role="group" aria-label="프로젝트 분류">
-      <button aria-pressed="true" data-f="video">Video</button>
-      <button aria-pressed="false" data-f="graphic">Graphic</button>
-    </div>
-    <div class="grid">
-      <article class="card" data-c="video">
-        <img src="img/v-ad.jpg" alt="광고 영상" loading="lazy">
-        <div class="body">
-          <div class="meta">Video · 2026.03 · Digital Advertising</div>
-          <h3>AD 영상</h3>
-          <p>HITUP·포크피플 앱 홍보(메타 광고 1080×1080, 롱/숏 버전)와 부동산 수업 광고. 플랫폼 규격별 편집.</p>
-          <div class="tags"><span>After Effects</span><span>Premiere Pro</span><span>Photoshop</span><span>Illustrator</span></div>
-          <button class="link" type="button" aria-label="목록 보기"></button>
-          <ul class="links" hidden><li><a href="https://drive.google.com/file/d/1HGjL-SXnKFmVmjI5LkcJyzmyHYHwXEZc/view" target="_blank" rel="noopener">HITUP 메타 광고 (1080×1080)<small>Google Drive</small></a></li><li><a href="https://drive.google.com/file/d/1yZQUF7SLCWrM1aagKEAxX6ZG9FIq8N-0/view" target="_blank" rel="noopener">FOCCPeople AD-01 (Long ver.)<small>Google Drive</small></a></li><li><a href="https://drive.google.com/file/d/1yZQUF7SLCWrM1aagKEAxX6ZG9FIq8N-0/view" target="_blank" rel="noopener">FOCCPeople AD-01 (Short ver.)<small>Google Drive</small></a></li><li><a href="https://youtube.com/shorts/L8tQeaQIkRk" target="_blank" rel="noopener">부동산 수업 광고 — #부동산 #경매 #강의<small>Shorts</small></a></li><li><a href="https://youtube.com/shorts/6roo1DHDDec" target="_blank" rel="noopener">부동산 수업 광고 — 멀쩡한 건물 사지 마세요<small>Shorts</small></a></li></ul>
-        </div>
-      </article>
-      <article class="card" data-c="graphic">
-        <img src="img/g-detail.jpg" alt="원데이 클래스 상세페이지" loading="lazy">
-        <div class="body">
-          <div class="meta">Graphic · 2026.03</div>
-          <h3>상세페이지 디자인</h3>
-          <p>팝업스토어 원데이 클래스 상세페이지를 AI로 HTML 템플릿화. 소재별 디자인·카피 변경과 업로드·관리까지 단독 제작.</p>
-          <div class="tags"><span>Claude</span><span>Gemini</span><span>Website</span></div>
-          <button class="link" type="button" aria-label="목록 보기"></button>
-          <ul class="links" hidden><li><a href="detail/template.html" target="_blank" rel="noopener">원데이 클래스 상세페이지 템플릿<small>HTML</small></a></li><li><a href="detail/calligraphy.html" target="_blank" rel="noopener">이광호 서예가 — 한글 서예 프리미엄 오브제<small>HTML</small></a></li><li><a href="detail/diffuser.html" target="_blank" rel="noopener">오하니 조향사 — 나만의 프리미엄 디퓨저<small>HTML</small></a></li><li><a href="detail/myodeok.html" target="_blank" rel="noopener">묘덕선생 — 인생의 시작: 나를 마주하고, 나를 찾는 시간<small>HTML</small></a></li></ul>
-        </div>
-      </article>
-      <article class="card" data-c="graphic">
-        <img src="img/g-card.jpg" alt="트래블호스트프로그램 카드뉴스" loading="lazy">
-        <div class="body">
-          <div class="meta">Graphic · 2026 · Instagram</div>
-          <h3>카드뉴스</h3>
-          <p>FOCC 팝업스토어 원데이 클래스 홍보물과 트래블호스트프로그램 8기 모집 카드뉴스(6컷) 기획·디자인.</p>
-          <div class="tags"><span>Figma</span><span>Photoshop</span><span>Claude</span><span>Gemini</span></div>
-          <button class="link" type="button" aria-label="목록 보기"></button>
-          <ul class="links" hidden><li><a href="https://www.instagram.com/p/DW6DZQpk4Yb/" target="_blank" rel="noopener">원데이 클래스 디퓨저 홍보물<small>Instagram</small></a></li><li><a href="https://www.instagram.com/p/DWBtTPPE12Q/" target="_blank" rel="noopener">트래블호스트프로그램 8기 모집 카드뉴스<small>Instagram</small></a></li></ul>
-        </div>
-      </article>
-      <article class="card" data-c="video">
-        <img src="img/v-hitup.jpg" style="object-fit:contain;background:#fff" alt="Hitup Studio 채널 배너" loading="lazy">
-        <div class="body">
-          <div class="meta">Video · 2025.05 ~ 2026.02</div>
-          <h3>Hitup Studio</h3>
-          <p>낚시 입문 예능 유튜브 채널의 롱폼·숏폼 기획·촬영·편집 총괄. 구독자 약 9,850명, 누적 조회수 약 126만 회 성장에 기여.</p>
-          <div class="tags"><span>Premiere Pro</span><span>After Effects</span><span>Photoshop</span><span>Illustrator</span></div>
-          <button class="link" type="button" aria-label="목록 보기"></button>
-          <ul class="links" hidden><li><a href="https://www.youtube.com/playlist?list=PLzEeFHCNibELnV1r7tlI2d7EExVBf07VP" target="_blank" rel="noopener">히트업스토리<small>YouTube 재생목록</small></a></li><li><a href="https://www.youtube.com/playlist?list=PLzEeFHCNibEK4zZeDSqyE4LyzZ8I2kIuM" target="_blank" rel="noopener">춤추는 낚시꾼<small>YouTube 재생목록</small></a></li><li><a href="https://www.youtube.com/playlist?list=PLzEeFHCNibEIkdyUW2WVNOHmvH1Tcg3ag" target="_blank" rel="noopener">프리 낚시꾼<small>YouTube 재생목록</small></a></li><li><a href="https://www.youtube.com/playlist?list=PLzEeFHCNibEJW7Up-7TCuzXn-aS6Xl8AU" target="_blank" rel="noopener">낚린 탈출기<small>YouTube 재생목록</small></a></li></ul>
-        </div>
-      </article>
-      <article class="card" data-c="graphic">
-        <img src="img/g-hitup.jpg" alt="Hitup Studio 채널 디자인" loading="lazy">
-        <div class="body">
-          <div class="meta">Graphic · 2025.05 ~ 2026.02</div>
-          <h3>‘Hitup Studio’ 채널 디자인</h3>
-          <p>로고·채널 아트, 썸네일 약 170편, Intro/Outro·자막 스타일 등 채널 비주얼 아이덴티티 총괄.</p>
-          <div class="tags"><span>Photoshop</span><span>Illustrator</span><span>Figma</span></div>
-          <a class="link" href="https://www.youtube.com/@HITUP_Studio" target="_blank" rel="noopener" aria-label="채널 보기"></a>
-        </div>
-      </article>
-      <article class="card" data-c="video">
-        <img src="img/v-hani.jpg" alt="하니날다 영상" loading="lazy">
-        <div class="body">
-          <div class="meta">Video · 2026.01</div>
-          <h3>하니날다</h3>
-          <p>한국도서관문화진흥원 ‘책의 숲’에 소개된 향수 영상. Gemini로 향의 무드를 표현하는 AI 비주얼 제작.</p>
-          <div class="tags"><span>Premiere Pro</span><span>After Effects</span><span>Photoshop</span></div>
-          <a class="link" href="https://www.youtube.com/watch?v=KlQTcE-bbWY" target="_blank" rel="noopener" aria-label="영상 보기"></a>
-        </div>
-      </article>
-      <article class="card" data-c="graphic">
-        <img src="img/g-book.jpg" alt="트래블 호스트 04 북커버" loading="lazy">
-        <div class="body">
-          <div class="meta">Graphic · 2025.07</div>
-          <h3>북커버 디자인</h3>
-          <p>〈트래블 호스트 04〉 국외 여행 인솔자 양성 교재. 기수별로 확장 가능한 시리즈 디자인 시스템으로 제작.</p>
-          <div class="tags"><span>Illustrator</span><span>Package</span></div>
-          <button class="link" type="button" data-img="img/g-book.jpg" aria-label="이미지 크게 보기"></button>
-        </div>
-      </article>
-      <article class="card" data-c="video">
-        <img src="img/v-officenex.jpg" alt="오피스넥스 숏폼" loading="lazy" style="object-position:center 6%">
-        <div class="body">
-          <div class="meta">Video · 2025.03 · Shorts</div>
-          <h3>오피스넥스 숏폼</h3>
-          <p>FOCC 재직 중 담당한 사무용품 브랜드 채널. 초기 콘텐츠 기획과 포맷 설계, 7회차까지 촬영·편집 직접 진행.</p>
-          <div class="tags"><span>기획</span><span>촬영</span><span>Premiere Pro</span></div>
-          <button class="link" type="button" aria-label="목록 보기"></button>
-          <ul class="links" hidden><li><a href="https://www.youtube.com/shorts/55YeqOpRHfI" target="_blank" rel="noopener">일할 때 쓰기 좋은 형광펜<small>Shorts</small></a></li><li><a href="https://www.youtube.com/@officenex_official/shorts" target="_blank" rel="noopener">오피스넥스 채널 숏폼 전체<small>YouTube</small></a></li></ul>
-        </div>
-      </article>
-      <article class="card" data-c="video">
-        <img src="img/v-focc.jpg" alt="에프오씨씨 다이어리 썸네일" loading="lazy">
-        <div class="body">
-          <div class="meta">Video · 2025.01 ~ 2025.03</div>
-          <h3>에프오씨씨 다이어리</h3>
-          <p>스타트업 브이로그 시리즈. 기획·촬영부터 롱폼 편집, 알고리즘 대응 숏폼 재구성까지. 숏폼 1만 회 이상 조회.</p>
-          <div class="tags"><span>Premiere Pro</span><span>After Effects</span><span>Illustrator</span><span>Photoshop</span></div>
-          <button class="link" type="button" aria-label="목록 보기"></button>
-          <ul class="links" hidden><li><a href="https://youtu.be/MTtt9P7hr3U" target="_blank" rel="noopener">니들은 스타트업 피지 마라<small>YouTube</small></a></li><li><a href="https://youtu.be/DeyBte2AbC0" target="_blank" rel="noopener">뭔가 보여드리겠습니다<small>YouTube</small></a></li><li><a href="https://youtu.be/eQX03wwC8zc" target="_blank" rel="noopener">2025 역마살, '역삼'부터 '인천'까지<small>YouTube</small></a></li><li><a href="https://youtube.com/shorts/uzFRhbeR7pU" target="_blank" rel="noopener">북유럽 여행 성수기 시즌<small>Shorts</small></a></li><li><a href="https://youtube.com/shorts/NwKKdQ79KxM" target="_blank" rel="noopener">니들은 스타트업 피지 마라 (숏폼, 1만 회+)<small>Shorts</small></a></li><li><a href="https://www.youtube.com/@FOCCPEOPLE/shorts" target="_blank" rel="noopener">FOCCPEOPLE 채널 숏폼 전체<small>YouTube</small></a></li></ul>
-        </div>
-      </article>
-      <article class="card" data-c="video">
-        <img src="img/v-brand.jpg" alt="포크피플 브랜드그라피 썸네일" loading="lazy">
-        <div class="body">
-          <div class="meta">Video · 2024.10</div>
-          <h3>포크피플 : 브랜드그라피</h3>
-          <p>사람의 이야기를 담은 인터뷰 콘텐츠. 컷편집·이야기 구성, 인터뷰이 자막과 Intro/Outro 모션그래픽, 썸네일.</p>
-          <div class="tags"><span>Premiere Pro</span><span>After Effects</span><span>Photoshop</span><span>미리캔버스</span></div>
-          <button class="link" type="button" aria-label="목록 보기"></button>
-          <ul class="links" hidden><li><a href="https://youtu.be/oat8cLKUQ-g" target="_blank" rel="noopener">feat. 송강미술관 김명자 관장<small>YouTube</small></a></li><li><a href="https://youtu.be/QRuIPxKPjG8" target="_blank" rel="noopener">feat. 로드옥션 대표 김기환<small>YouTube</small></a></li><li><a href="https://youtu.be/Z7FULsfeKkg" target="_blank" rel="noopener">feat. ProTNS 최중락 대표<small>YouTube</small></a></li></ul>
-        </div>
-      </article>
-      <article class="card" data-c="video">
-        <img src="img/v-wedding.jpg" alt="결혼식 식전 영상" loading="lazy">
-        <div class="body">
-          <div class="meta">Video · 2023.09</div>
-          <h3>결혼식 식전 영상</h3>
-          <p>두 사람의 연애 스토리를 엮은 감성 영상. 사진 큐레이션부터 자막·모션그래픽·편집까지 단독 제작.</p>
-          <div class="tags"><span>Premiere Pro</span><span>After Effects</span><span>Photoshop</span></div>
-          <a class="link" href="https://youtu.be/IalDOjsE_FU" target="_blank" rel="noopener" aria-label="영상 보기"></a>
-        </div>
-      </article>
-      <article class="card" data-c="video">
-        <img src="img/v-hb.jpg" alt="HB MY SISTER 영상" loading="lazy">
-        <div class="body">
-          <div class="meta">Video · 2023.05</div>
-          <h3>HB MY SISTER</h3>
-          <p>가족들의 생일 축하 메시지를 카카오톡 채팅창 UI 스타일로 풀어낸 대화형 그래픽 영상.</p>
-          <div class="tags"><span>After Effects</span><span>Premiere Pro</span><span>Illustrator</span></div>
-          <a class="link" href="https://youtu.be/MU6p3IjGhXI" target="_blank" rel="noopener" aria-label="영상 보기"></a>
-        </div>
-      </article>
-      <article class="card" data-c="video">
-        <img src="img/v-amun.jpg" alt="아겁문TV 아문" loading="lazy">
-        <div class="body">
-          <div class="meta">Video · 2020.11 ~ 2021.12</div>
-          <h3>아겁문TV — 아문</h3>
-          <p>가십·뉴스 콘텐츠 시리즈 총 102편의 편집과 자막·타이틀 그래픽 디자인 담당.</p>
-          <div class="tags"><span>Premiere Pro</span><span>After Effects</span><span>Photoshop</span></div>
-          <button class="link" type="button" aria-label="목록 보기"></button>
-          <ul class="links" hidden><li><a href="https://youtu.be/O8tJ9j68p9o" target="_blank" rel="noopener">드라마 논란<small>YouTube</small></a></li><li><a href="https://youtu.be/xctRHCA7IXY" target="_blank" rel="noopener">위드 코로나<small>YouTube</small></a></li></ul>
-        </div>
-      </article>
-      <article class="card" data-c="video">
-        <img src="img/v-jopok.jpg" alt="아겁문TV 조폭실록" loading="lazy">
-        <div class="body">
-          <div class="meta">Video · 2020.11 ~ 2021.12</div>
-          <h3>아겁문TV — 조폭실록</h3>
-          <p>한국 조폭의 역사를 소개하는 시리즈. 컷편집·구성과 자막·타이틀 그래픽 디자인 담당.</p>
-          <div class="tags"><span>Premiere Pro</span><span>After Effects</span><span>Illustrator</span></div>
-          <button class="link" type="button" aria-label="목록 보기"></button>
-          <ul class="links" hidden><li><a href="https://youtu.be/oYyLRSgTJEg" target="_blank" rel="noopener">예고편<small>YouTube</small></a></li><li><a href="https://youtu.be/7adYW6R3c18" target="_blank" rel="noopener">1편<small>YouTube</small></a></li><li><a href="https://youtu.be/B-5XP67_zCQ" target="_blank" rel="noopener">2편<small>YouTube</small></a></li></ul>
-        </div>
-      </article>
-      <article class="card" data-c="video">
-        <img src="img/v-book.jpg" alt="모든 순간이 너였다 북트레일러" loading="lazy">
-        <div class="body">
-          <div class="meta">Video · 2018.04 · 졸업작품</div>
-          <h3>모든 순간이 너였다 Book Trailer</h3>
-          <p>소설을 모티브로 한 북트레일러 기획·연출. 도서 이미지와 타이포그래피 모션그래픽.</p>
-          <div class="tags"><span>After Effects</span><span>Illustrator</span><span>Premiere Pro</span></div>
-          <a class="link" href="https://youtu.be/Bdr_LnLQFcg" target="_blank" rel="noopener" aria-label="영상 보기"></a>
-        </div>
-      </article>
-    </div>
-  </div>
-</section>
-
-<section id="skills">
-  <div class="wrap">
-    <div class="eyebrow">Skills</div>
-    <h2>다루는 도구</h2>
-    <div class="skills">
-      <div class="skill"><img src="img/skills/pr.png" alt="" width="40" height="40"><h3>Premiere Pro</h3><p>컷편집, Lumetri Color 색보정, 자막, 사운드 싱크/믹싱</p></div>
-      <div class="skill"><img src="img/skills/ae.png" alt="" width="40" height="40"><h3>After Effects</h3><p>모션그래픽, 자막 애니메이션, Premiere Pro 편집본 연동 마무리</p></div>
-      <div class="skill"><img src="img/skills/ps.png" alt="" width="40" height="40"><h3>Photoshop</h3><p>사진 편집, 리터칭, 디지털 아트워크, 목업 디자인</p></div>
-      <div class="skill"><img src="img/skills/ai.png" alt="" width="40" height="40"><h3>Illustrator</h3><p>로고·아이콘, 벡터 그래픽, 브랜드 요소 제작</p></div>
-      <div class="skill"><img src="img/skills/figma.png" alt="" width="40" height="40"><h3>Figma</h3><p>UI/UX 디자인, 프로토타입, 웹사이트 디자인, 협업</p></div>
-      <div class="skill"><img src="img/skills/canva.png" alt="" width="40" height="40"><h3>Canva</h3><p>소셜 미디어·마케팅 자료, 프레젠테이션 제작</p></div>
-      <div class="skill"><img src="img/skills/gemini.svg" alt="" width="40" height="40"><h3>Gemini</h3><p>컨셉 아트, 브랜드 비주얼 아이데이션</p></div>
-      <div class="skill"><img src="img/skills/claude.png" alt="" width="40" height="40"><h3>Claude</h3><p>아이디어 발상, 콘텐츠 제작, 크리에이티브 작업 보조</p></div>
-      <div class="skill"><img src="img/skills/chatgpt.svg" alt="" width="40" height="40"><h3>ChatGPT</h3><p>아이디어 발상, 카피·스크립트 초안 작성, 자료 조사·정리</p></div>
-      <div class="skill"><img src="img/skills/notion.png" alt="" width="40" height="40"><h3>Notion</h3><p>프로젝트 관리, 문서화, 협업 워크스페이스 구축</p></div>
-      <div class="skill"><img src="img/skills/ppt.png" alt="" width="40" height="40"><h3>PowerPoint</h3><p>프레젠테이션 디자인, 비즈니스 문서, 시각적 커뮤니케이션</p></div>
-      <div class="skill"><img src="img/skills/excel.png" alt="" width="40" height="40"><h3>Excel</h3><p>데이터 필터링·정렬, 분석·시각화, VBA 기초</p></div>
-      <div class="skill"><img src="img/skills/cafe24.jpg" alt="" width="40" height="40"><h3>카페24</h3><p>상품·상세페이지 업로드, 배너/레이아웃 편집, 재고·주문 관리</p></div>
-    </div>
-  </div>
-</section>
-
-<section id="contact" class="contact">
-  <div class="wrap">
-    <div class="eyebrow">Contact</div>
-    <h2>함께 만들 콘텐츠가 있다면</h2>
-    <p>기획부터 완성까지, 편하게 연락 주세요.</p>
-    <div class="cta">
-      <a class="btn primary" href="mailto:solthfsol@gmail.com">solthfsol@gmail.com</a>
-      <a class="btn" href="tel:01079125645">010-7912-5645</a>
-    </div>
-  </div>
-</section>
-
 <dialog id="pick" aria-labelledby="pick-t">
-  <button class="close" type="button" aria-label="닫기">×</button>
+  <button class="close" type="button" aria-label="닫기"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7l10 10M17 7L7 17"/></svg></button>
   <h3 id="pick-t"></h3>
   <p class="hint">확인할 콘텐츠를 선택하세요</p>
   <ul></ul>
-  <img alt="">
+  <div class="deck" hidden>
+    <div class="deck__track" tabindex="0" aria-label="카드뉴스, 좌우로 넘겨 보기"></div>
+    <div class="deck__nav"><button class="deck__btn" type="button" data-step="-1" aria-label="이전 장"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button><span class="deck__count num"></span><button class="deck__btn" type="button" data-step="1" aria-label="다음 장"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button></div>
+  </div>
 </dialog>
 
-<footer>© 2026 Isol Seo. All rights reserved.</footer>
-
 <script>
-document.querySelectorAll('.tabs button').forEach(b => b.onclick = () => {
-  document.querySelectorAll('.tabs button').forEach(x => x.setAttribute('aria-pressed', x === b));
-  document.querySelectorAll('.card').forEach(c => c.hidden = b.dataset.f !== 'all' && c.dataset.c !== b.dataset.f);
-});
-document.querySelector('.tabs button').click(); // 첫 탭(Video)으로 시작
+// 시계: 상태 표시줄·작업 표시줄
+const tFmt = new Intl.DateTimeFormat('ko-KR', { hour: 'numeric', minute: '2-digit' });
+const tick = () => {
+  const n = new Date();
+  document.querySelectorAll('[data-clock]').forEach(e => e.textContent = tFmt.format(n));
+  document.querySelectorAll('[data-date]').forEach(e => e.textContent = n.getFullYear() + '-' + String(n.getMonth() + 1).padStart(2, '0') + '-' + String(n.getDate()).padStart(2, '0'));
+};
+tick(); setInterval(tick, 20000);
+
+// 작업 폴더 탭(Video·Graphic)
+const tabs = document.querySelectorAll('#works .tabs button');
+const crumb = document.querySelector('[data-crumb]');
+const show = f => {
+  tabs.forEach(x => x.setAttribute('aria-pressed', x.dataset.f === f));
+  document.querySelectorAll('#works .card').forEach(c => c.hidden = c.dataset.c !== f);
+  crumb.textContent = f === 'video' ? 'Video' : 'Graphic';
+};
+tabs.forEach(b => b.onclick = () => show(b.dataset.f));
+document.querySelectorAll('a[data-f]').forEach(a => a.addEventListener('click', () => show(a.dataset.f)));
+show('video');
+
+// 링크 목록·이미지 확대 팝업
 const dlg = document.getElementById('pick');
+const zoom = dlg.appendChild(document.createElement('img')); zoom.hidden = true; // 확대 이미지는 열 때 채움
 document.querySelectorAll('button.link').forEach(b => b.onclick = () => {
   const card = b.closest('.card');
   dlg.querySelector('h3').textContent = card.querySelector('h3').textContent;
-  const img = b.dataset.img, list = card.querySelector('.links');
+  const img = b.dataset.img, list = card.querySelector('.links'), slides = b.dataset.slides ? b.dataset.slides.split(' ') : null;
+  const title = card.querySelector('h3').textContent;
   dlg.classList.toggle('wide', !!img);
-  dlg.querySelector('.hint').hidden = !!img;
+  dlg.classList.toggle('slides', !!slides);
+  dlg.querySelector('.hint').hidden = !list;
+  deck.hidden = !slides;
+  if (slides) { track.innerHTML = slides.map((src, i) => '<img src="' + src + '" alt="' + title + ' ' + (i + 1) + '/' + slides.length + '">').join(''); track.scrollLeft = 0; count(); track.style.removeProperty('--ratio'); track.firstChild.onload = e => track.style.setProperty('--ratio', e.target.naturalWidth / e.target.naturalHeight); }
   dlg.querySelector('ul').innerHTML = list ? list.innerHTML : '';
-  dlg.querySelector('img').hidden = !img;
-  if (img) { dlg.querySelector('img').src = img; dlg.querySelector('img').alt = card.querySelector('h3').textContent; }
+  zoom.hidden = !img;
+  if (img) { zoom.src = img; zoom.alt = card.querySelector('h3').textContent; }
+  dlg.showModal();
+  if (slides) count(); // 열린 뒤에 폭이 생김
+});
+// 프로필 사진 크게 보기
+document.querySelectorAll('button.face').forEach(b => b.onclick = () => {
+  dlg.querySelector('h3').textContent = '서이솔';
+  dlg.classList.remove('wide', 'slides');
+  dlg.querySelector('.hint').hidden = true; deck.hidden = true; dlg.querySelector('ul').innerHTML = '';
+  zoom.hidden = false; zoom.src = b.dataset.img; zoom.alt = '서이솔 프로필 사진';
   dlg.showModal();
 });
 dlg.querySelector('.close').onclick = () => dlg.close();
+// 카드뉴스 넘겨 보기: 손가락으로 밀거나 버튼·방향키로 한 장씩
+const deck = dlg.querySelector('.deck'), track = deck.querySelector('.deck__track');
+const count = () => { const n = track.children.length, i = track.clientWidth ? Math.round(track.scrollLeft / track.clientWidth) : 0; deck.querySelector('.deck__count').textContent = (i + 1) + ' / ' + n;
+  deck.querySelectorAll('.deck__btn').forEach(x => x.disabled = x.dataset.step < 0 ? i === 0 : i === n - 1); };
+track.addEventListener('scroll', count, { passive: true });
+const still = matchMedia('(prefers-reduced-motion: reduce)');
+deck.querySelectorAll('.deck__btn').forEach(x => x.onclick = () => track.scrollBy({ left: x.dataset.step * track.clientWidth, behavior: still.matches ? 'auto' : 'smooth' }));
 dlg.onclick = e => { if (e.target === dlg) dlg.close(); }; // 바깥 클릭 시 닫기
+
+// 작업 표시줄: 지금 보고 있는 창 표시
+const tb = [...document.querySelectorAll('.tb__apps a')];
+// PC에선 이력·설치된 앱이 한 줄에 나란히 있으므로 둘 다 현재 위치로 표시
+const wide = matchMedia('(min-width: 900px)');
+const io = new IntersectionObserver(es => es.forEach(e => {
+  if (!e.isIntersecting) return;
+  const on = wide.matches && (e.target.id === 'about' || e.target.id === 'skills') ? ['#about', '#skills'] : ['#' + e.target.id];
+  tb.forEach(a => on.includes(a.hash) ? a.setAttribute('aria-current', 'location') : a.removeAttribute('aria-current'));
+}), { rootMargin: '-40% 0px -55% 0px' });
+document.querySelectorAll('#top, main > section[id]').forEach(x => io.observe(x));
 </script>
 </body>
 </html>

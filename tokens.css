@@ -1,0 +1,21 @@
+@font-face { font-family: "Pretendard"; font-weight: 400; font-display: swap; src: url("fonts/Pretendard-Regular.woff") format("woff"); }
+@font-face { font-family: "Pretendard"; font-weight: 500; font-display: swap; src: url("fonts/Pretendard-Medium.woff") format("woff"); }
+@font-face { font-family: "Pretendard"; font-weight: 700; font-display: swap; src: url("fonts/Pretendard-Bold.woff") format("woff"); }
+:root {
+  color-scheme: light;
+  --font: "Pretendard", "Apple SD Gothic Neo", "Malgun Gothic", system-ui, sans-serif;
+  /* 흑백 + 원래 포인트 컬러(#6233a3) */
+  --accent: #6233a3; --accent-hover: #532a8c; --accent-soft: oklch(93% 0.035 300); --on-accent: oklch(99% 0 0);
+  --ink: oklch(19% 0 0); --ink-2: oklch(34% 0 0); --muted: oklch(48% 0 0);
+  --bg: oklch(96.5% 0.004 300); --card: oklch(100% 0 0);
+  --line: oklch(0% 0 0 / 0.08); --line-2: oklch(0% 0 0 / 0.16);
+  --hover: oklch(0% 0 0 / 0.045); --press: oklch(0% 0 0 / 0.08);
+  --glass: oklch(100% 0 0 / 0.66); --glass-line: oklch(100% 0 0 / 0.7);
+  --mica: oklch(98.5% 0.006 300 / 0.8); --taskbar: oklch(96% 0.012 300 / 0.84);
+  --bloom-1: oklch(62% 0.16 298); --bloom-2: oklch(80% 0.1 320); --bloom-3: oklch(47% 0.17 292); --bloom-base: oklch(93% 0.025 300);
+  --w35: oklch(100% 0 0 / 0.35); --w45: oklch(100% 0 0 / 0.45); --w50: oklch(100% 0 0 / 0.5); --w55: oklch(100% 0 0 / 0.55); --w60: oklch(100% 0 0 / 0.6); --w70: oklch(100% 0 0 / 0.7); --w78: oklch(100% 0 0 / 0.78); --w80: oklch(100% 0 0 / 0.8); --w85: oklch(100% 0 0 / 0.85); --k06: oklch(0% 0 0 / 0.06); --k20: oklch(0% 0 0 / 0.2); --k40: oklch(0% 0 0 / 0.4); --k55: oklch(0% 0 0 / 0.55); --k60: oklch(0% 0 0 / 0.6); --shade-violet: oklch(30% 0.1 300 / 0.18); --bloom-light: oklch(99% 0.01 300);
+  --shadow-1: 0 1px 2px oklch(0% 0 0 / 0.06), 0 4px 16px oklch(0% 0 0 / 0.06);
+  --shadow-win: 0 2px 8px oklch(0% 0 0 / 0.08), 0 16px 48px oklch(30% 0.08 300 / 0.18);
+  --r-btn: 999px; --r-panel: 26px; --r-widget: 28px; --r-win: 10px;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1); --dur: 200ms;
+}
