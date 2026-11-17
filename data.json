@@ -179,7 +179,7 @@
       "title": "포크피플 : 브랜드그라피", "image": "img/v-brand.jpg", "alt": "포크피플 브랜드그라피 썸네일",
       "desc": "사람의 이야기를 담은 인터뷰 콘텐츠. 컷편집·이야기 구성, 인터뷰이 자막과 Intro/Outro 모션그래픽, 썸네일.",
       "role": {"solo":"편집 / 썸네일 디자인 / 영상 디자인 리뉴얼 / 일부 편 기획·촬영"},
-      "tools": ["Premiere Pro", "After Effects", "Photoshop", "미리캔버스"],
+      "tools": ["Premiere Pro", "After Effects", "Photoshop"],
       "links": [
         { "label": "feat. 송강미술관 김명자 관장", "via": "YouTube", "href": "https://youtu.be/oat8cLKUQ-g" },
         { "label": "feat. 로드옥션 대표 김기환", "via": "YouTube", "href": "https://youtu.be/QRuIPxKPjG8" },
