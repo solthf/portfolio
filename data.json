@@ -144,7 +144,7 @@
     { "id": "hadong", "kind": "video", "date": "2024.12 ~ 2025.01",
       "title": "FOCC, [ 하동 ]을 찍다", "image": "img/v-hadong.jpg", "alt": "FOCC, 하동을 찍다 썸네일",
       "desc": "FOCC X 다달이 하동 협업 국내여행 시리즈 6편. 하동의 여행자 숙소·공방·찻집을 찾아가 소개.",
-      "role": {"solo":"편집 / 후반 작업 / 썸네일","team":"기획 / 촬영 (팀장과)"},
+      "role": {"solo":"편집 / 후반 작업 / 썸네일","team":"기획 / 촬영"},
       "tools": ["Premiere Pro", "After Effects", "Photoshop", "Illustrator"],
       "links": [
         { "label": "'나'를 찾을 힐링 여행지, '하동'을 찍다.", "via": "YouTube", "href": "https://youtu.be/hJAOXqej3uo" },
@@ -167,7 +167,7 @@
     { "id": "boogaty", "kind": "video", "date": "2024.09 ~ 2024.12",
       "title": "부가티 킴", "image": "img/v-boogaty.jpg", "alt": "부가티 킴 EP.01 썸네일",
       "desc": "부동산 경매 유튜브 채널 런칭. 채널 디자인, 영상 디자인, 초기 썸네일 디자인을 잡고 EP.01~15 촬영·편집까지 진행.",
-      "role": {"solo":"영상 디자인","team":"기획 / 촬영 / 편집 (팀장과)"},
+      "role": {"solo":"영상 디자인","team":"기획 / 촬영 / 편집"},
       "tools": ["Premiere Pro", "After Effects", "Photoshop"],
       "links": [
         { "label": "EP.01 전세 사기 안 당하고 싶다면", "via": "YouTube", "href": "https://youtu.be/L3u_YRDEORk" },
