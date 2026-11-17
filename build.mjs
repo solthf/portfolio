@@ -32,7 +32,7 @@ const img = (p, cls = '', lazy = true) => {
   return `<img${cls ? ` class="${cls}"` : ''} src="${esc(p.image)}" alt="${esc(p.alt || p.title)}"${style ? ` style="${style}"` : ''}${lazy ? ' loading="lazy"' : ''}>`;
 };
 const meta = (p, kind = true) => `<p class="meta">${kind ? `<span class="meta__kind">${KIND[p.kind]}</span>` : ''}<span>${esc(p.date)}</span>${p.note ? `<span>${esc(p.note)}</span>` : ''}</p>`;
-const tools = p => `${p.role ? `<p class="role"><b>역할</b> ${esc(p.role)}</p>` : ''}<p class="tools">${p.tools.map(esc).join(', ')}</p>`;
+const tools = p => `<p class="tools">${p.tools.map(esc).join(', ')}</p>${p.role ? `<p class="role"><b>역할</b> ${esc(p.role)}</p>` : ''}`;
 // 초안의 '?'는 확인 전 표시라 배포 전에 모두 지워야 함
 const unsure = d.projects.filter(p => p.role?.includes('?')).map(p => p.id);
 if (unsure.length) console.warn(`역할 확인 필요(?): ${unsure.join(', ')}`);
