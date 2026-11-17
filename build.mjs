@@ -138,13 +138,6 @@ const html = `<!doctype html>
       <div class="gallery__grid">${stills}
       </div>
     </article>
-
-    <nav class="dock" aria-label="빠른 연락">
-      <a href="tel:${esc(s.contact.tel)}" aria-label="전화 걸기">${tile('phone', 'accent')}</a>
-      <a href="sms:${esc(s.contact.tel)}" aria-label="문자 보내기">${tile('chat', 'soft')}</a>
-      <a href="${mailto}" aria-label="메일 보내기">${tile('mail', 'dark')}</a>
-      <a href="#works" data-f="video" aria-label="작업 갤러리">${tile('image')}</a>
-    </nav>
   </header>
 
   <section id="projects" class="win">${chrome('star', '대표 프로젝트')}

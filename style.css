@@ -65,7 +65,7 @@ button { font: inherit; color: inherit; }
   background: linear-gradient(transparent, var(--k60)); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 
 /* 앱 아이콘 */
-.icons { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px 6px; padding: 6px 2px; }
+.icons { display: none; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px 6px; padding: 6px 2px; }
 .icon { display: flex; flex-direction: column; align-items: center; gap: 7px; color: var(--ink); text-decoration: none; text-align: center; border-radius: 12px; padding: 4px 0; }
 .icon__label { font-size: 0.8125rem; line-height: 1.25; }
 .tile { width: 60px; height: 60px; display: grid; place-items: center; border-radius: 30%; background: var(--card); color: var(--accent); box-shadow: var(--shadow-1);
@@ -74,8 +74,8 @@ button { font: inherit; color: inherit; }
 .tile--accent { background: var(--accent); color: var(--on-accent); }
 .tile--dark { background: var(--ink); color: var(--on-accent); }
 .tile--soft { background: var(--accent-soft); color: var(--accent); }
-.icon:hover .tile, .dock a:hover .tile { transform: translateY(-2px); }
-.icon:active .tile, .dock a:active .tile { transform: scale(0.94); }
+.icon:hover .tile { transform: translateY(-2px); }
+.icon:active .tile { transform: scale(0.94); }
 
 /* 폴더: 작업 썸네일이 꽂혀 있음 */
 .folder { position: relative; width: 60px; height: 60px; display: block; }
@@ -91,10 +91,6 @@ button { font: inherit; color: inherit; }
 .icon:hover .folder img:nth-of-type(1) { translate: -96% -1px; rotate: -16deg; }
 .icon:hover .folder img:nth-of-type(3) { translate: -4% -1px; rotate: 15deg; }
 
-/* 독(모바일) */
-.dock { display: flex; justify-content: space-around; padding: 12px 8px; border-radius: var(--r-widget); background: var(--glass); border: 1px solid var(--glass-line);
-  backdrop-filter: blur(28px) saturate(1.5); -webkit-backdrop-filter: blur(28px) saturate(1.5); }
-.dock a { border-radius: 30%; }
 
 /* 앱 화면(모바일) / 창(PC) */
 .win { background: var(--bg); border-radius: 30px 30px 0 0; margin-top: 10px; padding: 0 16px 56px; }
@@ -248,12 +244,12 @@ dialog > img { width: 100%; max-height: 70svh; object-fit: contain; margin-top: 
   :root { --r-btn: 6px; --r-panel: 8px; --r-widget: 12px; }
   html { scroll-padding-top: 24px; }
   body { padding-bottom: 48px; }
-  .dock, .app__top { display: none; }
+  .app__top { display: none; }
 
   .desk { max-width: 1320px; margin: 0 auto; padding: 0 32px 64px; display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 36px 28px; }
   .home { grid-column: 1 / -1; min-height: min(calc(100svh - 48px), 900px); grid-template-columns: 92px minmax(0, 6fr) minmax(0, 5fr); gap: 32px; align-items: stretch; align-content: center; padding: 20px 0; }
 
-  .icons { grid-template-columns: minmax(0, 1fr); align-self: start; gap: 6px; padding: 0; }
+  .icons { display: grid; grid-template-columns: minmax(0, 1fr); align-self: start; gap: 6px; padding: 0; }
   .icon { padding: 8px 4px; border-radius: 6px; border: 1px solid transparent; }
   .icon:hover { background: var(--w35); border-color: var(--w55); }
   .icon:active { background: var(--w50); }
