@@ -100,7 +100,7 @@ const stills = s.heroStills.map(id => byId[id]).map(p => `
           <a class="still" href="#${p.featured ? `p-${p.id}` : `w-${p.id}" data-f="${p.kind}`}">${img(p, '', false)}<span>${esc(p.title)}</span></a>`).join('');
 
 // [id, 아이콘, 창 이름, 모바일 하단 메뉴 이름]
-const sections = [['projects', 'star', '대표 프로젝트', '프로젝트'], ['works', 'folder', '작업 폴더', '작업'], ['about', 'person', '이력', '이력'], ['skills', 'apps', '설치된 앱', '스킬'], ['contact', 'mail', '받은 메일', '연락']];
+const sections = [['projects', 'star', '대표 프로젝트', '프로젝트'], ['about', 'person', '이력', '이력'], ['skills', 'apps', '설치된 앱', '스킬'], ['works', 'folder', '작업 폴더', '작업'], ['contact', 'mail', '받은 메일', '연락']];
 const mailto = `mailto:${esc(s.contact.email)}`;
 
 const html = `<!doctype html>
@@ -121,7 +121,7 @@ const html = `<!doctype html>
 
 <main class="desk">
   <header class="home" id="top">
-    <nav class="icons" aria-label="바로가기">${icon('#projects', tile('star', 'accent'), '대표 프로젝트')}${icon('#works', folder('video'), 'Video', ' data-f="video"')}${icon('#works', folder('graphic'), 'Graphic', ' data-f="graphic"')}${icon('#about', tile('person'), '이력')}${icon('#skills', tile('apps', 'soft'), '스킬')}${icon('#contact', tile('mail', 'dark'), '연락처')}
+    <nav class="icons" aria-label="바로가기">${icon('#projects', tile('star', 'accent'), '대표 프로젝트')}${icon('#about', tile('person'), '이력')}${icon('#skills', tile('apps', 'soft'), '스킬')}${icon('#works', folder('video'), 'Video', ' data-f="video"')}${icon('#works', folder('graphic'), 'Graphic', ' data-f="graphic"')}${icon('#contact', tile('mail', 'dark'), '연락처')}
     </nav>
 
     <article class="widget hello">
@@ -148,23 +148,6 @@ const html = `<!doctype html>
     <div class="win__body">
       <h2>PROJECTS</h2>
       <div class="features">${featured.map(feature).join('')}
-      </div>
-    </div>
-  </section>
-
-  <section id="works" class="win explorer">${chrome('folder', '작업 폴더')}
-    <div class="win__body">
-      <h2>WORKS</h2>
-      <div class="ex">
-        <div class="tabs" role="group" aria-label="프로젝트 분류">
-          <button type="button" aria-pressed="true" data-f="video">${svg('folder')}Video<span class="num">${count('video')}</span></button>
-          <button type="button" aria-pressed="false" data-f="graphic">${svg('folder')}Graphic<span class="num">${count('graphic')}</span></button>
-        </div>
-        <div class="ex__main">
-          <p class="ex__path">내 작업${svg('chev')}<span data-crumb>전체</span></p>
-          <div class="index">${rest.map(file).join('')}
-          </div>
-        </div>
       </div>
     </div>
   </section>
@@ -200,6 +183,23 @@ const html = `<!doctype html>
         <h3>${esc(g.group)}</h3>
         <ul>${g.items.map(t => `<li><img src="${esc(t.icon)}" alt="" width="36" height="36" loading="lazy"><span class="skills__name">${esc(t.name)}</span><span class="skills__desc">${esc(t.desc)}</span></li>`).join('')}</ul>
       </div>`).join('')}
+    </div>
+  </section>
+
+  <section id="works" class="win explorer">${chrome('folder', '작업 폴더')}
+    <div class="win__body">
+      <h2>WORKS</h2>
+      <div class="ex">
+        <div class="tabs" role="group" aria-label="프로젝트 분류">
+          <button type="button" aria-pressed="true" data-f="video">${svg('folder')}Video<span class="num">${count('video')}</span></button>
+          <button type="button" aria-pressed="false" data-f="graphic">${svg('folder')}Graphic<span class="num">${count('graphic')}</span></button>
+        </div>
+        <div class="ex__main">
+          <p class="ex__path">내 작업${svg('chev')}<span data-crumb>전체</span></p>
+          <div class="index">${rest.map(file).join('')}
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
