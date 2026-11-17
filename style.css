@@ -356,3 +356,6 @@ dialog > img { width: 100%; max-height: 70svh; object-fit: contain; margin-top: 
 .face:active img { scale: 0.97; }
 .me .face, .chip .face { grid-row: span 2; }
 @media (prefers-reduced-motion: reduce) { .face img { transition: none; } }
+.role { font-size: 0.8125rem; color: var(--ink-2); }
+.role b { margin-right: 6px; font-weight: 500; color: var(--accent); }
+.file .role { font-size: 0.75rem; }
