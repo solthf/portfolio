@@ -68,7 +68,7 @@ const feature = (p, i) => `
             <h3>${esc(p.title)}</h3>
             <p class="feature__desc">${esc(p.desc)}</p>
             ${tools(p)}
-            <div class="feature__act">${opener(p, true)}</div>
+          ${opener(p, false)}
           </div>
           ${p.figures
             ? `<dl class="feature__proof figures">${p.figures.map(f => `<div><dt>${esc(f.label)}</dt><dd class="figure num">${esc(f.value)}</dd></div>`).join('')}</dl>`

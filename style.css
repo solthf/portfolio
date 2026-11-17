@@ -109,7 +109,8 @@ button { font: inherit; color: inherit; }
 .feature { display: grid; gap: 18px; background: var(--card); border-radius: var(--r-panel); padding: 20px; }
 .feature__text { display: grid; gap: 10px; align-content: start; }
 .feature h3 { font-size: clamp(1.375rem, 1vw + 1rem, 1.875rem); }
-.feature__act { margin-top: 6px; }
+.feature { position: relative; transition: background-color var(--dur) var(--ease); }
+.feature:hover { background: color-mix(in oklab, var(--card) 94%, var(--accent)); }
 .feature__proof { order: -1; }
 .feature__proof img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 16px; background: var(--bg); }
 .figures { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
@@ -146,8 +147,8 @@ button { font: inherit; color: inherit; }
 .file h3 { font-size: 1rem; line-height: 1.3; }
 .file__desc { font-size: 0.875rem; color: var(--ink-2); line-height: 1.5; }
 .file .tools { font-size: 0.75rem; }
-.file .link { position: absolute; inset: 0; border: 0; padding: 0; background: transparent; border-radius: inherit; cursor: pointer; }
-.file .link:focus-visible { outline-offset: -2px; }
+.file .link, .feature .link { position: absolute; inset: 0; border: 0; padding: 0; background: transparent; border-radius: inherit; cursor: pointer; }
+.file .link:focus-visible, .feature .link:focus-visible { outline-offset: -2px; }
 
 /* 이력 */
 .me { display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: center; gap: 4px 14px; }
