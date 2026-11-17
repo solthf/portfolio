@@ -364,3 +364,4 @@ dialog > img { width: 100%; max-height: 70svh; object-fit: contain; margin-top: 
 .role__team { background: var(--accent-soft); color: var(--accent); }
 .role dd { color: var(--ink-2); }
 .file .role { font-size: 0.875rem; } /* 카드 설명(.file__desc)과 같은 크기 */
+.job__who h3 small { font-size: 0.8125rem; font-weight: 400; color: var(--muted); white-space: nowrap; }

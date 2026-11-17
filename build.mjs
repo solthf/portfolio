@@ -162,7 +162,7 @@ const html = `<!doctype html>
       </div>
       <ol class="panel jobs">${d.experience.jobs.map(j => `
         <li class="job">
-          <div class="job__who"><h3>${esc(j.org)}</h3><p>${esc(j.role)}</p></div>
+          <div class="job__who"><h3>${esc(j.org)}${j.note ? ` <small>${esc(j.note)}</small>` : ''}</h3><p>${esc(j.role)}</p></div>
           <p class="job__period num">${esc(j.period)}</p>
           <ul class="job__points">${j.points.map(t => `<li>${esc(t)}</li>`).join('')}</ul>
         </li>`).join('')}
