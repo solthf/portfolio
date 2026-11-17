@@ -54,7 +54,7 @@
       "title": "Hitup Studio", "image": "img/v-hitup-logo.jpg", "fit": "contain",
       "alt": "Hitup Studio 로고",
       "desc": "낚시 입문 예능 유튜브 채널의 롱폼·숏폼 콘텐츠.",
-      "role": {"solo":"기획 / 촬영(일부 제외) / 편집","team":"〈낚시전쟁〉 썸네일 / 하이라이트 숏폼 / 업로드 / 편집 피드백"},
+      "role": {"solo":"기획 / 촬영(일부 제외) / 편집 · 〈낚시전쟁〉 썸네일 / 하이라이트 숏폼 / 업로드 / 편집 피드백"},
       "figures": [ { "value": "9,850", "label": "구독자 (약, 명)" }, { "value": "126만", "label": "누적 조회수 (약, 회)" } ],
       "tools": ["Premiere Pro", "After Effects", "Photoshop", "Illustrator"],
       "links": [
