@@ -77,20 +77,6 @@
         { "label": "니들은 스타트업 피지 마라 (숏폼, 1만 회+)", "via": "Shorts", "href": "https://youtube.com/shorts/NwKKdQ79KxM" },
         { "label": "FOCCPEOPLE 채널 숏폼 전체", "via": "YouTube", "href": "https://www.youtube.com/@FOCCPEOPLE/shorts" } ] },
 
-    { "id": "specimen", "kind": "web", "date": "2026.10",
-      "title": "표본사회: 인원 선별 구역", "image": "img/w-specimen/01.jpg", "alt": "표본사회 사이트 첫 화면",
-      "desc": "12명이 12일 동안 한 명만 남는 추리게임 세계관 사이트. 참가자 카드, 암호로 여는 인물 파일, 답에 따라 표본이 배정되는 입소 검사, 등장인물의 휴대폰까지 구현. 공동 제작자 피드백을 받아 디벨롭.",
-      "role": {"solo":"기본 틀 기획 / 시나리오 / 캐릭터 / 대사 / 문서 / 사이트 제작"},
-      "tools": ["Claude", "Supabase", "GitHub Pages"],
-      "slides": ["img/w-specimen/01.jpg", "img/w-specimen/02.jpg", "img/w-specimen/03.jpg"] },
-
-    { "id": "taehwa", "kind": "web", "date": "2026.10",
-      "title": "태화여고 크라임씬", "image": "img/w-taehwa/01.jpg", "alt": "태화여고 홈페이지 첫 화면",
-      "desc": "추리게임 속 가상의 학교 홈페이지와 등장인물 휴대폰. 회원가입·회신서·공지로 게임이 이어지고, 휴대폰은 잠금 해제 후 문자·사진·통화 기록을 단서로 탐색.",
-      "role": {"solo":"세부 설정 / 사이트 제작(학교 홈페이지·휴대폰)", "team":"세계관·기본 틀(공동 제작자 기획)"},
-      "tools": ["Claude", "Supabase", "GitHub Pages"],
-      "slides": ["img/w-taehwa/01.jpg", "img/w-taehwa/02.jpg"] },
-
     { "id": "bookcover", "kind": "graphic", "date": "2025.07",
       "title": "북커버 디자인", "image": "img/g-book.jpg", "alt": "트래블 호스트 04 북커버",
       "desc": "〈트래블 호스트 04〉 국외 여행 인솔자 양성 교재. 기수별로 확장 가능한 시리즈 디자인 시스템으로 제작.",

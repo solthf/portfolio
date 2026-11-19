@@ -124,7 +124,7 @@ button { font: inherit; color: inherit; }
 
 /* 작업 폴더(탐색기 / 갤러리) */
 .ex { display: grid; gap: 14px; }
-.tabs { display: flex; flex-wrap: wrap; gap: 8px; }
+.tabs { display: flex; gap: 8px; }
 .tabs button { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 8px 18px; border-radius: 999px; border: 0; background: var(--card); cursor: pointer;
   font-weight: 500; transition: background-color var(--dur) var(--ease), color var(--dur) var(--ease); }
 .tabs button .ico { width: 18px; height: 18px; }
