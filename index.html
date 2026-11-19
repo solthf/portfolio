@@ -7,7 +7,7 @@
 <title>서이솔 포트폴리오</title>
 <meta name="description" content="기획·촬영·편집·디자인, End-to-End. 영상 콘텐츠 크리에이터 서이솔 포트폴리오">
 <link rel="preload" href="fonts/Pretendard-Bold.woff" as="font" type="font/woff" crossorigin>
-<link rel="stylesheet" href="style.css?v=946de6a6">
+<link rel="stylesheet" href="style.css?v=f4ba27cb">
 </head>
 <body>
 <!-- 이 파일은 build.mjs가 data.json으로 생성함. 직접 수정하지 말 것. -->
@@ -22,6 +22,7 @@
         <a class="icon" href="#skills"><span class="tile tile--soft" aria-hidden="true"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="6.5" height="6.5" rx="2"/><rect x="13.5" y="4" width="6.5" height="6.5" rx="2"/><rect x="4" y="13.5" width="6.5" height="6.5" rx="2"/><rect x="13.5" y="13.5" width="6.5" height="6.5" rx="2"/></svg></span><span class="icon__label">스킬</span></a>
         <a class="icon" href="#works" data-f="video"><span class="folder" aria-hidden="true"><span class="folder__back"></span><img src="img/v-focc.jpg" alt="" loading="lazy"><img src="img/v-ad.jpg" alt="" loading="lazy"><img src="img/v-hani.jpg" alt="" loading="lazy"><span class="folder__front"></span></span><span class="icon__label">Video</span></a>
         <a class="icon" href="#works" data-f="graphic"><span class="folder" aria-hidden="true"><span class="folder__back"></span><img src="img/g-book.jpg" alt="" loading="lazy"><img src="img/g-detail.jpg" alt="" loading="lazy"><img src="img/g-card.jpg" alt="" loading="lazy"><span class="folder__front"></span></span><span class="icon__label">Graphic</span></a>
+        <a class="icon" href="#works" data-f="web"><span class="folder" aria-hidden="true"><span class="folder__back"></span><img src="img/w-specimen/01.jpg" alt="" loading="lazy"><img src="img/w-taehwa/01.jpg" alt="" loading="lazy"><span class="folder__front"></span></span><span class="icon__label">Interactive</span></a>
         <a class="icon" href="#contact"><span class="tile tile--dark" aria-hidden="true"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M4 7.5l8 5.5 8-5.5"/></svg></span><span class="icon__label">연락처</span></a>
     </nav>
 
@@ -175,10 +176,29 @@
         <div class="tabs" role="group" aria-label="프로젝트 분류">
           <button type="button" aria-pressed="true" data-f="video"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>Video<span class="num">13</span></button>
           <button type="button" aria-pressed="false" data-f="graphic"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>Graphic<span class="num">6</span></button>
+          <button type="button" aria-pressed="false" data-f="web"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>Interactive<span class="num">2</span></button>
         </div>
         <div class="ex__main">
           <p class="ex__path">내 작업<svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg><span data-crumb>전체</span></p>
           <div class="index">
+          <article class="card file" id="w-specimen" data-c="web">
+            <div class="file__thumb"><img src="img/w-specimen/01.jpg" alt="표본사회 사이트 첫 화면" loading="lazy"><p class="meta"><span>2026.10</span></p></div>
+            <div class="file__main">
+              <h3>표본사회: 인원 선별 구역</h3>
+              <p class="file__desc">12명이 12일 동안 한 명만 남는 추리게임 세계관 사이트. 참가자 카드, 암호로 여는 인물 파일, 답에 따라 표본이 배정되는 입소 검사, 등장인물의 휴대폰까지 구현. 공동 제작자 피드백을 받아 디벨롭.</p>
+              <p class="tools">Claude, Supabase, GitHub Pages</p><dl class="role"><div><dt class="role__solo">단독</dt><dd>기본 틀 기획 / 시나리오 / 캐릭터 / 대사 / 문서 / 사이트 제작</dd></div></dl>
+            </div>
+            <button class="link" type="button" data-slides="img/w-specimen/01.jpg img/w-specimen/02.jpg img/w-specimen/03.jpg" aria-label="표본사회: 인원 선별 구역 3장 넘겨 보기"></button>
+          </article>
+          <article class="card file" id="w-taehwa" data-c="web">
+            <div class="file__thumb"><img src="img/w-taehwa/01.jpg" alt="태화여고 홈페이지 첫 화면" loading="lazy"><p class="meta"><span>2026.10</span></p></div>
+            <div class="file__main">
+              <h3>태화여고 크라임씬</h3>
+              <p class="file__desc">추리게임 속 가상의 학교 홈페이지와 등장인물 휴대폰. 회원가입·회신서·공지로 게임이 이어지고, 휴대폰은 잠금 해제 후 문자·사진·통화 기록을 단서로 탐색.</p>
+              <p class="tools">Claude, Supabase, GitHub Pages</p><dl class="role"><div><dt class="role__solo">단독</dt><dd>세부 설정 / 사이트 제작(학교 홈페이지·휴대폰)</dd></div><div><dt class="role__team">공동</dt><dd>세계관·기본 틀(공동 제작자 기획)</dd></div></dl>
+            </div>
+            <button class="link" type="button" data-slides="img/w-taehwa/01.jpg img/w-taehwa/02.jpg" aria-label="태화여고 크라임씬 2장 넘겨 보기"></button>
+          </article>
           <article class="card file" id="w-card-oneday" data-c="graphic">
             <div class="file__thumb"><img src="img/card-oneday/01.jpg" alt="FOCC 팝업스토어 원데이 클래스: 서예 카드뉴스 표지" style="object-position:center 12%" loading="lazy"><p class="meta"><span>2026.04</span></p></div>
             <div class="file__main">
@@ -424,7 +444,7 @@ const crumb = document.querySelector('[data-crumb]');
 const show = f => {
   tabs.forEach(x => x.setAttribute('aria-pressed', x.dataset.f === f));
   document.querySelectorAll('#works .card').forEach(c => c.hidden = c.dataset.c !== f);
-  crumb.textContent = f === 'video' ? 'Video' : 'Graphic';
+  crumb.textContent = {"video":"Video","graphic":"Graphic","web":"Interactive"}[f];
 };
 tabs.forEach(b => b.onclick = () => show(b.dataset.f));
 document.querySelectorAll('a[data-f]').forEach(a => a.addEventListener('click', () => show(a.dataset.f)));

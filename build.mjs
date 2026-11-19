@@ -7,7 +7,7 @@ import { createHash } from 'node:crypto';
 const d = JSON.parse(readFileSync(new URL('./data.json', import.meta.url), 'utf8'));
 const s = d.site;
 const esc = (v = '') => String(v).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
-const KIND = { video: 'Video', graphic: 'Graphic' };
+const KIND = { video: 'Video', graphic: 'Graphic', web: 'Interactive' };
 const byId = Object.fromEntries(d.projects.map(p => [p.id, p]));
 const ext = h => /^https?:/.test(h) || h.startsWith('detail/') ? ' target="_blank" rel="noopener"' : '';
 
@@ -121,7 +121,7 @@ const html = `<!doctype html>
 
 <main class="desk">
   <header class="home" id="top">
-    <nav class="icons" aria-label="바로가기">${icon('#projects', tile('star', 'accent'), '대표 프로젝트')}${icon('#about', tile('person'), '이력')}${icon('#skills', tile('apps', 'soft'), '스킬')}${icon('#works', folder('video'), 'Video', ' data-f="video"')}${icon('#works', folder('graphic'), 'Graphic', ' data-f="graphic"')}${icon('#contact', tile('mail', 'dark'), '연락처')}
+    <nav class="icons" aria-label="바로가기">${icon('#projects', tile('star', 'accent'), '대표 프로젝트')}${icon('#about', tile('person'), '이력')}${icon('#skills', tile('apps', 'soft'), '스킬')}${icon('#works', folder('video'), 'Video', ' data-f="video"')}${icon('#works', folder('graphic'), 'Graphic', ' data-f="graphic"')}${icon('#works', folder('web'), 'Interactive', ' data-f="web"')}${icon('#contact', tile('mail', 'dark'), '연락처')}
     </nav>
 
     <article class="widget hello">
@@ -193,6 +193,7 @@ const html = `<!doctype html>
         <div class="tabs" role="group" aria-label="프로젝트 분류">
           <button type="button" aria-pressed="true" data-f="video">${svg('folder')}Video<span class="num">${count('video')}</span></button>
           <button type="button" aria-pressed="false" data-f="graphic">${svg('folder')}Graphic<span class="num">${count('graphic')}</span></button>
+          <button type="button" aria-pressed="false" data-f="web">${svg('folder')}Interactive<span class="num">${count('web')}</span></button>
         </div>
         <div class="ex__main">
           <p class="ex__path">내 작업${svg('chev')}<span data-crumb>전체</span></p>
@@ -265,7 +266,7 @@ const crumb = document.querySelector('[data-crumb]');
 const show = f => {
   tabs.forEach(x => x.setAttribute('aria-pressed', x.dataset.f === f));
   document.querySelectorAll('#works .card').forEach(c => c.hidden = c.dataset.c !== f);
-  crumb.textContent = f === 'video' ? 'Video' : 'Graphic';
+  crumb.textContent = ${JSON.stringify(KIND)}[f];
 };
 tabs.forEach(b => b.onclick = () => show(b.dataset.f));
 document.querySelectorAll('a[data-f]').forEach(a => a.addEventListener('click', () => show(a.dataset.f)));
