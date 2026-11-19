@@ -122,8 +122,8 @@
   .slider__dot { width: 22px; }
 }
 
-/* 줄바꿈: 단어 단위·균형 맞춤 대신 글상자 끝까지 채우고 넘어감(사용자 요청) */
-body { word-break: normal; overflow-wrap: anywhere; }
+/* 줄바꿈: 균형 맞춤 대신 글상자 끝까지 채우고 넘어감(사용자 요청) */
+/* 단어 중간에선 끊지 않음(기존 포트폴리오와 같음) */
 h1, h2, h3, p, dd, span { text-wrap: wrap; }
 .fits .panel + .panel { margin-top: 0; }
 .case__info .links { margin-top: 12px; }
