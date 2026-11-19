@@ -1,0 +1,192 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8">
+<meta name="robots" content="noindex">
+<script src="../shim.js"></script><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><link rel="preload" href="fonts/WantedSansVariable.woff2" as="font" type="font/woff2" crossorigin><link rel="stylesheet" href="style.css?v=20261026f"><title>교무실 · 태화여자고등학교</title>
+<style>
+.otabs{display:flex;flex-wrap:wrap;gap:4px;margin:0 0 24px;border-bottom:2px solid var(--pri)}
+.otabs button{padding:10px 18px;border:1px solid var(--line);border-bottom:0;border-radius:6px 6px 0 0;background:#f3f5f4;font:inherit;font-size:15px;cursor:pointer;color:inherit}
+.otabs button[aria-selected=true]{background:var(--pri);border-color:var(--pri);color:#fff}
+.gwrap{overflow-x:auto;margin:0 0 28px}
+table.gm{width:100%;min-width:640px;border-collapse:collapse;border-top:2px solid var(--pri);font-size:14px;line-height:1.55}
+table.gm th,table.gm td{padding:9px 8px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+table.gm th{background:#f3f5f4;font-weight:500;white-space:nowrap}
+table.gm td.n{white-space:nowrap;color:#555}
+table.gm td.truth{background:#fff5e0}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 14px}
+.chips button{padding:6px 12px;border:1px solid var(--line);border-radius:99px;background:#fff;font:inherit;font-size:14px;cursor:pointer;color:inherit}
+.chips button[aria-pressed=true]{background:var(--pri);border-color:var(--pri);color:#fff}
+</style></head><body>
+<header class="site"><div class="wrap"><a class="brand" href="index.html">태화여자고등학교<small>교무실 · 관리자 전용</small></a></div></header>
+<main><div class="wrap">
+<h1 id="ttl">회신서 관리</h1>
+
+<div id="login" class="card" style="max-width:420px">
+<form id="lf"><div class="field"><label class="t" for="pw">교무실 비밀번호</label><input type="password" id="pw" required></div><button class="btn dark">열기</button><div id="lout"></div></form>
+</div>
+<div id="panel" hidden>
+<nav class="otabs" role="tablist"><button type="button" role="tab" data-v="reply" aria-selected="true">회신서 관리</button><button type="button" role="tab" data-v="ev" aria-selected="false">증거 목록</button><button type="button" role="tab" data-v="tl" aria-selected="false">사건 타임라인</button></nav>
+<div data-view="ev" id="v-ev" hidden></div>
+<div data-view="tl" id="v-tl" hidden></div>
+<div data-view="reply">
+<p class="lead" id="summary"></p>
+<p><button class="btn ghost" id="reload">새로고침</button> <button class="btn ghost" id="toggle"></button> <button class="btn ghost" id="logout">잠그기</button></p>
+<h2>참석 일시 집계</h2><div class="tally" id="tally"></div>
+<h2>회신서 직접 추가</h2>
+<form id="af" class="card" style="max-width:520px"><div class="field"><label class="t" for="an">닉네임</label><input type="text" id="an" maxlength="20" autocomplete="off" required></div><div class="field"><span class="t" style="display:block;font-size:14px;color:#666;margin-bottom:6px">참석 일시</span><div class="checks" id="ad"></div></div><button class="btn dark" id="ab">추가</button><div id="aout"></div></form>
+<p class="muted">접수 마감 상태나 제출 시작 시각 전에도 추가할 수 있고, 추가한 회신서도 정원에 포함됩니다.</p>
+<h2>접수된 회신서</h2>
+<div style="overflow-x:auto"><table class="list" style="min-width:600px"><thead><tr><th class="num">번호</th><th style="white-space:nowrap">닉네임</th><th>참석 일시</th><th>제출 시각</th><th></th></tr></thead><tbody id="rows"></tbody></table></div>
+<p class="muted">회신서를 삭제하면 그 자리가 바로 다시 열립니다.</p>
+<h2>캐릭터 테스트 · 파일 공개</h2>
+<p class="lead" id="tsum"></p>
+<p><button class="btn ghost" id="ttest"></button> <button class="btn ghost" id="tfile"></button></p>
+<div style="overflow-x:auto"><table class="list" style="min-width:560px"><thead><tr><th style="white-space:nowrap">닉네임</th><th>캐릭터</th><th>확정 시각</th><th>답안지</th><th></th></tr></thead><tbody id="trows"></tbody></table></div>
+<p class="muted" id="tnote"></p>
+<p class="muted">캐릭터 파일 로그인은 학번·비밀번호로 합니다. 이 창에서 <a href="login.html" style="text-decoration:underline">로그인 화면</a>으로 가면 공개 전에도 미리 볼 수 있습니다.</p>
+</div>
+</div>
+</div></main>
+<script src="config.js?v=20261101a"></script><script src="app.js?v=20261105"></script>
+<script>
+const $ = id => document.getElementById(id);
+engOnly($('pw'));
+let pw = ""; try { pw = sessionStorage.getItem('th_pw') || ""; } catch(e){}
+let data = null;
+function fmt(t){ const d = new Date(t); return d.toLocaleString('ko-KR',{month:'numeric',day:'numeric',hour:'2-digit',minute:'2-digit'}); }
+function render(){
+  const s = data.status;
+  $('summary').textContent = `정원 ${data.capacity}명 · 접수 ${data.rows.length}명 · ${s.open ? slotText(s.remaining) : "접수 마감 상태"}`;
+  $('toggle').textContent = s.open ? "접수 마감하기" : "접수 다시 열기";
+  const count = {}; TH.CANDIDATE_DATES.forEach(d => count[d] = 0);
+  data.rows.forEach(r => r.dates.forEach(d => count[d] = (count[d]||0) + 1));
+  $('tally').innerHTML = Object.entries(count).map(([d,n]) => `<span>${esc(d)} <b>${n}명</b></span>`).join('');
+  $('rows').innerHTML = data.rows.length ? data.rows.map((r,i) => `<tr><td class="num">${i+1}</td><td style="white-space:nowrap">${esc(r.nickname)}</td><td style="white-space:nowrap">${r.dates.map(esc).join('<br>')}</td><td class="date">${fmt(r.created_at)}</td><td style="white-space:nowrap"><button class="btn ghost" data-id="${r.id}" data-n="${esc(r.nickname)}">삭제</button></td></tr>`).join('') : `<tr><td colspan="5" class="muted">아직 접수된 회신서가 없습니다.</td></tr>`;
+}
+async function load(){
+  data = await rpc('office_list', {p_password: pw});
+  $('login').hidden = true; $('panel').hidden = false; render();
+  renderTest(await rpc('office_test_list', {p_password: pw}));
+}
+// 캐릭터 테스트
+let tdata = null;
+function renderTest(t){
+  tdata = t;
+  const real = t.members.filter(m => !m.tester), picked = real.filter(m => m.char);
+  $('tsum').textContent = `테스트 ${t.test_open ? '열림' : '닫힘'} · 파일 ${t.file_open ? '공개 중' : '비공개'} · 가입 ${real.length}명 · 확정 ${picked.length}/${t.chars.length}명`;
+  $('ttest').textContent = t.test_open ? '테스트 닫기' : '테스트 열기 (선착순)';
+  $('tfile').textContent = t.file_open ? '파일 공개 멈추기' : '파일 공개하기';
+  const chip = m => m.char ? `<span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:${esc(m.color)};margin-right:6px"></span><a href="login.html#as=${encodeURIComponent(m.char)}" style="text-decoration:underline" title="생활기록부 보기">${esc(m.char)}</a>` : '';
+  $('trows').innerHTML = t.members.length ? t.members.map(m => `<tr><td style="white-space:nowrap">${esc(m.nickname)}${m.tester ? ' <span class="muted small">(테스터)</span>' : ''}</td>
+    <td style="white-space:nowrap">${chip(m)}</td><td class="date">${m.picked_at ? fmt(m.picked_at) : ''}</td><td style="white-space:nowrap">${m.answers ? `<button class="btn ghost" data-a="${m.id}">답안지</button>` : ''}</td>
+    <td style="white-space:nowrap"><button class="btn ghost" data-t="delete" data-id="${m.id}">삭제</button></td></tr>`).join('')
+    : `<tr><td colspan="5" class="muted">아직 가입한 사람이 없습니다.</td></tr>`;
+  $('tnote').textContent = '회신서 목록에 있는 이름만 참여할 수 있습니다. 5명이 모두 확정하면 테스트는 자동으로 닫힙니다.';
+}
+$('ttest').addEventListener('click', async () => {
+  if(!tdata.test_open && !confirm('테스트를 열면 회신서를 낸 사람 누구나 가입하고 선착순으로 카드를 고를 수 있습니다. 열까요?')) return;
+  try { renderTest(await rpc('office_test_set', {p_password: pw, p_key: 'test_open', p_value: !tdata.test_open})); } catch(e){ alert(e.message); }
+});
+$('tfile').addEventListener('click', async () => {
+  if(!tdata.file_open && !confirm('파일을 공개하면 학번·비밀번호로 로그인해서 생활기록부를 볼 수 있습니다. 공개할까요?')) return;
+  try { renderTest(await rpc('office_test_set', {p_password: pw, p_key: 'file_open', p_value: !tdata.file_open})); } catch(e){ alert(e.message); }
+});
+// 답안지: 회원가입 때 본 기초조사서 화면 그대로, 고른 답만 표시해 팝업으로 연다
+function sheet(m){
+  const p = document.createElement('div'); p.className = 'lp'; p.setAttribute('role', 'dialog'); p.setAttribute('aria-label', m.nickname + ' 답안지');
+  p.innerHTML = `<div class="lp-box" style="max-width:720px;max-height:90vh;display:flex;flex-direction:column"><div class="lp-top"><span>답안지</span><small>${esc(m.nickname)}</small></div>
+    <article class="tst-paper" style="border:0;box-shadow:none;margin:0;max-width:none;overflow-y:auto"><h2>기초조사서</h2>
+    ${SURVEY.map((q, qi) => `<fieldset class="tst-q" disabled><legend>${qi + 1}. ${esc(q[0])}</legend>
+      ${q[1].map((t, i) => `<label><input type="radio" ${m.answers[qi] === i ? 'checked' : ''}> <span>${esc(t)}</span></label>`).join('')}</fieldset>`).join('')}</article>
+    <div class="lp-ft"><button type="button" data-save>이미지로 저장</button><button type="button" data-x>닫기 ✕</button></div></div>`;
+  const close = () => { p.remove(); document.removeEventListener('keydown', key); }, key = e => { if(e.key === 'Escape') close(); };
+  p.querySelector('[data-x]').onclick = close;
+  p.querySelector('[data-save]').onclick = e => saveSheet(p.querySelector('.tst-paper'), m.nickname, e.target);
+  p.addEventListener('click', e => { if(e.target === p) close(); });
+  document.addEventListener('keydown', key);
+  document.body.appendChild(p);
+}
+// 답안지를 PNG로 저장. 팝업은 스크롤로 잘려 있으므로 복제본을 화면 밖에 펼쳐 놓고 찍는다
+function saveSheet(paper, nick, btn){
+  btn.disabled = true; btn.textContent = '저장 중…';
+  const done = () => { btn.disabled = false; btn.textContent = '이미지로 저장'; };
+  const go = () => {
+    const c = paper.cloneNode(true); c.style.cssText = 'position:fixed;left:-10000px;top:0;width:720px;max-width:none;overflow:visible;border:0;box-shadow:none;margin:0';
+    c.querySelector('h2').insertAdjacentHTML('afterend', `<p class="tst-lead">이름: ${esc(nick)}</p>`);
+    document.body.appendChild(c);
+    html2canvas(c, {scale: 2, backgroundColor: '#fff'}).then(cv => {
+      const a = document.createElement('a'); a.download = `답안지_${nick}.png`; a.href = cv.toDataURL('image/png'); a.click();
+    }).catch(() => alert('이미지를 만들지 못했습니다.')).finally(() => { c.remove(); done(); });
+  };
+  if(window.html2canvas) return go();
+  const s = document.createElement('script'); s.src = 'https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js';
+  s.onload = go; s.onerror = () => { alert('이미지 저장 도구를 불러오지 못했습니다.'); done(); }; document.head.appendChild(s);
+}
+$('trows').addEventListener('click', async ev => {
+  const s = ev.target.closest('button[data-a]'); if(s){ sheet(tdata.members.find(x => x.id === Number(s.dataset.a))); return; }
+  const b = ev.target.closest('button[data-t]'); if(!b) return;
+  const m = tdata.members.find(x => x.id === Number(b.dataset.id)), act = b.dataset.t; let val = null;
+  if(act === 'delete' && !confirm(`${m.nickname} 기록을 삭제할까요? 고른 카드는 다시 남은 카드로 돌아가고, 이 이름으로 처음부터 다시 할 수 있습니다.`)) return;
+  try { renderTest(await rpc('office_test_member', {p_password: pw, p_id: m.id, p_action: act, p_value: val})); } catch(e){ alert(e.message); }
+});
+$('lf').addEventListener('submit', async ev => {
+  ev.preventDefault(); pw = toEng($('pw').value); $('lout').innerHTML = "";
+  try { await load(); try { sessionStorage.setItem('th_pw', pw); } catch(e){} }
+  catch(e){ $('lout').innerHTML = `<div class="msg err">${esc(e.message)}</div>`; }
+});
+$('rows').addEventListener('click', async ev => {
+  const b = ev.target.closest('button[data-id]'); if(!b) return;
+  if(!confirm(`${b.dataset.n} 학생의 회신서를 삭제할까요? 삭제하면 자리가 하나 다시 열립니다.`)) return;
+  b.disabled = true;
+  try { await rpc('office_delete', {p_password: pw, p_id: Number(b.dataset.id)}); await load(); }
+  catch(e){ alert(e.message); b.disabled = false; }
+});
+$('toggle').addEventListener('click', async () => {
+  try { await rpc('office_set_open', {p_password: pw, p_open: !data.status.open}); await load(); } catch(e){ alert(e.message); }
+});
+$('ad').innerHTML = TH.CANDIDATE_DATES.map(d => `<label><input type="checkbox" name="ad" value="${esc(d)}"> <span>${esc(d)}</span></label>`).join('');
+$('af').addEventListener('submit', async ev => {
+  ev.preventDefault(); $('aout').innerHTML = "";
+  const nick = $('an').value.trim(), dates = [...document.querySelectorAll('input[name=ad]:checked')].map(x => x.value);
+  if(!dates.length){ $('aout').innerHTML = `<div class="msg err">참석 일시를 하나 이상 골라 주세요.</div>`; return; }
+  $('ab').disabled = true;
+  try { await rpc('office_add', {p_password: pw, p_nickname: nick, p_dates: dates}); $('an').value = ""; await load(); }
+  catch(e){ $('aout').innerHTML = `<div class="msg err">${esc(e.message)}</div>`; }
+  $('ab').disabled = false;
+});
+$('reload').addEventListener('click', () => load().catch(e => alert(e.message)));
+$('logout').addEventListener('click', () => { try { sessionStorage.removeItem('th_pw'); } catch(e){} location.reload(); });
+// 교무실 메뉴. 증거 목록·사건 타임라인은 GM 전용이라 페이지에 적지 않고 암호로 서버에서 받아 온다
+const TABS = {reply: '회신서 관리', ev: '증거 목록', tl: '사건 타임라인'};
+let gm = null, who = '';
+document.querySelector('.otabs').addEventListener('click', async ev => {
+  const b = ev.target.closest('button[data-v]'); if(!b) return;
+  const k = b.dataset.v;
+  document.querySelectorAll('.otabs button').forEach(x => x.setAttribute('aria-selected', x === b));
+  document.querySelectorAll('[data-view]').forEach(v => v.hidden = v.dataset.view !== k);
+  $('ttl').textContent = TABS[k];
+  if(k !== 'reply' && !gm){
+    $('v-' + k).innerHTML = '<p class="muted">불러오는 중…</p>';
+    try { gm = await rpc('office_gm', {p_password: pw}); renderEv(); renderTl(); }
+    catch(e){ $('v-' + k).innerHTML = `<div class="msg err">${esc(e.message)}</div>`; }
+  }
+});
+const lk = t => t.replace(/https?:\/\/[^\s<)]+/g, u => `<a href="${u}" target="_blank" rel="noopener">${u}</a>`);
+const tbl = (head, rows) => `<div class="gwrap"><table class="gm"><thead><tr>${head.map(h => `<th>${h}</th>`).join('')}</tr></thead><tbody>${rows}</tbody></table></div>`;
+function renderEv(){
+  const e = gm.evidence;
+  $('v-ev').innerHTML = `<p class="lead">지목 덱 ${e.deck.reduce((a, d) => a + d.rows.length, 0)}개 · 현장 탐사 ${e.scene.reduce((a, s) => a + s.rows.length, 0)}개. 범인은 배유림.</p>` +
+    '<h2>지목 덱</h2><p class="muted">지목받을 때마다 번호 순서대로 한 장씩 나간다. 뒤 번호일수록 결정적이다.</p>' +
+    e.deck.map(d => `<h3>${esc(d.who)}</h3>` + tbl(['번호', '증거', '가리키는 것'], d.rows.map(r => `<tr><td class="n">${esc(r[0])}</td><td>${esc(r[1])}</td><td>${esc(r[2])}</td></tr>`).join(''))).join('') +
+    '<h2>현장 탐사</h2>' +
+    e.scene.map(s => `<h3>${esc(s.place)}</h3>` + tbl(['번호', '증거', '관련 인물', '겉으로 가리키는 것', '진실'], s.rows.map(r => `<tr><td class="n">${esc(r[0])}</td><td>${lk(esc(r[1]))}</td><td>${esc(r[2])}</td><td>${esc(r[3])}</td><td class="truth">${esc(r[4])}</td></tr>`).join(''))).join('');
+}
+function renderTl(){
+  const names = ['우혜', '희지', '재희', '소록', '의현', '유림'];
+  const rows = gm.timeline.filter(r => !who || r[1].includes(who) || r[1].includes('전원'));
+  $('v-tl').innerHTML = '<p class="lead">10/30 상담 호출부터 10/31 08:00 시신 발견까지. 캐릭터 파일 기준.</p>' +
+    `<div class="chips">${['', ...names].map(n => `<button type="button" data-who="${n}" aria-pressed="${n === who}">${n || '전체'}</button>`).join('')}</div>` +
+    tbl(['시각', '인물', '장소', '한 일', '교차 확인 · 증거'], rows.map(r => `<tr><td class="n">${esc(r[0])}</td><td class="n">${r[1].map(esc).join('·')}</td><td>${esc(r[2])}</td><td>${esc(r[3])}</td><td>${esc(r[4])}</td></tr>`).join(''));
+}
+$('v-tl').addEventListener('click', ev => { const b = ev.target.closest('button[data-who]'); if(b){ who = b.dataset.who; renderTl(); } });
+if(pw) load().catch(() => { pw = ""; });
+</script>
+</body></html>

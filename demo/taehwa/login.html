@@ -1,0 +1,74 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8">
+<meta name="robots" content="noindex">
+<script src="../shim.js"></script><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><link rel="preload" href="fonts/WantedSansVariable.woff2" as="font" type="font/woff2" crossorigin><link rel="stylesheet" href="style.css?v=20261026f"><title>로그인 · 태화여자고등학교</title></head><body>
+<div id="hd"></div>
+<section class="sv-top"><div class="wrap"><h1>회원 서비스</h1></div></section>
+<div class="crumb"><div class="wrap"><span>홈</span><span>›</span><b id="bc">로그인</b></div></div>
+<div class="wrap sv one"><section class="pg"><div id="app"></div></section></div>
+<div id="ft"></div>
+<script src="config.js?v=20261026f"></script><script src="app.js?v=20261105"></script><script src="layout.js?v=20261030a"></script>
+<script>
+mount({});
+const $ = id => document.getElementById(id), app = $('app');
+// 학번·비밀번호는 이 창에서만 기억한다. 교무실에 로그인한 창이면 공개 전에도 미리 볼 수 있다
+let cred = null; try { cred = JSON.parse(sessionStorage.getItem('th_rec') || 'null'); } catch(e){}
+function setCred(c){ cred = c; setTimeout(authLink); try { c ? sessionStorage.setItem('th_rec', JSON.stringify(c)) : sessionStorage.removeItem('th_rec'); } catch(e){} }
+function office(){ try { return sessionStorage.getItem('th_pw') || null; } catch(e){ return null; } }
+const nl = s => esc(s).replace(/\n/g, '<br>');
+// 서사의 "소록: 대사" / "(재희: 대사)" / "(의현) "대사"" 표기를 라벨 없이 인물 색으로 바꾼다
+const SP = {재희: '#A32121', 소록: '#2A8A3E', 희지: '#ED64BE', 의현: '#A89330', 유림: '#1A3470', 남우혜: '#5C3A1E'};
+const GRAY = '#7a7a7a';  // 색이 정해지지 않은 화자(남우선·엄마·기타)
+const spk = (n, t) => `<span style="color:${SP[n] || GRAY}">${t}</span>`;
+const nlsp = s => nl(s)
+  .replace(/(^|<br>)(재희|소록|희지|의현|유림|남우혜|남우선|엄마|기타): (.*?)(?=<br>|$)/g, (m, b, n, t) => b + spk(n, t))
+  .replace(/\((재희|소록|희지|의현|유림|남우혜|남우선|엄마|기타): ([^)]*)\)/g, (m, n, t) => spk(n, t))
+  .replace(/\((의현)\) (&quot;.*?&quot;)/g, (m, n, t) => spk(n, t))
+  .replace(/\*\*(.+?)\*\*/g, '<b>$1</b>')
+  .replace(/\/\/(.+?)\/\//g, '<i>$1</i>');
+// 나의 문장: 굵게 + 담당 인물 색 (이름 끝 두 글자가 SP의 키)
+const motto = (v, name) => { const n = String(name || '').slice(-2); return `<b style="color:${SP[n] || GRAY}">${esc(v)}</b>`; };
+const logout = '<p class="btns"><button class="btn ghost" id="lo">로그아웃</button></p>';
+
+function form(err){
+  $('bc').textContent = '로그인';
+  app.innerHTML = `<h2 class="ttl">로그인</h2><form id="f" class="card tst-form" autocomplete="off">
+  <div class="field"><label class="t" for="no">학번</label><input type="text" id="no" inputmode="numeric" maxlength="6" placeholder="6자리" required></div>
+  <div class="field"><label class="t" for="pw">비밀번호</label><input type="password" id="pw" maxlength="50" required></div>
+  <div class="btns"><button class="btn dark" id="go">로그인</button></div><div id="out">${err ? `<div class="msg err">${err}</div>` : ''}</div></form>`;
+  engOnly($('pw'));   // 한글 자판 상태로 쳐도 같은 자리의 영문 글자로 바꾼다
+  $('f').addEventListener('submit', e => { e.preventDefault(); login({no: $('no').value.trim(), pw: toEng($('pw').value)}, true); });
+}
+
+// 학교생활기록부 형식. record = {notice:[안내 문구...], info:[[항목, 값]...], subs:[{t:소제목, v:내용}...](1번 항목 아래), sections:[{t:제목, v:내용} 또는 표 {t, head:[열 제목...], rows:[[칸...]...]}...]}
+function record(st){
+  $('bc').textContent = '학교생활기록부';
+  const r = st.record || {}, info = [['학번', st.no], ['성명', st.name]].concat(r.info || []), secs = r.sections || [];
+  app.innerHTML = `<article class="rec">
+  <header class="rec-head"><span class="rec-kind">학 교 생 활 기 록 부</span><b>태화여자고등학교</b></header>
+  ${(r.notice || []).length ? `<div class="rec-notice"><b>${esc(r.notice[0])}</b>${r.notice.slice(1).map(t => `<p>${esc(t)}</p>`).join('')}</div>` : ''}
+  <h3>1. 인적·학적사항</h3>
+  <table class="rec-t"><tbody>${info.map(([k, v]) => `<tr><th>${esc(k)}</th><td>${k === '나의 문장' ? motto(v, st.name) : v ? nl(v) : ''}</td></tr>`).join('')}</tbody></table>
+  ${(r.subs || []).map(s => `<h4>${esc(s.t)}</h4><table class="rec-t rec-sub"><tbody><tr><td class="rec-v">${s.v ? nlsp(s.v) : ''}</td></tr></tbody></table>`).join('')}
+  ${secs.map((s, i) => `<h3>${i + 2}. ${esc(s.t)}</h3>` + (s.rows
+    ? (s.lead ? `<p class="rec-memo">${nl(s.lead)}</p>` : '') + `<table class="rec-t rec-grid"><thead><tr>${s.head.map(h => `<th>${esc(h)}</th>`).join('')}</tr></thead><tbody>${s.rows.map(r => `<tr>${r.map(c => `<td>${nl(c)}</td>`).join('')}</tr>`).join('')}</tbody></table>${s.memo ? `<p class="rec-memo">${nl(s.memo)}</p>` : ''}`
+    : `<table class="rec-t"><tbody><tr><td class="rec-v">${s.v ? nl(s.v) : '<span class="muted">해당 사항 없음</span>'}</td></tr></tbody></table>`)).join('')}
+  <div class="rec-sign"><span>위 사실을 증명합니다.</span><span>태화여자고등학교장</span></div>
+  </article>${logout}`;
+  $('lo').onclick = () => { setCred(null); form(); };
+}
+
+async function login(c, typed){
+  const go = $('go'); if(go) go.disabled = true;
+  try {
+    const st = await rpc('file_login', {p_no: c.no, p_password: c.pw, p_office: office()});
+    if(st.stage === 'file'){ setCred(c); record(st); window.scrollTo(0, 0); return; }
+    setCred(null);
+    form(st.stage === 'notyet' ? '배정된 파일은 아직 공개되지 않았습니다.' : typed ? '학번 또는 비밀번호가 맞지 않습니다.' : '');
+  } catch(x){ form(esc(x.message)); }
+}
+// 교무실에서 캐릭터 이름을 눌러 들어오면 학번·비밀번호 없이 그 생활기록부를 바로 연다
+const as = location.hash.startsWith('#as=') ? decodeURIComponent(location.hash.slice(4)) : '', op = office();
+if(as && op) rpc('office_file', {p_password: op, p_name: as}).then(st => { record(st); window.scrollTo(0, 0); }, x => form(esc(x.message)));
+else cred ? login(cred) : form();
+</script>
+</body></html>

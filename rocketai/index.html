@@ -1,0 +1,364 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#f3f1f7">
+<title>서이솔 포트폴리오: 디지털 콘텐츠 기획</title>
+<meta name="description" content="캐릭터·세계관 기획부터 화면 구현까지, 서이솔의 디지털 콘텐츠 기획 포트폴리오">
+<link rel="preload" href="../fonts/Pretendard-Bold.woff" as="font" type="font/woff" crossorigin>
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="page.css">
+</head>
+<body>
+<!-- 지원처 전용 페이지. 공통 모양은 ../style.css, 이 페이지만의 규칙은 page.css -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-star" viewBox="0 0 24 24"><path d="M12 3.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.9l-5.2 2.7 1-5.8-4.3-4.1 5.9-.9z"/></symbol>
+  <symbol id="i-folder" viewBox="0 0 24 24"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></symbol>
+  <symbol id="i-apps" viewBox="0 0 24 24"><rect x="4" y="4" width="6.5" height="6.5" rx="2"/><rect x="13.5" y="4" width="6.5" height="6.5" rx="2"/><rect x="4" y="13.5" width="6.5" height="6.5" rx="2"/><rect x="13.5" y="13.5" width="6.5" height="6.5" rx="2"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M4 7.5l8 5.5 8-5.5"/></symbol>
+  <symbol id="i-image" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2.5"/><circle cx="9" cy="9.5" r="1.8"/><path d="M20.5 16l-5-5L5 20"/></symbol>
+  <symbol id="i-back" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></symbol>
+  <symbol id="i-chev" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></symbol>
+  <symbol id="i-wifi" viewBox="0 0 24 24"><path d="M2.5 9a14 14 0 0 1 19 0M5.5 12.5a9.5 9.5 0 0 1 13 0M8.8 16a5 5 0 0 1 6.4 0"/><circle cx="12" cy="19" r=".8"/></symbol>
+  <symbol id="i-min" viewBox="0 0 24 24"><path d="M7 12h10"/></symbol>
+  <symbol id="i-max" viewBox="0 0 24 24"><rect x="7" y="7" width="10" height="10" rx="1.5"/></symbol>
+  <symbol id="i-close" viewBox="0 0 24 24"><path d="M7 7l10 10M17 7L7 17"/></symbol>
+  <symbol id="i-expand" viewBox="0 0 24 24"><path d="M14 4h6v6M10 20H4v-6M20 4l-7 7M4 20l7-7"/></symbol>
+</svg>
+<div class="wall" aria-hidden="true"></div>
+
+<main class="desk">
+  <header class="home" id="top">
+    <nav class="icons" aria-label="바로가기">
+      <a class="icon" href="#fit"><span class="tile tile--accent" aria-hidden="true"><svg class="ico"><use href="#i-star"/></svg></span><span class="icon__label">맞는 경험</span></a>
+      <a class="icon" href="#case-1"><span class="folder" aria-hidden="true"><span class="folder__back"></span><img src="img/w-specimen/01.jpg" alt=""><img src="img/w-taehwa/01.jpg" alt=""><img src="img/card-saju/01.jpg" alt=""><span class="folder__front"></span></span><span class="icon__label">작업 5</span></a>
+      <a class="icon" href="../"><span class="tile tile--soft" aria-hidden="true"><svg class="ico"><use href="#i-apps"/></svg></span><span class="icon__label">전체 포트폴리오</span></a>
+      <a class="icon" href="#contact"><span class="tile tile--dark" aria-hidden="true"><svg class="ico"><use href="#i-mail"/></svg></span><span class="icon__label">연락처</span></a>
+    </nav>
+
+    <article class="widget hello">
+      <h1><span>사람이 빠져드는</span><span>세계관과 첫 화면.</span></h1>
+      <p class="lead lead--wide">캐릭터와 세계관을 직접 쓰고 AI로 화면까지 만들어 온, 콘텐츠 기획자 서이솔입니다.</p>
+      <div class="actions">
+        <a class="btn btn--primary" href="#case-1">작업 보기</a>
+        <a class="btn" href="mailto:solthfsol@gmail.com">메일 보내기</a>
+      </div>
+    </article>
+
+    <article class="widget gallery" aria-label="작업 화면">
+      <p class="widget__name"><svg class="ico"><use href="#i-image"/></svg>작업 화면</p>
+      <div class="gallery__grid">
+        <a class="still" href="#case-1"><img src="img/w-specimen/01.jpg" alt="표본사회 첫 화면"><span>표본사회: 인원 선별 구역</span></a>
+        <a class="still" href="#case-2"><img src="img/w-taehwa/01.jpg" alt="태화여고 홈페이지"><span>태화여고: 좀비 아포칼립스</span></a>
+        <a class="still" href="#case-3"><img src="img/card-saju/01.jpg" alt="주말 사주풀이 카드뉴스 표지" style="object-position:center 25%"><span>주말 사주풀이 카드뉴스</span></a>
+      </div>
+    </article>
+  </header>
+
+  <section id="fit" class="win">
+    <div class="win__bar" aria-hidden="true"><span class="win__app"><svg class="ico"><use href="#i-star"/></svg>맞는 경험</span><span class="win__caps"><svg class="ico"><use href="#i-min"/></svg><svg class="ico"><use href="#i-max"/></svg><svg class="ico"><use href="#i-close"/></svg></span></div>
+    <div class="app__top"><a class="app__back" href="#top" aria-label="홈 화면으로"><svg class="ico"><use href="#i-back"/></svg></a><span>맞는 경험</span></div>
+    <div class="win__body">
+      <h2>이 자리에 맞는 경험</h2>
+      <div class="fits">
+        <div class="panel"><h3>캐릭터·세계관·인터랙티브 스토리</h3><p>추리게임 세계관 사이트 2종. 인물 파일, 잠긴 휴대폰, 답에 따라 갈리는 입소 검사.</p></div>
+        <div class="panel"><h3>첫 화면의 호기심에서 다음 행동까지</h3><p>후킹을 앞에 두는 숏폼 재구성(1만 회+), 상세페이지·카드뉴스의 순서와 카피.</p></div>
+        <div class="panel"><h3>AI로 직접 만들고 고치기</h3><p>Claude로 사이트와 상세페이지 템플릿을 구현하고, 결과를 검토하며 수정.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 1. 표본사회 -->
+  <section id="case-1" class="win">
+    <div class="win__bar" aria-hidden="true"><span class="win__app"><svg class="ico"><use href="#i-folder"/></svg>작업 1 / 5</span><span class="win__caps"><svg class="ico"><use href="#i-min"/></svg><svg class="ico"><use href="#i-max"/></svg><svg class="ico"><use href="#i-close"/></svg></span></div>
+    <div class="app__top"><a class="app__back" href="#top" aria-label="홈 화면으로"><svg class="ico"><use href="#i-back"/></svg></a><span>작업 1 / 5</span></div>
+    <div class="win__body">
+      <h2>표본사회: 인원 선별 구역</h2>
+      <p class="meta"><span class="meta__kind">인터랙티브 스토리</span><span>2026.10</span><span>웹</span></p>
+      <p class="case__sum">서바이벌 프로그램 촬영 중 벌어진 살인 사건의 범인을 찾는 참여형 텍스트 추리 게임의 세계관 사이트.</p>
+      <div class="case">
+        <div class="case__media">
+        <div class="slider" aria-roledescription="슬라이더" aria-label="표본사회 화면">
+          <div class="slider__view"><ul class="slider__track">
+            <li><img src="img/w-specimen/01.jpg" data-full="img/full/specimen-01.jpg" alt="첫 화면: 관찰 기록, 표본 12인·관찰 기간 12일·최종 생존 1인"></li>
+            <li><img src="img/w-specimen/04.jpg" data-full="img/full/specimen-04.jpg" alt="규칙: 표본사회의 법(생활·퇴소·보상)" loading="lazy"></li>
+            <li><img src="img/w-specimen/05.jpg" data-full="img/full/specimen-05.jpg" alt="참가자: 열두 명의 표본 카드" loading="lazy"></li>
+            <li><img src="img/w-specimen/02.jpg" data-full="img/full/specimen-02.jpg" alt="참가자 카드: 표본 02 머니, 사전 인터뷰 출연 이유 “돈.”" loading="lazy"></li>
+            <li><img src="img/w-specimen/06.jpg" data-full="img/full/specimen-06.jpg" alt="암호로 연 참가자 파일: 기본 정보와 사상 코드" loading="lazy"></li>
+            <li><img src="img/w-specimen/07.jpg" data-full="img/full/specimen-07.jpg" alt="히든: 이 안에 그림자가 있습니다" loading="lazy"></li>
+            <li><img src="img/w-specimen/08.jpg" data-full="img/full/specimen-08.jpg" alt="입소 검사: 답에 따라 표본이 배정되는 사상 검증" loading="lazy"></li>
+            <li><img src="img/w-specimen/03.jpg" data-full="img/full/specimen-03.jpg" alt="등장인물(교주)의 서브폰 잠금 화면" loading="lazy"></li>
+            <li><img src="img/w-specimen/09.jpg" data-full="img/full/specimen-09.jpg" alt="서브폰 잠금 해제 후 홈 화면" loading="lazy"></li>
+            <li><img src="img/w-specimen/10.jpg" data-full="img/full/specimen-10.jpg" alt="서브폰 메시지 목록" loading="lazy"></li>
+            <li><img src="img/w-specimen/11.jpg" data-full="img/full/specimen-11.jpg" alt="서브폰 메모: 봉헌 원칙, 수련원 규칙 등" loading="lazy"></li>
+          </ul></div>
+        </div>
+        <h3 class="case__sub">증거 이미지</h3>
+        <div class="slider" aria-roledescription="슬라이더" aria-label="표본사회 증거 이미지">
+          <div class="slider__view"><ul class="slider__track">
+            <li><img src="img/w-evidence/01.jpg" data-full="img/full/evidence-01.jpg" alt="증거: 5일차 인생 스피치 원고" loading="lazy"></li>
+            <li><img src="img/w-evidence/02.jpg" data-full="img/full/evidence-02.jpg" alt="증거: 심판 수첩의 ‘후원 명단’ 페이지" loading="lazy"></li>
+            <li><img src="img/w-evidence/03.jpg" data-full="img/full/evidence-03.jpg" alt="증거: 신문 스크랩" loading="lazy"></li>
+            <li><img src="img/w-evidence/04.jpg" data-full="img/full/evidence-04.jpg" alt="증거: 구겨진 쪽지" loading="lazy"></li>
+            <li><img src="img/w-evidence/05.jpg" data-full="img/full/evidence-05.jpg" alt="증거: 법안 발의 명단 사본" loading="lazy"></li>
+            <li><img src="img/w-evidence/06.jpg" data-full="img/full/evidence-06.jpg" alt="증거: 타다 남은 카드" loading="lazy"></li>
+            <li><img src="img/w-evidence/07.jpg" data-full="img/full/evidence-07.jpg" alt="증거: 카디건 속 쪽지 묶음" loading="lazy"></li>
+            <li><img src="img/w-evidence/08.jpg" data-full="img/full/evidence-08.jpg" alt="증거: 워스트 투표용지" loading="lazy"></li>
+          </ul></div>
+        </div>
+        </div>
+        <div class="case__info">
+          <div class="panel"><h3>직접 체험</h3><p>체험용 암호는 2026.</p><div class="links"><a class="btn btn--primary" href="../demo/specimen/" target="_blank" rel="noopener">사이트 열기</a><a class="btn" href="../demo/specimen-phone/" target="_blank" rel="noopener">교주 휴대폰</a></div></div>
+          <div class="panel"><h3>기획 의도</h3><p>게임 시작 전 참가자 모집을 위한 세계관 설명용 웹사이트. 실제 프로그램 공식 사이트처럼 제공하여 게임의 세계관을 알리고, 캐릭터 선정과 캐릭터 파일 전달까지 한 사이트에 담음.</p></div>
+          <div class="panel"><h3>흐름</h3>
+            <dl class="flow">
+              <div><dt>콘셉트</dt><dd>‘인원 선별 구역’의 차가운 실험실 기록. 흑백에 레드 한 색.</dd></div>
+              <div><dt>화면</dt><dd>관찰 기록 첫 화면, 참가자 12명 카드, 한 줄 사전 인터뷰</dd></div>
+              <div><dt>스토리</dt><dd>암호로 여는 참가자 파일, 답에 따라 표본이 배정되는 입소 검사, 등장인물의 휴대폰(2차 공개용)</dd></div>
+              <div><dt>결과</dt><dd>1차는 실제 카페에서 진행하는 방식과 비슷하게 진행 완료, 2차는 내년 초 모집 예정. 참가 최대 6명(용의자 5명, 탐정 1명). 참가자 반응: “몰입감이 좋았다”, “새로운 방식이라 참신했다”. 교주 휴대폰은 2차 공개용으로 제작.</dd></div>
+            </dl>
+          </div>
+          <div class="panel"><h3>참여도</h3>
+            <dl class="role"><div><dt class="role__solo">단독</dt><dd>세계관 기획, 문서, 사이트 제작</dd></div><div><dt class="role__team">공동</dt><dd>시나리오, 캐릭터, 대사</dd></div></dl>
+          </div>
+          <div class="panel"><h3>AI 활용</h3><dl class="role"><div><dt class="role__team">AI</dt><dd>사이트 코드 구현(Claude), 증거 이미지 틀(Claude), 실사 느낌 생성 이미지(ChatGPT)</dd></div><div><dt class="role__solo">직접</dt><dd>세계관·인물·대사·문서 문구, 증거 내용 설계, 화면 구성과 연출, 결과 검토·수정</dd></div></dl></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. 태화여고 -->
+  <section id="case-2" class="win">
+    <div class="win__bar" aria-hidden="true"><span class="win__app"><svg class="ico"><use href="#i-folder"/></svg>작업 2 / 5</span><span class="win__caps"><svg class="ico"><use href="#i-min"/></svg><svg class="ico"><use href="#i-max"/></svg><svg class="ico"><use href="#i-close"/></svg></span></div>
+    <div class="app__top"><a class="app__back" href="#top" aria-label="홈 화면으로"><svg class="ico"><use href="#i-back"/></svg></a><span>작업 2 / 5</span></div>
+    <div class="win__body">
+      <h2>태화여고: 좀비 아포칼립스</h2>
+      <p class="meta"><span class="meta__kind">인터랙티브 스토리</span><span>2026.10</span><span>웹</span></p>
+      <p class="case__sum">가상의 학교를 무대로 한 크라임씬 게임. 학교 홈페이지와 등장인물의 휴대폰을 단서 창구로 만든 작업.</p>
+      <div class="case">
+        <div class="slider" aria-roledescription="슬라이더" aria-label="태화여고 화면">
+          <div class="slider__view"><ul class="slider__track">
+            <li><img src="img/w-taehwa/01.jpg" data-full="img/full/taehwa-01.jpg" alt="학교 홈페이지 첫 화면과 공지 팝업"></li>
+            <li><img src="img/w-taehwa/03.jpg" data-full="img/full/taehwa-03.jpg" alt="알림마당: 개학 일정 사전 안내" loading="lazy"></li>
+            <li><img src="img/w-taehwa/04.jpg" data-full="img/full/taehwa-04.jpg" alt="가정통신문: 개학 안내 및 참석 회신서" loading="lazy"></li>
+            <li><img src="img/w-taehwa/02.jpg" data-full="img/full/taehwa-02.jpg" alt="등장인물(교사)의 휴대폰 잠금 화면" loading="lazy"></li>
+            <li><img src="img/w-taehwa/05.jpg" data-full="img/full/taehwa-05.jpg" alt="렌즈가 깨진 카메라 연출" loading="lazy"></li>
+            <li><img src="img/w-taehwa/06.jpg" data-full="img/full/taehwa-06.jpg" alt="휴대폰 메시지: 학생들과의 대화 목록" loading="lazy"></li>
+            <li><img src="img/w-taehwa/07.jpg" data-full="img/full/taehwa-07.jpg" alt="휴대폰 메모: 잠긴 메모 포함 8개" loading="lazy"></li>
+            <li><img src="img/w-taehwa/08.jpg" data-full="img/full/taehwa-08.jpg" alt="휴대폰 음성 메모" loading="lazy"></li>
+          </ul></div>
+        </div>
+        <div class="case__info">
+          <div class="panel"><h3>직접 체험</h3><p>체험용 암호는 2026.</p><div class="links"><a class="btn btn--primary" href="../demo/taehwa/" target="_blank" rel="noopener">학교 홈페이지</a><a class="btn" href="../demo/taehwa-phone/" target="_blank" rel="noopener">피해자 휴대폰</a></div></div>
+          <div class="panel"><h3>기획 의도</h3><p>학교 홈페이지: 게임 시작 전 세계관을 알리는 사이트. 배경이 학교라 실제 학교 공식 사이트 UI로 만들고, 가정통신문으로 참여자 접수, 회원가입으로 캐릭터 선정, 로그인으로 캐릭터 파일 전달.</p><p>휴대폰: 실제 게임 중 현장 탐사 순서에서 피해자의 휴대폰을 발견하는 장면의 몰입감을 살리기 위해, 실제로 조작할 수 있는 휴대폰을 사이트로 구현해 전달.</p></div>
+          <div class="panel"><h3>흐름</h3>
+            <dl class="flow">
+              <div><dt>콘셉트</dt><dd>개학을 앞둔 학교, 그 사이 무슨 일이 있었는가</dd></div>
+              <div><dt>화면</dt><dd>공지·회원가입·회신서가 있는 학교 홈페이지, 잠긴 교사 휴대폰</dd></div>
+              <div><dt>스토리</dt><dd>잠금 해제 후 문자·사진첩·통화 기록·메모로 단서 탐색. 방문자가 남긴 문자·사진은 다음 참가자에게도 보임</dd></div>
+              <div><dt>결과</dt><dd>2026.11.7 1차, 11.14 2차 진행. 2차에서 피해자 휴대폰을 처음 공개했고, 참가자들이 실제로 조작되는 휴대폰 덕분에 몰입감이 더 좋았다고 함.</dd></div>
+            </dl>
+          </div>
+          <div class="panel"><h3>참여도</h3>
+            <dl class="role"><div><dt class="role__solo">단독</dt><dd>세부 설정, 사이트 제작(학교 홈페이지·휴대폰)</dd></div><div><dt class="role__team">공동</dt><dd>시나리오, 캐릭터, 대사</dd></div></dl>
+          </div>
+          <div class="panel"><h3>AI 활용</h3><dl class="role"><div><dt class="role__team">AI</dt><dd>사이트 코드 구현(Claude)</dd></div><div><dt class="role__solo">직접</dt><dd>세부 설정, 문자·메모 속 인물 말투와 문구, 화면 구성, 결과 검토·수정</dd></div></dl></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. 사주풀이 카드뉴스 -->
+  <section id="case-3" class="win">
+    <div class="win__bar" aria-hidden="true"><span class="win__app"><svg class="ico"><use href="#i-folder"/></svg>작업 3 / 5</span><span class="win__caps"><svg class="ico"><use href="#i-min"/></svg><svg class="ico"><use href="#i-max"/></svg><svg class="ico"><use href="#i-close"/></svg></span></div>
+    <div class="app__top"><a class="app__back" href="#top" aria-label="홈 화면으로"><svg class="ico"><use href="#i-back"/></svg></a><span>작업 3 / 5</span></div>
+    <div class="win__body">
+      <h2>주말 사주풀이 카드뉴스</h2>
+      <p class="meta"><span class="meta__kind">카드뉴스</span><span>2026.04</span><span>FOCC</span></p>
+      <p class="case__sum">팝업스토어 주말 사주풀이 이벤트 홍보 카드뉴스 5장. 표지, 소개, 코스 구성, 회차별 운영 시간, 예약 QR 순서.</p>
+      <div class="case">
+        <div class="slider slider--square" style="--ratio: 1" aria-roledescription="슬라이더" aria-label="사주풀이 카드뉴스">
+          <div class="slider__view"><ul class="slider__track">
+            <li><img src="img/card-saju/01.jpg" alt="1장: 표지"></li>
+            <li><img src="img/card-saju/02.jpg" alt="2장: 이벤트 소개" loading="lazy"></li>
+            <li><img src="img/card-saju/03.jpg" alt="3장: 코스 구성" loading="lazy"></li>
+            <li><img src="img/card-saju/04.jpg" alt="4장: 회차별 운영 시간" loading="lazy"></li>
+            <li><img src="img/card-saju/05.jpg" alt="5장: 예약 QR" loading="lazy"></li>
+          </ul></div>
+        </div>
+        <div class="case__info">
+          <div class="panel"><h3>기획 의도</h3><p>팝업스토어 주말 이벤트로 진행한 사주풀이 이벤트의 홍보용 카드뉴스. 이벤트는 5회가량, 현장 예약으로만 운영.</p></div>
+          <div class="panel"><h3>참여도</h3><dl class="role"><div><dt class="role__solo">단독</dt><dd>기획, 카피, 디자인</dd></div></dl></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. 상세페이지 -->
+  <section id="case-4" class="win">
+    <div class="win__bar" aria-hidden="true"><span class="win__app"><svg class="ico"><use href="#i-folder"/></svg>작업 4 / 5</span><span class="win__caps"><svg class="ico"><use href="#i-min"/></svg><svg class="ico"><use href="#i-max"/></svg><svg class="ico"><use href="#i-close"/></svg></span></div>
+    <div class="app__top"><a class="app__back" href="#top" aria-label="홈 화면으로"><svg class="ico"><use href="#i-back"/></svg></a><span>작업 4 / 5</span></div>
+    <div class="win__body">
+      <h2>원데이 클래스 상세페이지</h2>
+      <p class="meta"><span class="meta__kind">상품 페이지</span><span>2026.03</span><span>FOCC</span></p>
+      <p class="case__sum">팝업스토어 원데이 클래스 상세페이지를 AI로 HTML 템플릿화. 소재별로 디자인과 카피만 바꿔 업로드·관리.</p>
+      <div class="case">
+        <div class="slider" aria-roledescription="슬라이더" aria-label="상세페이지">
+          <div class="slider__view"><ul class="slider__track">
+            <li><img src="img/g-detail.jpg" alt="원데이 클래스 상세페이지"></li>
+          </ul></div>
+        </div>
+        <div class="case__info">
+          <div class="panel"><h3>결과</h3><p>원데이 클래스 예약 약 10명.</p></div>
+          <div class="panel"><h3>참여도</h3><dl class="role"><div><dt class="role__solo">단독</dt><dd>디자인, 카피, 업로드·관리</dd></div></dl></div>
+          <div class="panel"><h3>AI 활용</h3><dl class="role"><div><dt class="role__team">AI</dt><dd>HTML 템플릿 구현(Claude·Gemini)</dd></div><div><dt class="role__solo">직접</dt><dd>구성·카피·디자인 방향, 소재별 수정</dd></div></dl></div>
+          <div class="links">
+            <a class="btn" href="../detail/template.html" target="_blank" rel="noopener">템플릿</a>
+            <a class="btn" href="../detail/calligraphy.html" target="_blank" rel="noopener">서예</a>
+            <a class="btn" href="../detail/diffuser.html" target="_blank" rel="noopener">디퓨저</a>
+            <a class="btn" href="../detail/myodeok.html" target="_blank" rel="noopener">묘덕선생</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. 숏폼 재구성 -->
+  <section id="case-5" class="win">
+    <div class="win__bar" aria-hidden="true"><span class="win__app"><svg class="ico"><use href="#i-folder"/></svg>작업 5 / 5</span><span class="win__caps"><svg class="ico"><use href="#i-min"/></svg><svg class="ico"><use href="#i-max"/></svg><svg class="ico"><use href="#i-close"/></svg></span></div>
+    <div class="app__top"><a class="app__back" href="#top" aria-label="홈 화면으로"><svg class="ico"><use href="#i-back"/></svg></a><span>작업 5 / 5</span></div>
+    <div class="win__body">
+      <h2>에프오씨씨 다이어리: 숏폼 재구성</h2>
+      <p class="meta"><span class="meta__kind">숏폼</span><span>2025.01 ~ 2025.03</span><span>FOCC</span></p>
+      <p class="case__sum">스타트업 브이로그 롱폼을 숏폼으로 다시 짠 작업. 후킹 장면을 맨 앞에 두고 결말을 앞으로 가져와 끝까지 보게 만드는 순환 구조.</p>
+      <div class="case">
+        <div class="slider" aria-roledescription="슬라이더" aria-label="에프오씨씨 다이어리">
+          <div class="slider__view"><ul class="slider__track">
+            <li><img src="img/v-focc.jpg" alt="에프오씨씨 다이어리 썸네일"></li>
+          </ul></div>
+        </div>
+        <div class="case__info">
+          <div class="panel"><h3>결과</h3><p>숏폼 1만 회 이상 조회</p></div>
+          <div class="panel"><h3>참여도</h3><dl class="role"><div><dt class="role__solo">단독</dt><dd>편집, 숏폼 재구성, 섬네일</dd></div><div><dt class="role__team">공동</dt><dd>초기 기획, 촬영</dd></div></dl></div>
+          <div class="links">
+            <a class="btn btn--primary" href="https://youtube.com/shorts/NwKKdQ79KxM" target="_blank" rel="noopener">숏폼 보기</a>
+            <a class="btn" href="https://youtu.be/MTtt9P7hr3U" target="_blank" rel="noopener">원본 롱폼</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="win mail">
+    <div class="win__bar" aria-hidden="true"><span class="win__app"><svg class="ico"><use href="#i-mail"/></svg>받은 메일</span><span class="win__caps"><svg class="ico"><use href="#i-min"/></svg><svg class="ico"><use href="#i-max"/></svg><svg class="ico"><use href="#i-close"/></svg></span></div>
+    <div class="app__top"><a class="app__back" href="#top" aria-label="홈 화면으로"><svg class="ico"><use href="#i-back"/></svg></a><span>받은 메일</span></div>
+    <div class="win__body">
+      <h2 class="visually-hidden">연락처</h2>
+      <dl class="mail__head">
+        <div><dt>보낸 사람</dt><dd><span class="chip"><img src="../img/profile.jpg" alt="">서이솔<span>디지털 콘텐츠 기획 지원</span></span></dd></div>
+        <div><dt>이메일</dt><dd><a href="mailto:solthfsol@gmail.com">solthfsol@gmail.com</a></dd></div>
+        <div><dt>전화</dt><dd><a href="tel:01079125645">010-7912-5645</a></dd></div>
+      </dl>
+      <div class="mail__body">
+        <p>사람이 궁금해서 다음 화면을 열게 만드는 일,<br>청월당에서 이어 가고 싶습니다.</p>
+        <p>방송·유튜브 작업까지 담긴 전체 포트폴리오는 <a href="../">여기</a>에 있습니다.</p>
+      </div>
+      <div class="actions">
+        <a class="btn btn--primary" href="mailto:solthfsol@gmail.com">답장하기</a>
+        <a class="btn" href="tel:01079125645">전화 걸기</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="foot"><p>© 서이솔</p><p>수치는 공개 채널 기준</p></footer>
+</main>
+
+<nav class="taskbar" aria-label="작업 표시줄">
+  <div class="tb__apps">
+    <a class="tb__start" href="#top" data-tip="홈" aria-label="홈"><span class="tb__is">IS</span><span class="tb__label" aria-hidden="true">홈</span></a>
+    <a href="#fit" data-tip="맞는 경험" aria-label="맞는 경험"><svg class="ico"><use href="#i-star"/></svg><span class="tb__label" aria-hidden="true">경험</span></a>
+    <a href="#case-1" data-tip="작업" aria-label="작업"><svg class="ico"><use href="#i-folder"/></svg><span class="tb__label" aria-hidden="true">작업</span></a>
+    <a href="#contact" data-tip="받은 메일" aria-label="받은 메일"><svg class="ico"><use href="#i-mail"/></svg><span class="tb__label" aria-hidden="true">연락</span></a>
+  </div>
+  <div class="tb__tray" aria-hidden="true">
+    <span>한</span><svg class="ico"><use href="#i-wifi"/></svg>
+    <span class="tb__clock"><span data-clock>오전 9:41</span><span data-date></span></span>
+  </div>
+</nav>
+
+<dialog id="viewer" class="viewer" aria-label="이미지 전체 화면">
+  <div class="viewer__stage"><img src="img/w-specimen/01.jpg" alt=""></div>
+  <p class="viewer__cap"></p>
+  <button class="viewer__btn viewer__close" type="button" aria-label="닫기"><svg class="ico"><use href="#i-close"/></svg></button>
+  <button class="viewer__btn viewer__prev" type="button" data-step="-1" aria-label="이전 이미지"><svg class="ico"><use href="#i-back"/></svg></button>
+  <button class="viewer__btn viewer__next" type="button" data-step="1" aria-label="다음 이미지"><svg class="ico"><use href="#i-chev"/></svg></button>
+</dialog>
+
+<script>
+// 시계
+const tFmt = new Intl.DateTimeFormat('ko-KR', { hour: 'numeric', minute: '2-digit' });
+const tick = () => { const n = new Date();
+  document.querySelectorAll('[data-clock]').forEach(e => e.textContent = tFmt.format(n));
+  document.querySelectorAll('[data-date]').forEach(e => e.textContent = n.getFullYear() + '-' + String(n.getMonth() + 1).padStart(2, '0') + '-' + String(n.getDate()).padStart(2, '0')); };
+tick(); setInterval(tick, 20000);
+
+// 전체 화면 보기: 같은 작업의 이미지를 좌우로 넘겨 봄, Esc·바깥 클릭·닫기 버튼으로 닫음
+const svgI = id => '<svg class="ico"><use href="#i-' + id + '"/></svg>';
+const viewer = document.getElementById('viewer'), vImg = viewer.querySelector('img'), vCap = viewer.querySelector('.viewer__cap');
+const vPrev = viewer.querySelector('[data-step="-1"]'), vNext = viewer.querySelector('[data-step="1"]');
+let vList = [], vi = 0;
+const vShow = k => { vi = Math.max(0, Math.min(vList.length - 1, k)); const im = vList[vi];
+  vImg.src = im.dataset.full || im.src; vImg.alt = im.alt;
+  vCap.textContent = im.alt + (vList.length > 1 ? '  (' + (vi + 1) + ' / ' + vList.length + ')' : '');
+  vPrev.hidden = vNext.hidden = vList.length < 2; vPrev.disabled = vi === 0; vNext.disabled = vi === vList.length - 1; };
+const openViewer = (list, k) => { vList = list; vShow(k); viewer.showModal(); };
+vPrev.onclick = () => vShow(vi - 1); vNext.onclick = () => vShow(vi + 1);
+viewer.querySelector('.viewer__close').onclick = () => viewer.close();
+viewer.addEventListener('click', e => { if (e.target === viewer || e.target.classList.contains('viewer__stage')) viewer.close(); });
+viewer.addEventListener('keydown', e => { if (e.key === 'ArrowLeft') vShow(vi - 1); if (e.key === 'ArrowRight') vShow(vi + 1); });
+
+// 슬라이더: 화살표·점·방향키로 한 장씩. 스크립트가 없으면 가로 스크롤 목록으로 남음
+document.querySelectorAll('.slider').forEach(s => {
+  const view = s.querySelector('.slider__view'), track = s.querySelector('.slider__track'), items = [...track.children], n = items.length;
+  const bar = s.appendChild(document.createElement('div')); bar.className = 'slider__bar';
+  const cap = bar.appendChild(document.createElement('p')); cap.className = 'slider__cap';
+  // 이미지를 누르면 원본(data-full)을 전체 화면으로
+  items.forEach((li, k) => { const img = li.querySelector('img'), b = document.createElement('button');
+    b.type = 'button'; b.className = 'slider__zoom'; b.setAttribute('aria-label', img.alt + ', 전체 화면으로 보기');
+    li.prepend(b); b.append(img); b.insertAdjacentHTML('beforeend', '<span class="slider__expand" aria-hidden="true">' + svgI('expand') + '</span>');
+    b.onclick = () => openViewer(items.map(x => x.querySelector('img')), k); });
+  if (n < 2) { cap.textContent = items[0].querySelector('img').alt; return; }
+  s.classList.add('is-ready');
+  const arrow = (dir, label) => { const b = view.appendChild(document.createElement('button')); b.type = 'button'; b.className = 'slider__arrow slider__arrow--' + dir; b.setAttribute('aria-label', label); b.innerHTML = svgI(dir === 'prev' ? 'back' : 'chev'); return b; };
+  const prev = arrow('prev', '이전 이미지'), next = arrow('next', '다음 이미지');
+  const dots = bar.appendChild(document.createElement('div')); dots.className = 'slider__dots';
+  const dotEls = items.map((_, k) => { const d = dots.appendChild(document.createElement('button')); d.type = 'button'; d.className = 'slider__dot'; d.setAttribute('aria-label', (k + 1) + '번째 이미지'); d.onclick = () => go(k); return d; });
+  const count = dots.appendChild(document.createElement('span')); count.className = 'slider__count num';
+  let i = 0;
+  const go = k => {
+    i = Math.max(0, Math.min(n - 1, k));
+    track.style.transform = 'translateX(' + (-100 * i) + '%)';
+    items.forEach((li, j) => li.inert = j !== i);
+    dotEls.forEach((d, j) => d.setAttribute('aria-current', j === i));
+    prev.disabled = i === 0; next.disabled = i === n - 1;
+    cap.textContent = items[i].querySelector('img').alt;
+    count.textContent = (i + 1) + ' / ' + n;
+  };
+  prev.onclick = () => go(i - 1); next.onclick = () => go(i + 1);
+  s.addEventListener('keydown', e => { if (e.key === 'ArrowLeft') go(i - 1); if (e.key === 'ArrowRight') go(i + 1); });
+  go(0);
+});
+
+// 작업 표시줄: 지금 보고 있는 창 표시 (작업 1~5는 '작업'으로)
+const tb = [...document.querySelectorAll('.tb__apps a')];
+const io = new IntersectionObserver(es => es.forEach(e => {
+  if (!e.isIntersecting) return;
+  const h = e.target.id.startsWith('case-') ? '#case-1' : '#' + e.target.id;
+  tb.forEach(a => a.hash === h ? a.setAttribute('aria-current', 'location') : a.removeAttribute('aria-current'));
+}), { rootMargin: '-40% 0px -55% 0px' });
+document.querySelectorAll('#top, main > section[id]').forEach(x => io.observe(x));
+</script>
+</body>
+</html>
