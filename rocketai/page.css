@@ -131,3 +131,11 @@ h1, h2, h3, p, dd, span { text-wrap: wrap; }
 .case__media { display: grid; gap: 8px; min-width: 0; }
 .case__media .case__sub { margin-top: 16px; font-size: 1.0625rem; color: var(--ink); }
 .case__info .role dt { min-width: 3.4em; text-align: center; } /* AI·직접 배지 폭 맞춤 */
+
+/* 크리틱 반영: 밝은 캡처 위에서도 보이게 화살표를 어둡게, 증거 이미지는 세로로 크게 */
+.slider__arrow { background: var(--k55); border-color: var(--w35); color: var(--on-accent); }
+.slider__arrow:hover { background: var(--accent); }
+.slider__arrow:active { background: var(--accent-hover); }
+.slider__arrow:disabled { background: var(--k55); }
+.case__media .slider--square { width: 100%; max-width: 420px; }
+@media (max-width: 899.98px) { .mail__body p:first-child { font-size: 1rem; } }
