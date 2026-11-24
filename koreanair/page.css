@@ -1,0 +1,141 @@
+/* Hallmark · custom by request: one application's portfolio in the owner's existing system (../style.css), Windows 11 desktop on PC and One UI home on phones · monochrome, #6233a3, Pretendard only
+ * signature: each case opens as its own window, its real screens in a button slider beside the brief the posting asks for
+ * waive 47a · the owner asked to keep the general portfolio's OS look; title bars are decorative, every window is a real section that reads without script
+ * waive 83 · this is a work portfolio: the pictures are the evidence the posting asks for, each case pairs them with its written brief
+ * waive 79, 44c, 7b, 29 · inherited from the general portfolio's system (../style.css), kept unchanged so both pages read as one site
+ * dismissed 58 (hero) · the three blocks are the headline, set as two line spans like the general portfolio, and one sentence
+ * waive 58 · each case carries the four fields the job posting requires (intent, flow, own scope, AI use); fewer words would drop what the reader asked for */
+/* 지원처 전용 페이지에만 쓰는 규칙. 공통 모양은 ../style.css */
+
+:root { --todo: oklch(93% 0.09 95); --todo-ink: oklch(36% 0.06 80); --stage: oklch(16% 0 0); }
+
+.lead--wide { max-width: 44ch; }
+
+/* 맞는 경험 */
+.fits { display: grid; gap: 8px; }
+.fits h3 { font-size: 1.0625rem; margin-bottom: 6px; color: var(--ink); }
+.fits p { font-size: 0.9375rem; }
+
+/* 작업 창: 슬라이더 + 설명 */
+.case { display: grid; gap: 24px; }
+.case h2 { padding-bottom: 10px; }
+.case__sum { font-size: 1.0625rem; color: var(--ink); margin-bottom: 20px; }
+.case__info { display: grid; gap: 8px; align-content: start; min-width: 0; }
+.case__info .panel h3 { margin-bottom: 8px; }
+.case__info .panel p { font-size: 0.9375rem; }
+.case__info .role { margin-top: 0; padding-top: 0; border-top: 0; font-size: 0.9375rem; }
+.flow { display: grid; gap: 8px; font-size: 0.9375rem; }
+.flow div { display: grid; grid-template-columns: 4em minmax(0, 1fr); gap: 10px; }
+.flow dt { color: var(--muted); }
+.links { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px; }
+.todo { display: inline; padding: 1px 4px; border-radius: 4px; background: var(--todo); color: var(--todo-ink); }
+
+/* 슬라이더: 스크립트가 없으면 가로 스크롤 목록으로 남음 */
+.slider { min-width: 0; }
+.slider__view { position: relative; border-radius: 16px; overflow-x: auto; background: var(--stage); }
+.slider__track { display: flex; }
+.slider__track li { flex: 0 0 100%; }
+.slider__track img { width: 100%; aspect-ratio: var(--ratio, 16 / 9); object-fit: contain; }
+.slider.is-ready .slider__view { overflow: hidden; }
+.slider.is-ready .slider__track { transition: transform 420ms var(--ease); }
+.slider__arrow { position: absolute; top: 50%; translate: 0 -50%; width: 44px; height: 44px; display: grid; place-items: center; border: 1px solid var(--w60); border-radius: 50%;
+  background: var(--glass); color: var(--ink); cursor: pointer; backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  transition: background-color var(--dur) var(--ease), opacity var(--dur) var(--ease); }
+.slider__arrow--prev { left: 10px; }
+.slider__arrow--next { right: 10px; }
+.slider__arrow:hover { background: var(--card); }
+.slider__arrow:active { background: var(--accent-soft); }
+.slider__arrow:disabled { opacity: 0.3; cursor: default; background: var(--glass); }
+.slider__bar { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 12px; }
+.slider__cap { font-size: 0.875rem; color: var(--ink-2); min-width: 0; }
+.slider__dots { display: flex; align-items: center; gap: 2px; flex: none; }
+.slider__dot { width: 28px; height: 44px; display: grid; place-items: center; border: 0; background: none; cursor: pointer; padding: 0; }
+.slider__dot::after { content: ""; width: 8px; height: 8px; border-radius: 999px; background: var(--line-2); transition: background-color var(--dur) var(--ease), transform var(--dur) var(--ease); }
+.slider__dot:hover::after { background: var(--muted); }
+.slider__dot:active::after { transform: scale(0.8); }
+.slider__dot[aria-current="true"]::after { background: var(--accent); transform: scale(1.25); }
+.slider__count { font-size: 0.8125rem; color: var(--muted); margin-left: 6px; }
+
+/* 연락 */
+.mail__body p + p { margin-top: 12px; font-size: 1rem; font-weight: 400; color: var(--ink-2); }
+
+@media (max-width: 899.98px) {
+  .tb__apps { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+
+@media (min-width: 900px) {
+  .fits { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; }
+  .case { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 32px; align-items: start; }
+  .case__info { gap: 6px; }
+  .slider__view { border-radius: 6px; }
+  .slider__arrow { border-radius: 6px; }
+  .home .gallery__grid .still:first-child img { object-fit: cover; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .slider.is-ready .slider__track { transition: none; }
+}
+
+/* 메타 줄과 요약 사이, 정사각형 카드뉴스는 PC에서 폭 제한 */
+.win__body > .meta { margin-bottom: 12px; }
+@media (min-width: 900px) { .slider--square { max-width: 520px; } }
+
+/* 이미지 누르면 전체 화면 */
+.slider__zoom { display: block; width: 100%; position: relative; padding: 0; border: 0; background: none; cursor: zoom-in; }
+.slider__zoom:focus-visible { outline-offset: -3px; }
+.slider__expand { position: absolute; top: 10px; right: 10px; width: 36px; height: 36px; display: grid; place-items: center; border-radius: 8px;
+  background: var(--k55); color: var(--on-accent); transition: background-color var(--dur) var(--ease); }
+.slider__expand .ico { width: 18px; height: 18px; }
+.slider__zoom:hover .slider__expand { background: var(--accent); }
+.slider__zoom:active .slider__expand { background: var(--accent-hover); }
+
+.viewer { width: 100%; max-width: 100%; height: 100%; max-height: 100%; margin: 0; padding: 56px 16px 16px; border: 0; border-radius: 0; background: var(--stage); color: var(--on-accent); }
+.viewer::backdrop { background: var(--stage); }
+.viewer[open] { display: grid; grid-template-rows: minmax(0, 1fr) auto; gap: 12px; }
+.viewer__stage { display: grid; place-items: center; min-height: 0; }
+.viewer__stage img { max-width: 100%; max-height: calc(100svh - 120px); object-fit: contain; }
+.viewer__cap { text-align: center; font-size: 0.875rem; color: var(--w70); }
+.viewer__btn { position: absolute; width: 44px; height: 44px; display: grid; place-items: center; border: 1px solid var(--w35); border-radius: 50%; background: var(--k55); color: var(--on-accent); cursor: pointer;
+  transition: background-color var(--dur) var(--ease), opacity var(--dur) var(--ease); }
+.viewer__btn:hover { background: var(--accent); }
+.viewer__btn:active { background: var(--accent-hover); }
+.viewer__btn:disabled { opacity: 0.3; cursor: default; background: var(--k55); }
+.viewer__close { top: 8px; right: 12px; }
+.viewer__prev, .viewer__next { top: 50%; translate: 0 -50%; }
+.viewer__prev { left: 12px; }
+.viewer__next { right: 12px; }
+@media (min-width: 900px) {
+  .viewer { padding: 64px 88px 20px; }
+  .viewer__btn, .slider__expand { border-radius: 6px; }
+  .viewer__prev { left: 24px; }
+  .viewer__next { right: 24px; }
+}
+@media (min-width: 900px) { .viewer__stage img { max-height: calc(100svh - 140px); } }
+
+/* 링크 버튼: 4개까지 한 줄 */
+.links { flex-wrap: nowrap; }
+.links .btn { flex: 1 1 0; min-width: 0; padding-inline: 8px; white-space: nowrap; }
+/* 이미지가 많을 때: 모바일은 설명 한 줄, 점은 그 아래 */
+@media (max-width: 899.98px) {
+  .slider__bar { flex-direction: column; align-items: stretch; gap: 0; }
+  .slider__dots { justify-content: center; flex-wrap: wrap; }
+  .slider__dot { width: 22px; }
+}
+
+/* 줄바꿈: 균형 맞춤 대신 글상자 끝까지 채우고 넘어감(사용자 요청) */
+/* 단어 중간에선 끊지 않음(기존 포트폴리오와 같음) */
+h1, h2, h3, p, dd, span { text-wrap: wrap; }
+.fits .panel + .panel { margin-top: 0; }
+.case__info .links { margin-top: 12px; }
+/* 표본사회: 화면 슬라이더 아래 증거 이미지 슬라이더 */
+.case__media { display: grid; gap: 8px; min-width: 0; }
+.case__media .case__sub { margin-top: 16px; font-size: 1.0625rem; color: var(--ink); }
+.case__info .role dt { min-width: 3.4em; text-align: center; } /* AI·직접 배지 폭 맞춤 */
+
+/* 크리틱 반영: 밝은 캡처 위에서도 보이게 화살표를 어둡게, 증거 이미지는 세로로 크게 */
+.slider__arrow { background: var(--k55); border-color: var(--w35); color: var(--on-accent); }
+.slider__arrow:hover { background: var(--accent); }
+.slider__arrow:active { background: var(--accent-hover); }
+.slider__arrow:disabled { background: var(--k55); }
+.case__media .slider--square { width: 100%; max-width: 420px; }
+@media (max-width: 899.98px) { .mail__body p:first-child { font-size: 1rem; } }
