@@ -61,8 +61,8 @@
 .mail__body p + p { margin-top: 12px; font-size: 1rem; font-weight: 400; color: var(--ink-2); }
 
 @media (max-width: 899.98px) {
-  .tb__apps { grid-template-columns: repeat(5, minmax(0, 1fr)); }
-  .tb__apps--two { grid-template-columns: repeat(2, minmax(0, 96px)); justify-content: center; } /* 이력서: 메뉴 두 개는 가운데 */
+  .tb__apps { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+  .tb__apps--few { grid-template-columns: repeat(3, minmax(0, 96px)); justify-content: center; } /* 자기소개서·이력서: 메뉴 세 개는 가운데 */
 }
 
 @media (min-width: 900px) {
@@ -179,3 +179,9 @@ h1, h2, h3, p, dd, span { text-wrap: wrap; }
   .cv .resume dl div { grid-template-columns: minmax(0, 1fr); gap: 2px; font-size: 0.875rem; }
   .cv .resume dt { font-size: 0.75rem; }
 }
+
+/* 자기소개서 */
+.cv__intro { display: grid; gap: 8px; margin-top: 12px; }
+.cv__intro h3 { font-size: 1rem; color: var(--ink); }
+.cv__intro h3:not(:first-child) { margin-top: 16px; }
+.cv__intro p { color: var(--ink-2); line-height: 1.75; text-align: justify; word-break: break-all; } /* 글자 단위 줄바꿈 + 양쪽 정렬: 좌우 끝선을 맞춤 */
