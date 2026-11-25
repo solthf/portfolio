@@ -250,6 +250,13 @@ const html = `<!doctype html>
 </dialog>
 
 <script>
+// 총 경력: 각 근무 기간(시작~끝 달)의 개월 수를 더함, '현재'는 오늘 기준이라 시간이 지나면 저절로 늘어남
+{
+  const now = new Date(), m = s => s.trim() === '현재' ? now.getFullYear() * 12 + now.getMonth() : (([y, mo]) => y * 12 + mo - 1)(s.split('.').map(Number));
+  const months = [...document.querySelectorAll('.job__period')].reduce((t, p) => { const [a, b] = p.textContent.split('~'); return t + m(b) - m(a); }, 0);
+  const total = document.querySelector('.me__total');
+  if (total && months > 0) total.textContent = '총 경력 ' + Math.floor(months / 12) + '년';
+}
 // 시계: 상태 표시줄·작업 표시줄
 const tFmt = new Intl.DateTimeFormat('ko-KR', { hour: 'numeric', minute: '2-digit' });
 const tick = () => {

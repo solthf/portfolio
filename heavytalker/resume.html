@@ -104,7 +104,7 @@
 </main>
 
 <nav class="taskbar" aria-label="작업 표시줄">
-  <div class="tb__apps">
+  <div class="tb__apps tb__apps--two">
     <a class="tb__start" href="index.html" data-tip="포트폴리오" aria-label="포트폴리오"><span class="tb__is">IS</span><span class="tb__label" aria-hidden="true">포트폴리오</span></a>
     <a href="#top" data-tip="이력서" aria-label="이력서" aria-current="location"><svg class="ico"><use href="#i-user"/></svg><span class="tb__label" aria-hidden="true">이력서</span></a>
   </div>
@@ -123,6 +123,13 @@
 </dialog>
 
 <script>
+// 총 경력: 각 근무 기간(시작~끝 달)의 개월 수를 더함, '현재'는 오늘 기준이라 시간이 지나면 저절로 늘어남
+{
+  const now = new Date(), m = s => s.trim() === '현재' ? now.getFullYear() * 12 + now.getMonth() : (([y, mo]) => y * 12 + mo - 1)(s.split('.').map(Number));
+  const months = [...document.querySelectorAll('.job__period')].reduce((t, p) => { const [a, b] = p.textContent.split('~'); return t + m(b) - m(a); }, 0);
+  const total = document.querySelector('.me__total');
+  if (total && months > 0) total.textContent = '총 경력 ' + Math.floor(months / 12) + '년';
+}
 // 시계
 const tFmt = new Intl.DateTimeFormat('ko-KR', { hour: 'numeric', minute: '2-digit' });
 const tick = () => { const n = new Date();
