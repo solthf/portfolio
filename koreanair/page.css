@@ -1,4 +1,4 @@
-/* Hallmark · custom by request: one application's portfolio in the owner's existing system (../style.css), Windows 11 desktop on PC and One UI home on phones · monochrome, #6233a3, Pretendard only
+/* Hallmark · custom by request: one application's portfolio in the owner's existing system (../style.css), Windows 11 desktop on PC and One UI home on phones · monochrome, #051766 (applicant brand navy), Pretendard only
  * signature: each case opens as its own window, its real screens in a button slider beside the brief the posting asks for
  * waive 47a · the owner asked to keep the general portfolio's OS look; title bars are decorative, every window is a real section that reads without script
  * waive 83 · this is a work portfolio: the pictures are the evidence the posting asks for, each case pairs them with its written brief
@@ -8,6 +8,15 @@
 /* 지원처 전용 페이지에만 쓰는 규칙. 공통 모양은 ../style.css */
 
 :root { --todo: oklch(93% 0.09 95); --todo-ink: oklch(36% 0.06 80); --stage: oklch(16% 0 0); }
+
+/* 지원처 브랜드 컬러(#051766 네이비): 공통 보라 토큰을 이 페이지에서만 덮어씀 */
+:root {
+  --accent: #051766; --accent-hover: #03104d; --accent-soft: oklch(93% 0.03 265);
+  --bg: oklch(96.5% 0.004 265); --mica: oklch(98.5% 0.006 265 / 0.8); --taskbar: oklch(96% 0.012 265 / 0.84);
+  --bloom-1: oklch(55% 0.15 262); --bloom-2: oklch(80% 0.08 235); --bloom-3: oklch(30% 0.13 266); --bloom-base: oklch(93% 0.025 260);
+  --shade-violet: oklch(30% 0.1 265 / 0.18); --bloom-light: oklch(99% 0.01 265);
+  --shadow-win: 0 2px 8px oklch(0% 0 0 / 0.08), 0 16px 48px oklch(30% 0.08 265 / 0.18);
+}
 
 .lead--wide { max-width: 44ch; }
 
