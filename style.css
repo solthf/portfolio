@@ -301,6 +301,10 @@ dialog > img { width: 100%; max-height: 70svh; object-fit: contain; margin-top: 
   .feature { border: 1px solid var(--line); background: var(--w78); padding: 24px; }
   .feature--lead { grid-column: 1 / -1; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 40px; align-items: center; padding: 32px; }
   .feature--lead .feature__proof { order: 0; }
+  /* 나란한 두 카드: 이미지·배지·제목·설명·도구·참여도를 같은 줄에 맞춤(설명이 짧은 쪽은 아래가 비고, 그다음 줄은 같은 높이) */
+  .feature:not(.feature--lead) { grid-row: span 6; grid-template-rows: subgrid; row-gap: 10px; }
+  .feature:not(.feature--lead) .feature__text { display: contents; }
+  .feature:not(.feature--lead) .feature__proof { margin-bottom: 8px; }
   .feature__proof img { border-radius: 6px; }
   .figures div { border-radius: 8px; padding: 28px 24px; }
 
