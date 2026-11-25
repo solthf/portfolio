@@ -324,6 +324,11 @@ dialog > img { width: 100%; max-height: 70svh; object-fit: contain; margin-top: 
   .file { grid-template-columns: minmax(0, 1fr); gap: 12px; padding: 10px; border-radius: 6px; background: transparent; border: 1px solid transparent; }
   .file:hover { background: var(--w60); border-color: var(--line); }
   .file__thumb { border-radius: 4px; }
+  /* 작업 카드: 썸네일·제목·설명·도구·참여도 5줄을 옆 카드와 같은 줄에 (줄 높이는 스크립트가 가장 긴 카드에 맞춤) */
+  .file { grid-row: span 5; grid-template-rows: subgrid; row-gap: 6px; }
+  .file__main { display: contents; }
+  .file__main > * { padding-inline: 6px; }
+  .file__thumb { margin-bottom: 6px; }
 
   /* 작업 표시줄 */
   .taskbar { position: fixed; left: 0; right: 0; bottom: 0; z-index: 50; height: 48px; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; padding: 0 12px;

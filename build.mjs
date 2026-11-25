@@ -315,17 +315,32 @@ const html = `${head(s.title, s.description)}
 </dialog>
 
 <script>
-${common}// 작업 폴더 탭(Video·Graphic)
+${common}// 작업 카드(PC): 썸네일·제목·설명·도구·참여도를 줄마다 맞추고, 각 줄 높이는 보이는 카드 중 가장 긴 것에 맞춤
+const index = document.querySelector('#works .index'), pc = matchMedia('(min-width: 900px)');
+const even = () => {
+  index.style.gridAutoRows = '';
+  if (!pc.matches) return;
+  const max = [0, 0, 0, 0, 0];
+  index.querySelectorAll('.file:not([hidden])').forEach(c => [c.querySelector('.file__thumb'), ...c.querySelector('.file__main').children]
+    .forEach((el, i) => { const st = getComputedStyle(el); max[i] = Math.max(max[i], el.getBoundingClientRect().height + parseFloat(st.marginTop) + parseFloat(st.marginBottom)); }));
+  const card = index.querySelector('.file:not([hidden])'); if (!card) return;
+  const st = getComputedStyle(card); max[0] += parseFloat(st.paddingTop); max[4] += parseFloat(st.paddingBottom); // 카드 안쪽 여백은 첫·끝 줄에 들어감
+  index.style.gridAutoRows = max.map(h => Math.ceil(h) + 'px').join(' '); // 카드마다 5줄씩 같은 높이가 반복됨
+};
+// 작업 폴더 탭(Video·Graphic)
 const tabs = document.querySelectorAll('#works .tabs button');
 const crumb = document.querySelector('[data-crumb]');
 const show = f => {
   tabs.forEach(x => x.setAttribute('aria-pressed', x.dataset.f === f));
   document.querySelectorAll('#works .card').forEach(c => c.hidden = c.dataset.c !== f);
   crumb.textContent = f === 'video' ? 'Video' : 'Graphic';
+  even();
 };
 tabs.forEach(b => b.onclick = () => show(b.dataset.f));
 document.querySelectorAll('a[data-f]').forEach(a => a.addEventListener('click', () => show(a.dataset.f)));
 show('video');
+new ResizeObserver(() => { const w = index.clientWidth; if (w !== index._w) { index._w = w; even(); } }).observe(index);
+document.fonts.ready.then(even);
 
 // 링크 목록·이미지 확대 팝업
 const dlg = document.getElementById('pick');
