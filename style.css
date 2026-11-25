@@ -202,7 +202,8 @@ button { font: inherit; color: inherit; }
   body { padding-bottom: calc(64px + env(safe-area-inset-bottom)); }
   .taskbar { position: fixed; left: 0; right: 0; bottom: 0; z-index: 50; padding: 6px 4px calc(6px + env(safe-area-inset-bottom));
     background: var(--taskbar); border-top: 1px solid var(--w60); backdrop-filter: blur(24px) saturate(1.6); -webkit-backdrop-filter: blur(24px) saturate(1.6); }
-  .tb__apps { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); }
+  .tb__apps { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); }
+  .tb__apps--two { grid-template-columns: repeat(2, minmax(0, 96px)); justify-content: center; } /* 이력서: 메뉴 두 개는 가운데 */
   .tb__apps a { display: grid; justify-items: center; gap: 2px; padding: 4px 0; border-radius: 12px; color: var(--muted); text-decoration: none; font-size: 0.6875rem; font-weight: 500; -webkit-tap-highlight-color: transparent; }
   .tb__apps a > .ico, .tb__is { width: 40px; height: 26px; padding: 3px 10px; border-radius: 999px; box-sizing: border-box; }
   .tb__is { display: grid; place-items: center; padding: 0; font-size: 0.6875rem; font-weight: 700; }
@@ -229,13 +230,21 @@ dialog > img { width: 100%; max-height: 70svh; object-fit: contain; margin-top: 
 .deck__track { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; border-radius: 12px; background: var(--bg); scrollbar-width: none; overscroll-behavior-x: contain; }
 .deck__track::-webkit-scrollbar { display: none; }
 .deck__track img { flex: 0 0 100%; width: 100%; aspect-ratio: var(--ratio, 1); max-height: 68svh; object-fit: contain; scroll-snap-align: start; }
-.deck__nav { display: flex; justify-content: center; align-items: center; gap: 16px; margin-top: 12px; }
-.deck__count { min-width: 4em; text-align: center; font-size: 0.875rem; color: var(--ink-2); }
-.deck__btn { width: 44px; height: 44px; display: grid; place-items: center; border: 1px solid var(--line-2); border-radius: 50%; background: var(--card); cursor: pointer;
-  transition: background-color var(--dur) var(--ease), opacity var(--dur) var(--ease); }
-.deck__btn:hover { background: var(--accent-soft); }
-.deck__btn:active { background: color-mix(in oklab, var(--accent-soft) 80%, var(--accent)); }
-.deck__btn:disabled { opacity: 0.35; cursor: default; background: var(--card); }
+/* 넘기기 화살표: 박스 없이 기호만 이미지 위에, 마우스가 있으면 올렸을 때만 보임 */
+.deck__view { position: relative; }
+.deck__count { margin-top: 10px; text-align: center; font-size: 0.875rem; color: var(--ink-2); }
+.deck__btn { position: absolute; top: 50%; translate: 0 -50%; width: 44px; height: 44px; display: grid; place-items: center; padding: 0; border: 0; background: none; color: #fff; cursor: pointer; }
+.deck__btn--prev { left: 6px; }
+.deck__btn--next { right: 6px; }
+.deck__btn .ico { width: 30px; height: 30px; stroke-width: 2.4; filter: drop-shadow(0 0 1.5px rgb(0 0 0 / 0.75)) drop-shadow(0 1px 6px rgb(0 0 0 / 0.45)); transition: scale var(--dur) var(--ease); }
+.deck__btn:hover .ico { scale: 1.15; }
+.deck__btn:active .ico { scale: 0.95; }
+.deck__btn:disabled { visibility: hidden; }
+.deck__btn:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; border-radius: 6px; }
+@media (hover: hover) {
+  .deck__btn { opacity: 0; transition: opacity var(--dur) var(--ease); }
+  .deck__view:hover .deck__btn, .deck__btn:focus-visible { opacity: 1; }
+}
 .close { position: absolute; top: 18px; right: 14px; width: 44px; height: 44px; display: grid; place-items: center; border: 0; border-radius: 50%; background: transparent; cursor: pointer; }
 .close:hover { background: var(--hover); }
 .close:active { background: var(--press); }
@@ -334,7 +343,6 @@ dialog > img { width: 100%; max-height: 70svh; object-fit: contain; margin-top: 
   dialog { width: min(560px, calc(100% - 48px)); margin: auto; padding: 28px; border-radius: 8px; border: 1px solid var(--line); box-shadow: var(--shadow-win); }
   dialog.wide { width: min(1000px, calc(100% - 48px)); }
   dialog.slides { width: min(640px, calc(100% - 48px)); }
-  .deck__btn { border-radius: 6px; }
   dialog ul a { border-radius: 6px; }
   .close { top: 16px; right: 16px; border-radius: 6px; }
 }
@@ -366,3 +374,12 @@ dialog > img { width: 100%; max-height: 70svh; object-fit: contain; margin-top: 
 .role dd { color: var(--ink-2); }
 .file .role { font-size: 0.875rem; } /* 카드 설명(.file__desc)과 같은 크기 */
 .job__who h3 small { font-size: 0.8125rem; font-weight: 400; color: var(--muted); white-space: nowrap; }
+
+/* 창 버튼: 최소화·닫기는 실제로 동작 */
+.win__cap { display: block; padding: 0; border: 0; background: none; color: inherit; cursor: pointer; }
+.win__cap:hover { background: color-mix(in oklab, var(--ink) 8%, transparent); }
+.win__cap:active { background: color-mix(in oklab, var(--ink) 14%, transparent); }
+.win__cap--close:hover { background: #c42b1c; color: #fff; }
+.win__cap--close:active { background: #b0281a; color: #fff; }
+.win__cap:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+@media (min-width: 900px) { .cv { margin-top: 48px; } }

@@ -56,10 +56,14 @@ const when = p => { const [a, b = a] = p.date.split('~'); return [ym(b), ym(a)];
 const rest = [...d.projects].sort((x, y) => { const [xe, xs] = when(x), [ye, ys] = when(y); return ye - xe || ys - xs; });
 const count = k => rest.filter(p => p.kind === k).length;
 
-// 창 제목 표시줄(PC) + 뒤로 가기 줄(모바일). 최소화·최대화·닫기는 장식이라 스크린리더에서 숨김.
-const chrome = (icon, name) => `
-    <div class="win__bar" aria-hidden="true"><span class="win__app">${svg(icon)}${esc(name)}</span><span class="win__caps">${svg('min')}${svg('max')}${svg('close')}</span></div>
-    <div class="app__top"><a class="app__back" href="#top" aria-label="홈 화면으로">${svg('back')}</a><span>${esc(name)}</span></div>`;
+// 창 제목 표시줄(PC) + 뒤로 가기 줄(모바일). 최소화·닫기는 창을 숨김(작업 표시줄로 다시 엶), 최대화는 장식.
+// home을 주면(이력서 페이지) 최소화·닫기·뒤로가 그 주소(포트폴리오)로 이동함.
+const caps = home => home
+  ? `<a class="win__cap" href="${home}" aria-label="최소화하고 포트폴리오로">${svg('min')}</a>${svg('max')}<a class="win__cap win__cap--close" href="${home}" aria-label="닫고 포트폴리오로">${svg('close')}</a>`
+  : `<button class="win__cap" type="button" data-win="min" aria-label="창 최소화">${svg('min')}</button>${svg('max')}<button class="win__cap win__cap--close" type="button" data-win="close" aria-label="창 닫기">${svg('close')}</button>`;
+const chrome = (icon, name, home) => `
+    <div class="win__bar"><span class="win__app" aria-hidden="true">${svg(icon)}${esc(name)}</span><span class="win__caps">${caps(home)}</span></div>
+    <div class="app__top"><a class="app__back" href="${home || '#top'}" aria-label="${home ? '포트폴리오로' : '홈 화면으로'}">${svg('back')}</a><span>${esc(name)}</span></div>`;
 
 const feature = (p, i) => `
         <article class="card feature${i === 0 ? ' feature--lead' : ''}" id="p-${p.id}" data-c="${p.kind}">
@@ -100,59 +104,47 @@ const stills = s.heroStills.map(id => byId[id]).map(p => `
           <a class="still" href="#${p.featured ? `p-${p.id}` : `w-${p.id}" data-f="${p.kind}`}">${img(p, '', false)}<span>${esc(p.title)}</span></a>`).join('');
 
 // [id, 아이콘, 창 이름, 모바일 하단 메뉴 이름]
-const sections = [['projects', 'star', '대표 프로젝트', '프로젝트'], ['about', 'person', '이력', '이력'], ['skills', 'apps', '설치된 앱', '스킬'], ['works', 'folder', '작업 폴더', '작업'], ['contact', 'mail', '받은 메일', '연락']];
+const sections = [['#projects', 'star', '대표 프로젝트', '프로젝트'], ['resume.html', 'person', '이력서', '이력서'], ['#works', 'folder', '작업 폴더', '작업'], ['#contact', 'mail', '받은 메일', '연락']];
 const mailto = `mailto:${esc(s.contact.email)}`;
 
-const html = `<!doctype html>
+const head = (title, desc) => `<!doctype html>
 <html lang="ko">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#f3f1f7">
-<title>${esc(s.title)}</title>
-<meta name="description" content="${esc(s.description)}">
+<title>${esc(title)}</title>
+<meta name="description" content="${esc(desc)}">
 <link rel="preload" href="fonts/Pretendard-Bold.woff" as="font" type="font/woff" crossorigin>
 <link rel="stylesheet" href="style.css?v=${createHash('md5').update(readFileSync('style.css')).digest('hex').slice(0, 8)}">
 </head>
 <body>
 <!-- 이 파일은 build.mjs가 data.json으로 생성함. 직접 수정하지 말 것. -->
-<div class="wall" aria-hidden="true"></div>
+<div class="wall" aria-hidden="true"></div>`;
 
+const common = `// 총 경력: 각 근무 기간(시작~끝 달)의 개월 수를 더함, '현재'는 오늘 기준이라 시간이 지나면 저절로 늘어남
+{
+  const now = new Date(), m = s => s.trim() === '현재' ? now.getFullYear() * 12 + now.getMonth() : (([y, mo]) => y * 12 + mo - 1)(s.split('.').map(Number));
+  const months = [...document.querySelectorAll('.job__period')].reduce((t, p) => { const [a, b] = p.textContent.split('~'); return t + m(b) - m(a); }, 0);
+  const total = document.querySelector('.me__total');
+  if (total && months > 0) total.textContent = '총 경력 ' + Math.floor(months / 12) + '년';
+}
+// 시계: 상태 표시줄·작업 표시줄
+const tFmt = new Intl.DateTimeFormat('ko-KR', { hour: 'numeric', minute: '2-digit' });
+const tick = () => {
+  const n = new Date();
+  document.querySelectorAll('[data-clock]').forEach(e => e.textContent = tFmt.format(n));
+  document.querySelectorAll('[data-date]').forEach(e => e.textContent = n.getFullYear() + '-' + String(n.getMonth() + 1).padStart(2, '0') + '-' + String(n.getDate()).padStart(2, '0'));
+};
+tick(); setInterval(tick, 20000);
 
-<main class="desk">
-  <header class="home" id="top">
-    <nav class="icons" aria-label="바로가기">${icon('#projects', tile('star', 'accent'), '대표 프로젝트')}${icon('#about', tile('person'), '이력')}${icon('#skills', tile('apps', 'soft'), '스킬')}${icon('#works', folder('video'), 'Video', ' data-f="video"')}${icon('#works', folder('graphic'), 'Graphic', ' data-f="graphic"')}${icon('#contact', tile('mail', 'dark'), '연락처')}
-    </nav>
+`;
 
-    <article class="widget hello">
-      <div class="hello__who">
-        <button class="face" type="button" data-img="${esc(s.profile)}" aria-label="프로필 사진 크게 보기"><img src="${esc(s.profile)}" alt="${esc(s.name)} 프로필 사진"></button>
-        <p><strong>${esc(s.name)}</strong><span>${esc(s.nameEn)}, ${esc(s.role)}</span></p>
-      </div>
-      <h1>${s.headline.map(l => `<span>${esc(l)}</span>`).join('')}</h1>
-      <p class="lead">${esc(s.lead)}</p>
-      <div class="actions">
-        <a class="btn btn--primary" href="#projects">프로젝트 보기</a>
-        <a class="btn" href="#contact">연락하기</a>
-      </div>
-    </article>
+// 이력서 페이지: 이력·설치된 앱 창. 창 버튼·뒤로는 포트폴리오로.
+const resumeHtml = `${head(s.name + ' 이력서', s.name + ' 이력서: 경력·학력·자격증·사용 툴')}
 
-    <article class="widget gallery" aria-label="작업 스틸">
-      <p class="widget__name">${svg('image')}갤러리</p>
-      <div class="gallery__grid">${stills}
-      </div>
-    </article>
-  </header>
-
-  <section id="projects" class="win">${chrome('star', '대표 프로젝트')}
-    <div class="win__body">
-      <h2>PROJECTS</h2>
-      <div class="features">${featured.map(feature).join('')}
-      </div>
-    </div>
-  </section>
-
-  <section id="about" class="win">${chrome('person', '이력')}
+<main class="desk cv">
+  <section id="about" class="win">${chrome('person', '이력서', 'index.html')}
     <div class="win__body">
       <h2>EXPERIENCE</h2>
       <div class="panel me">
@@ -176,13 +168,83 @@ const html = `<!doctype html>
     </div>
   </section>
 
-  <section id="skills" class="win">${chrome('apps', '설치된 앱')}
+  <section id="skills" class="win">${chrome('apps', '설치된 앱', 'index.html')}
     <div class="win__body">
       <h2>SKILLS</h2>${d.skills.map(g => `
       <div class="panel skills">
         <h3>${esc(g.group)}</h3>
         <ul>${g.items.map(t => `<li><img src="${esc(t.icon)}" alt="" width="36" height="36" loading="lazy"><span class="skills__name">${esc(t.name)}</span><span class="skills__desc">${esc(t.desc)}</span></li>`).join('')}</ul>
       </div>`).join('')}
+    </div>
+  </section>
+
+  <footer class="foot">
+    <p>${esc(s.copyright)}</p>
+  </footer>
+</main>
+
+<nav class="taskbar" aria-label="작업 표시줄">
+  <div class="tb__apps tb__apps--two">
+    <a class="tb__start" href="index.html" data-tip="포트폴리오" aria-label="포트폴리오"><span class="tb__is">IS</span><span class="tb__label" aria-hidden="true">포트폴리오</span></a>
+    <a href="#about" data-tip="이력서" aria-label="이력서" aria-current="location">${svg('person')}<span class="tb__label" aria-hidden="true">이력서</span></a>
+  </div>
+  <div class="tb__tray" aria-hidden="true">
+    <span>한</span>${svg('wifi')}
+    <span class="tb__clock"><span data-clock>오전 9:41</span><span data-date></span></span>
+  </div>
+</nav>
+
+<dialog id="pick" aria-labelledby="pick-t">
+  <button class="close" type="button" aria-label="닫기">${svg('close')}</button>
+  <h3 id="pick-t">${esc(s.name)}</h3>
+  <img alt="${esc(s.name)} 프로필 사진">
+</dialog>
+
+<script>
+${common}
+// 프로필 사진 크게 보기
+const dlg = document.getElementById('pick'), zoom = dlg.querySelector('img');
+document.querySelectorAll('button.face').forEach(b => b.onclick = () => { zoom.src = b.dataset.img; dlg.showModal(); });
+dlg.querySelector('.close').onclick = () => dlg.close();
+dlg.onclick = e => { if (e.target === dlg) dlg.close(); };
+</script>
+</body>
+</html>
+`;
+
+const html = `${head(s.title, s.description)}
+
+
+<main class="desk">
+  <header class="home" id="top">
+    <nav class="icons" aria-label="바로가기">${icon('#projects', tile('star', 'accent'), '대표 프로젝트')}${icon('resume.html', tile('person'), '이력서')}${icon('#works', folder('video'), 'Video', ' data-f="video"')}${icon('#works', folder('graphic'), 'Graphic', ' data-f="graphic"')}${icon('#contact', tile('mail', 'dark'), '연락처')}
+    </nav>
+
+    <article class="widget hello">
+      <div class="hello__who">
+        <button class="face" type="button" data-img="${esc(s.profile)}" aria-label="프로필 사진 크게 보기"><img src="${esc(s.profile)}" alt="${esc(s.name)} 프로필 사진"></button>
+        <p><strong>${esc(s.name)}</strong><span>${esc(s.nameEn)}, ${esc(s.role)}</span></p>
+      </div>
+      <h1>${s.headline.map(l => `<span>${esc(l)}</span>`).join('')}</h1>
+      <p class="lead">${esc(s.lead)}</p>
+      <div class="actions">
+        <a class="btn btn--primary" href="#projects">프로젝트 보기</a>
+        <a class="btn" href="resume.html">이력서</a>
+      </div>
+    </article>
+
+    <article class="widget gallery" aria-label="작업 스틸">
+      <p class="widget__name">${svg('image')}갤러리</p>
+      <div class="gallery__grid">${stills}
+      </div>
+    </article>
+  </header>
+
+  <section id="projects" class="win">${chrome('star', '대표 프로젝트')}
+    <div class="win__body">
+      <h2>PROJECTS</h2>
+      <div class="features">${featured.map(feature).join('')}
+      </div>
     </div>
   </section>
 
@@ -230,7 +292,7 @@ const html = `<!doctype html>
 <nav class="taskbar" aria-label="작업 표시줄">
   <div class="tb__apps">
     <a class="tb__start" href="#top" data-tip="홈" aria-label="홈"><span class="tb__is">IS</span><span class="tb__label" aria-hidden="true">홈</span></a>${sections.map(([id, ic, name, short]) => `
-    <a href="#${id}" data-tip="${esc(name)}" aria-label="${esc(name)}">${svg(ic)}<span class="tb__label" aria-hidden="true">${esc(short)}</span></a>`).join('')}
+    <a href="${id}" data-tip="${esc(name)}" aria-label="${esc(name)}">${svg(ic)}<span class="tb__label" aria-hidden="true">${esc(short)}</span></a>`).join('')}
   </div>
   <div class="tb__tray" aria-hidden="true">
     <span>한</span>${svg('wifi')}
@@ -244,29 +306,16 @@ const html = `<!doctype html>
   <p class="hint">확인할 콘텐츠를 선택하세요</p>
   <ul></ul>
   <div class="deck" hidden>
-    <div class="deck__track" tabindex="0" aria-label="카드뉴스, 좌우로 넘겨 보기"></div>
-    <div class="deck__nav"><button class="deck__btn" type="button" data-step="-1" aria-label="이전 장">${svg('back')}</button><span class="deck__count num"></span><button class="deck__btn" type="button" data-step="1" aria-label="다음 장">${svg('chev')}</button></div>
+    <div class="deck__view">
+      <div class="deck__track" tabindex="0" aria-label="카드뉴스, 좌우로 넘겨 보기"></div>
+      <button class="deck__btn deck__btn--prev" type="button" data-step="-1" aria-label="이전 장">${svg('back')}</button><button class="deck__btn deck__btn--next" type="button" data-step="1" aria-label="다음 장">${svg('chev')}</button>
+    </div>
+    <p class="deck__count num"></p>
   </div>
 </dialog>
 
 <script>
-// 총 경력: 각 근무 기간(시작~끝 달)의 개월 수를 더함, '현재'는 오늘 기준이라 시간이 지나면 저절로 늘어남
-{
-  const now = new Date(), m = s => s.trim() === '현재' ? now.getFullYear() * 12 + now.getMonth() : (([y, mo]) => y * 12 + mo - 1)(s.split('.').map(Number));
-  const months = [...document.querySelectorAll('.job__period')].reduce((t, p) => { const [a, b] = p.textContent.split('~'); return t + m(b) - m(a); }, 0);
-  const total = document.querySelector('.me__total');
-  if (total && months > 0) total.textContent = '총 경력 ' + Math.floor(months / 12) + '년';
-}
-// 시계: 상태 표시줄·작업 표시줄
-const tFmt = new Intl.DateTimeFormat('ko-KR', { hour: 'numeric', minute: '2-digit' });
-const tick = () => {
-  const n = new Date();
-  document.querySelectorAll('[data-clock]').forEach(e => e.textContent = tFmt.format(n));
-  document.querySelectorAll('[data-date]').forEach(e => e.textContent = n.getFullYear() + '-' + String(n.getMonth() + 1).padStart(2, '0') + '-' + String(n.getDate()).padStart(2, '0'));
-};
-tick(); setInterval(tick, 20000);
-
-// 작업 폴더 탭(Video·Graphic)
+${common}// 작업 폴더 탭(Video·Graphic)
 const tabs = document.querySelectorAll('#works .tabs button');
 const crumb = document.querySelector('[data-crumb]');
 const show = f => {
@@ -317,14 +366,25 @@ dlg.onclick = e => { if (e.target === dlg) dlg.close(); }; // 바깥 클릭 시 
 
 // 작업 표시줄: 지금 보고 있는 창 표시
 const tb = [...document.querySelectorAll('.tb__apps a')];
-// PC에선 이력·설치된 앱이 한 줄에 나란히 있으므로 둘 다 현재 위치로 표시
-const wide = matchMedia('(min-width: 900px)');
 const io = new IntersectionObserver(es => es.forEach(e => {
   if (!e.isIntersecting) return;
-  const on = wide.matches && (e.target.id === 'about' || e.target.id === 'skills') ? ['#about', '#skills'] : ['#' + e.target.id];
-  tb.forEach(a => on.includes(a.hash) ? a.setAttribute('aria-current', 'location') : a.removeAttribute('aria-current'));
+  tb.forEach(a => a.getAttribute('href') === '#' + e.target.id ? a.setAttribute('aria-current', 'location') : a.removeAttribute('aria-current'));
 }), { rootMargin: '-40% 0px -55% 0px' });
 document.querySelectorAll('#top, main > section[id]').forEach(x => io.observe(x));
+
+// 창 닫기·최소화: 창을 숨기고, 작업 표시줄·바탕화면 아이콘·본문 링크로 다시 엶 (PC에서만 창 버튼이 보임)
+document.querySelectorAll('[data-win]').forEach(b => b.onclick = () => {
+  const w = b.closest('.win'); w.hidden = true;
+  (tb.find(x => x.getAttribute('href') === '#' + w.id) || tb[0]).focus({ preventScroll: true });
+});
+document.addEventListener('click', e => {
+  const a = e.target.closest('a[href^="#"]'); if (!a) return;
+  const t = document.getElementById(a.hash.slice(1)), w = t && t.closest('.win');
+  if (!w || !w.hidden) return;
+  w.hidden = false; e.preventDefault();
+  t.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+  history.replaceState(null, '', a.hash);
+});
 </script>
 </body>
 </html>
@@ -335,4 +395,5 @@ for (const id of s.heroStills) if (!byId[id]) throw new Error(`heroStills: 없�
 if (!featured.length) throw new Error('featured 프로젝트가 하나도 없음');
 
 writeFileSync(new URL('./index.html', import.meta.url), html);
-console.log(`index.html 생성: 대표 ${featured.length}개, 전체 작업 ${rest.length}개`);
+writeFileSync(new URL('./resume.html', import.meta.url), resumeHtml);
+console.log(`index.html·resume.html 생성: 대표 ${featured.length}개, 전체 작업 ${rest.length}개`);
