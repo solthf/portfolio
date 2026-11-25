@@ -61,7 +61,7 @@
 .mail__body p + p { margin-top: 12px; font-size: 1rem; font-weight: 400; color: var(--ink-2); }
 
 @media (max-width: 899.98px) {
-  .tb__apps { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .tb__apps { grid-template-columns: repeat(5, minmax(0, 1fr)); }
 }
 
 @media (min-width: 900px) {
@@ -131,13 +131,50 @@ h1, h2, h3, p, dd, span { text-wrap: wrap; }
 .case__info .role dt { min-width: 3.4em; text-align: center; } /* AI·직접 배지 폭 맞춤 */
 
 /* 크리틱 반영: 밝은 캡처 위에서도 보이게 화살표를 어둡게, 증거 이미지는 세로로 크게 */
-.slider__arrow { background: var(--k55); border-color: var(--w35); color: var(--on-accent); }
-.slider__arrow:hover { background: var(--accent); }
-.slider__arrow:active { background: var(--accent-hover); }
-.slider__arrow:disabled { background: var(--k55); }
+/* 슬라이드 화살표: 상자 없이 기호만, 흰 기호에 그림자를 둬 밝은·어두운 화면 모두에서 보이게 */
+.slider__arrow, .slider__arrow:hover, .slider__arrow:active, .slider__arrow:disabled { background: none; border: 0; color: #fff; }
+.slider__arrow .ico { width: 30px; height: 30px; stroke-width: 2.4; filter: drop-shadow(0 0 1.5px rgb(0 0 0 / 0.75)) drop-shadow(0 1px 6px rgb(0 0 0 / 0.45)); transition: scale var(--dur) var(--ease); }
+.slider__arrow:hover .ico { scale: 1.15; }
+.slider__arrow:active .ico { scale: 0.95; }
+.slider__arrow:disabled { visibility: hidden; }
+/* 마우스가 있는 기기: 평소엔 숨기고 이미지에 올렸을 때·키보드로 갔을 때만 보임 (터치 기기는 항상 보임) */
+@media (hover: hover) {
+  .slider__arrow { opacity: 0; transition: opacity var(--dur) var(--ease); }
+  .slider__view:hover .slider__arrow, .slider__arrow:focus-visible { opacity: 1; }
+}
+/* HITUP: 채널 화면 비율에 맞춰 좌우 검은 띠 없앰, 흰 바탕 로고도 흰 무대에 */
+.slider--hitup { --ratio: 2038 / 1264; }
+.slider--hitup .slider__view { background: #fff; }
 .case__media .slider--square { width: 100%; max-width: 420px; }
 @media (max-width: 899.98px) { .mail__body p:first-child { font-size: 1rem; } }
 
 /* 링크 버튼: 한 줄에 하나씩, 모두 같은 폭 */
 .links { display: grid; grid-template-columns: minmax(0, 1fr); }
 .links .btn { justify-content: flex-start; text-align: left; padding-inline: 16px; }
+
+/* 이력서 페이지(resume.html) */
+.cv__label { margin: 24px 0 8px; font-size: 1.0625rem; color: var(--ink); }
+.cv__contact { margin-top: 12px; }
+@media (min-width: 900px) { .cv { margin-top: 48px; } }
+.cv__contact a { overflow-wrap: anywhere; } /* 주소가 좁은 화면에서 넘치지 않게, 끊을 땐 / 뒤에서 */
+
+.cv__tools { display: grid; gap: 8px; }
+.cv__tools div { display: grid; grid-template-columns: 6em minmax(0, 1fr); gap: 12px; font-size: 0.9375rem; }
+.cv__tools dt { color: var(--muted); font-size: 0.875rem; }
+.cv__actions { margin-top: 24px; }
+
+/* 창 버튼: 최소화·닫기는 실제로 창을 숨김, 작업 표시줄로 다시 엶 */
+.win[hidden] { display: none; }
+.win__cap { display: block; padding: 0; border: 0; background: none; color: inherit; cursor: pointer; }
+.win__cap:hover { background: color-mix(in oklab, var(--ink) 8%, transparent); }
+.win__cap:active { background: color-mix(in oklab, var(--ink) 14%, transparent); }
+.win__cap--close:hover { background: #c42b1c; color: #fff; }
+.win__cap--close:active { background: #b0281a; color: #fff; }
+.win__cap:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+
+/* 이력서 모바일: 날짜를 위에 작게 두고 이름이 한 줄을 다 쓰게(학력 이름이 줄바꿈되지 않게) */
+@media (max-width: 899.98px) {
+  .cv .resume dl { gap: 12px; }
+  .cv .resume dl div { grid-template-columns: minmax(0, 1fr); gap: 2px; font-size: 0.875rem; }
+  .cv .resume dt { font-size: 0.75rem; }
+}

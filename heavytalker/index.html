@@ -25,6 +25,7 @@
   <symbol id="i-min" viewBox="0 0 24 24"><path d="M7 12h10"/></symbol>
   <symbol id="i-max" viewBox="0 0 24 24"><rect x="7" y="7" width="10" height="10" rx="1.5"/></symbol>
   <symbol id="i-close" viewBox="0 0 24 24"><path d="M7 7l10 10M17 7L7 17"/></symbol>
+  <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4.5 20.5c.6-3.9 3.7-6 7.5-6s6.9 2.1 7.5 6"/></symbol>
   <symbol id="i-expand" viewBox="0 0 24 24"><path d="M14 4h6v6M10 20H4v-6M20 4l-7 7M4 20l7-7"/></symbol>
 </svg>
 <div class="wall" aria-hidden="true"></div>
@@ -35,6 +36,7 @@
       <a class="icon" href="#fit"><span class="tile tile--accent" aria-hidden="true"><svg class="ico"><use href="#i-star"/></svg></span><span class="icon__label">맞는 경험</span></a>
       <a class="icon" href="#case-1"><span class="folder" aria-hidden="true"><span class="folder__back"></span><img src="../img/g-hitup.jpg" alt=""><img src="../img/v-focc.jpg" alt=""><img src="../img/v-brand.jpg" alt=""><span class="folder__front"></span></span><span class="icon__label">작업 5</span></a>
       <a class="icon" href="../"><span class="tile tile--soft" aria-hidden="true"><svg class="ico"><use href="#i-apps"/></svg></span><span class="icon__label">전체 포트폴리오</span></a>
+      <a class="icon" href="resume.html"><span class="tile tile--soft" aria-hidden="true"><svg class="ico"><use href="#i-user"/></svg></span><span class="icon__label">이력서</span></a>
       <a class="icon" href="#contact"><span class="tile tile--dark" aria-hidden="true"><svg class="ico"><use href="#i-mail"/></svg></span><span class="icon__label">연락처</span></a>
     </nav>
 
@@ -43,7 +45,7 @@
       <p class="lead lead--wide">예능·토크 롱폼과 숏폼을 함께 만들어 온 영상 편집자 서이솔입니다.</p>
       <div class="actions">
         <a class="btn btn--primary" href="#case-1">작업 보기</a>
-        <a class="btn" href="mailto:solthfsol@gmail.com">메일 보내기</a>
+        <a class="btn" href="resume.html">이력서</a>
       </div>
     </article>
 
@@ -52,13 +54,13 @@
       <div class="gallery__grid">
         <a class="still" href="#case-1"><img src="../img/g-hitup.jpg" alt="HITUP Studio 채널 디자인"><span>HITUP Studio: 예능 롱폼·숏폼</span></a>
         <a class="still" href="#case-2"><img src="../img/v-focc.jpg" alt="에프오씨씨 다이어리"><span>에프오씨씨 다이어리: 숏폼 재구성</span></a>
-        <a class="still" href="#case-3"><img src="../img/v-brand.jpg" alt="포크피플 브랜드그라피"><span>브랜드그라피: 인터뷰 토크</span></a>
+        <a class="still" href="#case-3"><img src="../img/v-brand.jpg" alt="포크피플 브랜드그라피"><span>브랜드그라피: 인터뷰</span></a>
       </div>
     </article>
   </header>
 
   <section id="fit" class="win">
-    <div class="win__bar" aria-hidden="true"><span class="win__app"><svg class="ico"><use href="#i-star"/></svg>맞는 경험</span><span class="win__caps"><svg class="ico"><use href="#i-min"/></svg><svg class="ico"><use href="#i-max"/></svg><svg class="ico"><use href="#i-close"/></svg></span></div>
+    <div class="win__bar"><span class="win__app" aria-hidden="true"><svg class="ico"><use href="#i-star"/></svg>맞는 경험</span><span class="win__caps"><button class="win__cap" type="button" data-win="min" aria-label="창 최소화"><svg class="ico"><use href="#i-min"/></svg></button><svg class="ico" aria-hidden="true"><use href="#i-max"/></svg><button class="win__cap win__cap--close" type="button" data-win="close" aria-label="창 닫기"><svg class="ico"><use href="#i-close"/></svg></button></span></div>
     <div class="app__top"><a class="app__back" href="#top" aria-label="홈 화면으로"><svg class="ico"><use href="#i-back"/></svg></a><span>맞는 경험</span></div>
     <div class="win__body">
       <h2>이 자리에 맞는 경험</h2>
@@ -71,14 +73,14 @@
   </section>
 
   <section id="case-1" class="win">
-    <div class="win__bar" aria-hidden="true"><span class="win__app"><svg class="ico"><use href="#i-folder"/></svg>작업 1 / 5</span><span class="win__caps"><svg class="ico"><use href="#i-min"/></svg><svg class="ico"><use href="#i-max"/></svg><svg class="ico"><use href="#i-close"/></svg></span></div>
+    <div class="win__bar"><span class="win__app" aria-hidden="true"><svg class="ico"><use href="#i-folder"/></svg>작업 1 / 5</span><span class="win__caps"><button class="win__cap" type="button" data-win="min" aria-label="창 최소화"><svg class="ico"><use href="#i-min"/></svg></button><svg class="ico" aria-hidden="true"><use href="#i-max"/></svg><button class="win__cap win__cap--close" type="button" data-win="close" aria-label="창 닫기"><svg class="ico"><use href="#i-close"/></svg></button></span></div>
     <div class="app__top"><a class="app__back" href="#top" aria-label="홈 화면으로"><svg class="ico"><use href="#i-back"/></svg></a><span>작업 1 / 5</span></div>
     <div class="win__body">
       <h2>HITUP Studio</h2>
-      <p class="meta"><span class="meta__kind">예능 유튜브 채널 · 롱폼+숏폼</span><span>2025.05 ~ 2026.02</span><span>FOCC</span></p>
-      <p class="case__sum">낚시 입문 예능 유튜브 채널. 출연자 리액션과 상황극 중심의 롱폼을 편집하고, 회차마다 하이라이트 숏폼을 따로 뽑아 10개월 동안 170편을 업로드 주기에 맞춰 제작.</p>
+      <p class="meta"><span class="meta__kind">브랜드 채널 · 롱폼+숏폼</span><span>2025.05 ~ 2026.02</span><span>FOCC</span></p>
+      <p class="case__sum">낚시 입문 브랜드 채널. 출연자 리액션과 상황극 중심의 롱폼을 편집하고, 회차마다 하이라이트 숏폼을 따로 뽑아 10개월 동안 170편을 업로드 주기에 맞춰 제작.</p>
       <div class="case">
-        <div class="slider" aria-roledescription="슬라이더" aria-label="HITUP Studio">
+        <div class="slider slider--hitup" aria-roledescription="슬라이더" aria-label="HITUP Studio">
           <div class="slider__view"><ul class="slider__track">
             <li><img src="../img/g-hitup.jpg" alt="HITUP Studio 채널 디자인: 썸네일·채널 아트"></li>
             <li><img src="../img/v-hitup.jpg" alt="HITUP Studio 로고" loading="lazy"></li>
@@ -100,11 +102,11 @@
   </section>
 
   <section id="case-2" class="win">
-    <div class="win__bar" aria-hidden="true"><span class="win__app"><svg class="ico"><use href="#i-folder"/></svg>작업 2 / 5</span><span class="win__caps"><svg class="ico"><use href="#i-min"/></svg><svg class="ico"><use href="#i-max"/></svg><svg class="ico"><use href="#i-close"/></svg></span></div>
+    <div class="win__bar"><span class="win__app" aria-hidden="true"><svg class="ico"><use href="#i-folder"/></svg>작업 2 / 5</span><span class="win__caps"><button class="win__cap" type="button" data-win="min" aria-label="창 최소화"><svg class="ico"><use href="#i-min"/></svg></button><svg class="ico" aria-hidden="true"><use href="#i-max"/></svg><button class="win__cap win__cap--close" type="button" data-win="close" aria-label="창 닫기"><svg class="ico"><use href="#i-close"/></svg></button></span></div>
     <div class="app__top"><a class="app__back" href="#top" aria-label="홈 화면으로"><svg class="ico"><use href="#i-back"/></svg></a><span>작업 2 / 5</span></div>
     <div class="win__body">
       <h2>에프오씨씨 다이어리</h2>
-      <p class="meta"><span class="meta__kind">브이로그 예능 · 숏폼 재구성</span><span>2025.01 ~ 2025.03</span><span>FOCC</span></p>
+      <p class="meta"><span class="meta__kind">스타트업 브이로그 · 숏폼 재구성</span><span>2025.01 ~ 2025.03</span><span>FOCC</span></p>
       <p class="case__sum">스타트업 직원들이 직접 출연하여 스타트업은 무슨 일을 하고, 스타트업 대표는 어떤 생각을 하는지 솔직하게 드러내는 회사 브이로그.<br>롱폼 편집 후, 후킹 장면을 맨 앞에 두고 결말을 앞으로 당겨 끝까지 보게 만드는 구조로 숏폼을 재구성함.</p>
       <div class="case">
         <div class="slider" aria-roledescription="슬라이더" aria-label="에프오씨씨 다이어리">
@@ -114,7 +116,7 @@
         </div>
         <div class="case__info">
           <div class="panel"><h3>직접 보기</h3><div class="links">
-            <a class="btn btn--primary" href="https://youtu.be/MTtt9P7hr3U" target="_blank" rel="noopener">니들은 스타트업 피지 마라</a>
+            <a class="btn" href="https://youtu.be/MTtt9P7hr3U" target="_blank" rel="noopener">니들은 스타트업 피지 마라</a>
             <a class="btn" href="https://youtube.com/shorts/NwKKdQ79KxM" target="_blank" rel="noopener">숏폼 (1만 회+)</a>
             <a class="btn" href="https://youtu.be/DeyBte2AbC0" target="_blank" rel="noopener">뭔가 보여드리겠습니다</a>
             <a class="btn" href="https://youtu.be/eQX03wwC8zc" target="_blank" rel="noopener">역마살, ‘역삼’부터 ‘인천’까지</a>
@@ -128,11 +130,11 @@
   </section>
 
   <section id="case-3" class="win">
-    <div class="win__bar" aria-hidden="true"><span class="win__app"><svg class="ico"><use href="#i-folder"/></svg>작업 3 / 5</span><span class="win__caps"><svg class="ico"><use href="#i-min"/></svg><svg class="ico"><use href="#i-max"/></svg><svg class="ico"><use href="#i-close"/></svg></span></div>
+    <div class="win__bar"><span class="win__app" aria-hidden="true"><svg class="ico"><use href="#i-folder"/></svg>작업 3 / 5</span><span class="win__caps"><button class="win__cap" type="button" data-win="min" aria-label="창 최소화"><svg class="ico"><use href="#i-min"/></svg></button><svg class="ico" aria-hidden="true"><use href="#i-max"/></svg><button class="win__cap win__cap--close" type="button" data-win="close" aria-label="창 닫기"><svg class="ico"><use href="#i-close"/></svg></button></span></div>
     <div class="app__top"><a class="app__back" href="#top" aria-label="홈 화면으로"><svg class="ico"><use href="#i-back"/></svg></a><span>작업 3 / 5</span></div>
     <div class="win__body">
       <h2>포크피플: 브랜드그라피</h2>
-      <p class="meta"><span class="meta__kind">인터뷰 토크 · 롱폼</span><span>2024.10</span><span>FOCC</span></p>
+      <p class="meta"><span class="meta__kind">인터뷰 · 롱폼</span><span>2024.10</span><span>FOCC</span></p>
       <p class="case__sum">제 2의 인생을 준비하는 사람들에게 제 2의 인생을 살아가는 사람들의 진솔한 이야기를 나누는 인터뷰.<br>긴 대화에서 흐름을 살릴 부분만 남기고, 썸네일과 자막·화면 디자인을 새로 정리(리뉴얼).</p>
       <div class="case">
         <div class="slider" aria-roledescription="슬라이더" aria-label="포크피플: 브랜드그라피">
@@ -142,7 +144,7 @@
         </div>
         <div class="case__info">
           <div class="panel"><h3>직접 보기</h3><div class="links">
-            <a class="btn btn--primary" href="https://youtu.be/oat8cLKUQ-g" target="_blank" rel="noopener">feat. 송강미술관 김명자 관장</a>
+            <a class="btn" href="https://youtu.be/oat8cLKUQ-g" target="_blank" rel="noopener">feat. 송강미술관 김명자 관장</a>
             <a class="btn" href="https://youtu.be/QRuIPxKPjG8" target="_blank" rel="noopener">feat. 로드옥션 대표 김기환</a>
             <a class="btn" href="https://youtu.be/Z7FULsfeKkg" target="_blank" rel="noopener">feat. ProTNS 최중락 대표</a>
           </div></div>
@@ -153,12 +155,12 @@
   </section>
 
   <section id="case-4" class="win">
-    <div class="win__bar" aria-hidden="true"><span class="win__app"><svg class="ico"><use href="#i-folder"/></svg>작업 4 / 5</span><span class="win__caps"><svg class="ico"><use href="#i-min"/></svg><svg class="ico"><use href="#i-max"/></svg><svg class="ico"><use href="#i-close"/></svg></span></div>
+    <div class="win__bar"><span class="win__app" aria-hidden="true"><svg class="ico"><use href="#i-folder"/></svg>작업 4 / 5</span><span class="win__caps"><button class="win__cap" type="button" data-win="min" aria-label="창 최소화"><svg class="ico"><use href="#i-min"/></svg></button><svg class="ico" aria-hidden="true"><use href="#i-max"/></svg><button class="win__cap win__cap--close" type="button" data-win="close" aria-label="창 닫기"><svg class="ico"><use href="#i-close"/></svg></button></span></div>
     <div class="app__top"><a class="app__back" href="#top" aria-label="홈 화면으로"><svg class="ico"><use href="#i-back"/></svg></a><span>작업 4 / 5</span></div>
     <div class="win__body">
       <h2>FOCC, [ 하동 ]을 찍다</h2>
       <p class="meta"><span class="meta__kind">여행 시리즈 · 롱폼 5편</span><span>2024.12 ~ 2025.01</span><span>FOCC</span></p>
-      <p class="case__sum">하동의 숙소를 한 곳씩 소개하는 여행 시리즈. 직접 찍은 2편과 팀장이 찍은 3편을 모두 편집하고, 숙소마다 분위기가 다르게 읽히도록 컷 호흡과 자막을 맞춤.</p>
+      <p class="case__sum">하동의 숙소를 한 곳씩 소개하는 여행 시리즈.<br>직접 찍은 2편과 팀장이 찍은 3편을 모두 편집하고, 숙소마다 분위기가 다르게 읽히도록 컷 호흡과 자막을 맞춤.</p>
       <div class="case">
         <div class="slider" aria-roledescription="슬라이더" aria-label="FOCC, [ 하동 ]을 찍다">
           <div class="slider__view"><ul class="slider__track">
@@ -167,7 +169,7 @@
         </div>
         <div class="case__info">
           <div class="panel"><h3>직접 보기</h3><div class="links">
-            <a class="btn btn--primary" href="https://youtu.be/5_dOwE0J7nQ" target="_blank" rel="noopener">하동 모암마을의 여행자 숙소, ‘모암차차’</a>
+            <a class="btn" href="https://youtu.be/5_dOwE0J7nQ" target="_blank" rel="noopener">하동 모암마을의 여행자 숙소, ‘모암차차’</a>
             <a class="btn" href="https://youtu.be/A1VqZ09uotU" target="_blank" rel="noopener">귀곡 산장의 공방 변신은 무죄! ‘미소 도자기 민박’</a>
             <a class="btn" href="https://youtu.be/Sllr4-HauOM" target="_blank" rel="noopener">하동 숙소 중 풍광은 여기가 짱 먹겠습니다</a>
             <a class="btn" href="https://youtu.be/kUMiN5niSxo" target="_blank" rel="noopener">달이 시원하고, 물이 예뻐요. ‘수월산방’</a>
@@ -180,12 +182,12 @@
   </section>
 
   <section id="case-5" class="win">
-    <div class="win__bar" aria-hidden="true"><span class="win__app"><svg class="ico"><use href="#i-folder"/></svg>작업 5 / 5</span><span class="win__caps"><svg class="ico"><use href="#i-min"/></svg><svg class="ico"><use href="#i-max"/></svg><svg class="ico"><use href="#i-close"/></svg></span></div>
+    <div class="win__bar"><span class="win__app" aria-hidden="true"><svg class="ico"><use href="#i-folder"/></svg>작업 5 / 5</span><span class="win__caps"><button class="win__cap" type="button" data-win="min" aria-label="창 최소화"><svg class="ico"><use href="#i-min"/></svg></button><svg class="ico" aria-hidden="true"><use href="#i-max"/></svg><button class="win__cap win__cap--close" type="button" data-win="close" aria-label="창 닫기"><svg class="ico"><use href="#i-close"/></svg></button></span></div>
     <div class="app__top"><a class="app__back" href="#top" aria-label="홈 화면으로"><svg class="ico"><use href="#i-back"/></svg></a><span>작업 5 / 5</span></div>
     <div class="win__body">
       <h2>아겁문TV 〈아문〉·〈조폭실록〉</h2>
-      <p class="meta"><span class="meta__kind">토크 · 정보 유튜브</span><span>2020.11 ~ 2021.12</span><span>프리랜서 외주</span></p>
-      <p class="case__sum">촬영 소스를 받아 편집을 맡은 프리랜서 작업. 출연자가 이야기를 이끄는 가십·뉴스 토크 〈아문〉과, 한국 조폭의 역사를 소개하는 〈조폭실록〉 시리즈를 편집.</p>
+      <p class="meta"><span class="meta__kind">정보 유튜브</span><span>2020.11 ~ 2021.12</span><span>프리랜서 외주</span></p>
+      <p class="case__sum">촬영 소스를 받아 편집을 맡은 프리랜서 작업.<br>출연자가 이야기를 이끄는 가십·뉴스 토크 〈아문〉과, 한국 조폭의 역사를 소개하는 〈조폭실록〉 시리즈를 편집.</p>
       <div class="case">
         <div class="slider" aria-roledescription="슬라이더" aria-label="아겁문TV 〈아문〉·〈조폭실록〉">
           <div class="slider__view"><ul class="slider__track">
@@ -195,7 +197,7 @@
         </div>
         <div class="case__info">
           <div class="panel"><h3>직접 보기</h3><div class="links">
-            <a class="btn btn--primary" href="https://youtu.be/O8tJ9j68p9o" target="_blank" rel="noopener">아문: 드라마 논란</a>
+            <a class="btn" href="https://youtu.be/O8tJ9j68p9o" target="_blank" rel="noopener">아문: 드라마 논란</a>
             <a class="btn" href="https://youtu.be/xctRHCA7IXY" target="_blank" rel="noopener">아문: 위드 코로나</a>
             <a class="btn" href="https://youtu.be/oYyLRSgTJEg" target="_blank" rel="noopener">조폭실록 예고편</a>
             <a class="btn" href="https://youtu.be/7adYW6R3c18" target="_blank" rel="noopener">조폭실록 1편</a>
@@ -208,7 +210,7 @@
   </section>
 
   <section id="contact" class="win mail">
-    <div class="win__bar" aria-hidden="true"><span class="win__app"><svg class="ico"><use href="#i-mail"/></svg>받은 메일</span><span class="win__caps"><svg class="ico"><use href="#i-min"/></svg><svg class="ico"><use href="#i-max"/></svg><svg class="ico"><use href="#i-close"/></svg></span></div>
+    <div class="win__bar"><span class="win__app" aria-hidden="true"><svg class="ico"><use href="#i-mail"/></svg>받은 메일</span><span class="win__caps"><button class="win__cap" type="button" data-win="min" aria-label="창 최소화"><svg class="ico"><use href="#i-min"/></svg></button><svg class="ico" aria-hidden="true"><use href="#i-max"/></svg><button class="win__cap win__cap--close" type="button" data-win="close" aria-label="창 닫기"><svg class="ico"><use href="#i-close"/></svg></button></span></div>
     <div class="app__top"><a class="app__back" href="#top" aria-label="홈 화면으로"><svg class="ico"><use href="#i-back"/></svg></a><span>받은 메일</span></div>
     <div class="win__body">
       <h2 class="visually-hidden">연락처</h2>
@@ -219,7 +221,7 @@
       </dl>
       <div class="mail__body">
         <p>두 분의 대화가 가진 리듬을 살리는 편집,<br>하말넘많과 함께 만들고 싶습니다.</p>
-        <p>방송·유튜브·디자인 작업이 모두 담긴 전체 포트폴리오는 <a href="../">여기</a>에 있습니다.</p>
+        <p>경력·학력은 <a href="resume.html">이력서</a>에, 방송·유튜브·디자인 작업이 모두 담긴 전체 포트폴리오는 <a href="../">여기</a>에 있습니다.</p>
       </div>
       <div class="actions">
         <a class="btn btn--primary" href="mailto:solthfsol@gmail.com">답장하기</a>
@@ -236,6 +238,7 @@
     <a class="tb__start" href="#top" data-tip="홈" aria-label="홈"><span class="tb__is">IS</span><span class="tb__label" aria-hidden="true">홈</span></a>
     <a href="#fit" data-tip="맞는 경험" aria-label="맞는 경험"><svg class="ico"><use href="#i-star"/></svg><span class="tb__label" aria-hidden="true">경험</span></a>
     <a href="#case-1" data-tip="작업" aria-label="작업"><svg class="ico"><use href="#i-folder"/></svg><span class="tb__label" aria-hidden="true">작업</span></a>
+    <a href="resume.html" data-tip="이력서" aria-label="이력서"><svg class="ico"><use href="#i-user"/></svg><span class="tb__label" aria-hidden="true">이력서</span></a>
     <a href="#contact" data-tip="받은 메일" aria-label="받은 메일"><svg class="ico"><use href="#i-mail"/></svg><span class="tb__label" aria-hidden="true">연락</span></a>
   </div>
   <div class="tb__tray" aria-hidden="true">
@@ -315,6 +318,26 @@ const io = new IntersectionObserver(es => es.forEach(e => {
   tb.forEach(a => a.hash === h ? a.setAttribute('aria-current', 'location') : a.removeAttribute('aria-current'));
 }), { rootMargin: '-40% 0px -55% 0px' });
 document.querySelectorAll('#top, main > section[id]').forEach(x => io.observe(x));
+// 창 닫기·최소화: 창을 숨기고, 작업 표시줄·바탕화면 아이콘·본문 링크로 다시 엶 (PC에서만 창 버튼이 보임)
+const cases = [...document.querySelectorAll('main > section[id^="case-"]')];
+document.querySelectorAll('[data-win]').forEach(b => b.onclick = () => {
+  const w = b.closest('.win'); w.hidden = true;
+  // 숨긴 버튼에 있던 포커스는 그 창을 다시 여는 작업 표시줄 버튼으로
+  const h = w.id.startsWith('case-') ? '#case-1' : '#' + w.id;
+  (tb.find(x => x.hash === h) || tb[0]).focus({ preventScroll: true });
+});
+document.addEventListener('click', e => {
+  const a = e.target.closest('a[href^="#"]'); if (!a) return;
+  const t = document.getElementById(a.hash.slice(1)); if (!t) return;
+  // '작업'은 닫힌 작업 창을 모두 다시 열고, 그중 첫 창으로 이동
+  const group = a.hash === '#case-1' ? cases : [t];
+  const closed = group.filter(x => x.hidden);
+  if (!closed.length) return;
+  closed.forEach(x => x.hidden = false);
+  e.preventDefault();
+  closed[0].scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+  history.replaceState(null, '', '#' + closed[0].id);
+});
 </script>
 </body>
 </html>
